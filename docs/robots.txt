@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://leadsdownstreet.github.io/downstreet/sitemap.xml

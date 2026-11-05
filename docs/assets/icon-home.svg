@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<style>.m{fill:#1E2226;stroke:#1E2226}@media (prefers-color-scheme: dark){.m{fill:#F5F3EE;stroke:#F5F3EE}}</style>
+<path class="m" d="M50 6 L89 36 V72 H11 V36 Z" stroke-width="6" stroke-linejoin="round"/>
+<path d="M40 42 H60 V72 H40 Z" fill="#F5C400"/>
+<path d="M42 79 H58 L68 98 H32 Z" fill="#F5C400"/>
+</svg>

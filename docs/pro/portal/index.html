@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en" data-site-base="/downstreet/pro/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pro portal · Downstreet Pro</title>
+<meta name="description" content="Your leads, where each one stands, and the fees due on jobs you have been paid for.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://leadsdownstreet.github.io/downstreet/pro/portal/">
+<link rel="icon" href="/downstreet/assets/icon-pro.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/downstreet/assets/touch-pro.png">
+<meta name="theme-color" content="#111417">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pro portal · Downstreet Pro">
+<meta property="og:description" content="Your leads, where each one stands, and the fees due on jobs you have been paid for.">
+<meta property="og:url" content="https://leadsdownstreet.github.io/downstreet/pro/portal/">
+<meta property="og:image" content="https://leadsdownstreet.github.io/downstreet/assets/og-pro.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Inter:wght@400;500;600;700;800&amp;family=Overpass:wght@700;800&amp;display=swap">
+<style>
+body{margin:0}
+.ds{-webkit-font-smoothing:antialiased}
+.ds *,.ds *::before,.ds *::after{box-sizing:border-box}
+.ds button,.ds a,.ds input,.ds select{-webkit-tap-highlight-color:transparent}
+.ds button:focus-visible,.ds a:focus-visible,.ds input:focus-visible,.ds select:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.ds input:focus,.ds select:focus{border-color:var(--text)}
+.ds ::placeholder{color:var(--muted);opacity:.7}
+.ds .sep{margin-right:0.2em}
+.ds .hl{color:#F5C400}
+.ds.light .hl{color:inherit;background:linear-gradient(transparent 62%,#F5C400 62%,#F5C400 93%,transparent 93%);padding:0 .04em}
+.ds .lane{display:inline-block;width:24px;height:4px;flex:none;background:repeating-linear-gradient(90deg,#F5C400 0 8px,transparent 8px 13px)}
+.ds .pro-tag{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;background:#F5C400;color:#1E2226;font-family:Inter,system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.12em;line-height:1;flex:none}
+.ds .btn-y:hover{background:#FFD21F}
+.ds .btn-o:hover{border-color:var(--text)}
+.ds .icon-btn{width:44px;height:44px;flex:none;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer;padding:0}
+.ds .icon-btn:hover{border-color:var(--text)}
+.ds .blade{display:inline-flex;align-items:center;min-height:46px;box-sizing:border-box;padding:10px 18px;border:none;border-radius:8px;background:var(--blade);color:#F5F3EE;font-family:Overpass,Inter,sans-serif;font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;box-shadow:inset 0 0 0 4px var(--blade),inset 0 0 0 5.5px rgba(245,243,238,.75)}
+.ds .blade:hover{box-shadow:inset 0 0 0 4px var(--blade),inset 0 0 0 5.5px #F5C400}
+.ds .blade.on{background:#F5C400;color:#1E2226;box-shadow:inset 0 0 0 4px #F5C400,inset 0 0 0 5.5px #1E2226}
+.ds .blade-sm{min-height:30px;padding:5px 12px;font-size:12px;cursor:default}
+.ds .route-line{position:absolute;left:39px;right:calc(25% - 60px);top:37px;height:4px;background:repeating-linear-gradient(90deg,#F5C400 0 16px,transparent 16px 28px);opacity:.9}
+.ds .range{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:999px;background:var(--surface-2);outline-offset:6px;margin:6px 0}
+.ds .range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:28px;height:28px;border-radius:50%;background:#F5C400;border:3px solid #1E2226;cursor:pointer}
+.ds .range::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#F5C400;border:3px solid #1E2226;cursor:pointer}
+.ds .hm-truck{animation:hm-drive 16s linear infinite}
+@keyframes hm-drive{0%{transform:translateX(-80px)}100%{transform:translateX(720px)}}
+.ds .hm-ring{transform-box:fill-box;transform-origin:center;animation:hm-pulse 2.4s ease-out infinite}
+@keyframes hm-pulse{0%{transform:scale(.4);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+.ds .hm-pin{animation:hm-bob 4s ease-in-out infinite}
+@keyframes hm-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.ds .blink{animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.ds.still .hm-truck,.ds.still .hm-ring,.ds.still .hm-pin,.ds.still .blink{animation:none}
+@media (prefers-reduced-motion: reduce){.ds .hm-truck,.ds .hm-ring,.ds .hm-pin,.ds .blink{animation:none}}
+.ds .show-md{display:none !important}
+@media (max-width: 1020px){.ds .nav-links{display:none !important}.ds .hide-md{display:none !important}.ds .show-md{display:inline-flex !important}.ds div.show-md{display:flex !important}}
+@media (max-width: 1100px){.ds .route-line{display:none}}
+@media (max-width: 700px){.ds .hm-card{position:static !important;width:auto !important;margin:12px;border-radius:16px}.ds .hm-label{top:12px;bottom:auto !important}.ds .hide-sm{display:none !important}.ds .stage-row{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
+@media (max-width: 400px){.ds .hide-xs{display:none !important}.ds .pro-tag{height:18px;padding:0 5px;font-size:10px}}
+</style>
+<style>#app:empty{min-height:100vh}</style>
+</head>
+<body>
+<div id="app">
+<div class="ds dark" style="--bg: #111417; --bg-2: #15191C; --surface: #1A1E22; --surface-2: #22272C; --line: #2A3036; --line-strong: #454C53; --text: #F5F3EE; --body: #C9C6BE; --muted: #A39F94; --accent-text: #F5C400; --focus: #F5C400; --col-hl: rgba(245,196,0,0.06); --blade: #2A3036; --input-bg: #111417; --field-line: #454C53; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; font-size: 17px; line-height: 1.55; min-height: 100vh">
+
+<div style="background: #F5C400; color: #1E2226; padding: 8px clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px 16px; flex-wrap: wrap; font-weight: 600; font-size: 15px; position: relative; padding-right: 40px">
+<span>It’s Christmas-lights season.</span>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; font-weight: 800; color: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Light installers: claim your area</button>
+<button type="button" aria-label="Dismiss" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 999px; border: none; background: transparent; color: inherit; cursor: pointer; display: inline-flex; align-items: center; justify-content: center"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M6 6 L18 18 M18 6 L6 18"></path></svg></button>
+</div>
+</div>
+
+<header style="position: relative; z-index: 5; padding: 14px clamp(20px, 5vw, 64px); border-bottom: 1px solid var(--line); background: var(--bg)">
+<nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 14px" aria-label="Main">
+<a href="#top" style="display: inline-flex; align-items: center; text-decoration: none; color: var(--text); flex: none" aria-label="Downstreet Pro home"><span style="display: inline-flex; align-items: center; gap: 10px"><div style="position: relative; width: 38px; height: 38px; flex: none" role="img" aria-label="Downstreet Pro logo: a road bending around a yellow house"><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5F3EE; stroke-width: 26px; stroke-linecap: butt; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5C400; stroke-width: 3.6px; stroke-linecap: butt; stroke-linejoin: round; stroke-dasharray: 7 6"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M69 56 L84 68 V84 H54 V68 Z" style="fill: #F5C400; stroke: #F5C400; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round"></path></svg></div><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 25px; line-height: 1; letter-spacing: -0.025em">Downstreet</span><span class="pro-tag">PRO</span></span></a>
+<div class="nav-links" style="display: flex; align-items: center; gap: 2px; margin-left: 14px">
+<button type="button" style="min-height: 44px; padding: 10px 13px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; background: transparent; color: var(--body); font-weight: 500">How it works</button><button type="button" style="min-height: 44px; padding: 10px 13px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; background: transparent; color: var(--body); font-weight: 500">Pricing</button><button type="button" style="min-height: 44px; padding: 10px 13px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; background: transparent; color: var(--body); font-weight: 500">Trades</button><button type="button" style="min-height: 44px; padding: 10px 13px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; background: transparent; color: var(--body); font-weight: 500">Areas</button><button type="button" style="min-height: 44px; padding: 10px 13px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; background: transparent; color: var(--body); font-weight: 500">Rules of the road</button>
+</div>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 8px">
+<button type="button" class="icon-btn" aria-label="Switch to light mode" title="Switch to light mode"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5 V4.5 M12 19.5 V21.5 M2.5 12 H4.5 M19.5 12 H21.5 M5.3 5.3 L6.7 6.7 M17.3 17.3 L18.7 18.7 M5.3 18.7 L6.7 17.3 M17.3 6.7 L18.7 5.3"></path></svg></button>
+<button type="button" class="icon-btn hide-sm" aria-label="Pause animation" title="Pause animation"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><rect x="7" y="5.5" width="3.5" height="13" rx="1"></rect><rect x="13.5" y="5.5" width="3.5" height="13" rx="1"></rect></svg></button>
+<button type="button" class="hide-md" style="min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; white-space: nowrap; border-color: transparent">Sign in</button>
+<button type="button" class="btn-y hide-xs" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; border: none; background: #F5C400; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap; min-height: 44px; padding: 10px 18px; font-size: 15px">Get leads</button>
+<button type="button" class="icon-btn show-md" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M4 7 H20 M4 12 H20 M4 17 H20"></path></svg></button>
+</div>
+</nav>
+
+</header>
+<main id="main">
+
+
+
+
+
+
+
+
+
+<section style="padding: clamp(44px, 6vw, 84px) clamp(20px, 5vw, 64px) clamp(36px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted)"><span class="lane" aria-hidden="true"></span><span>Pro portal <span class="sep">·</span> <span style="color: var(--accent-text)">preview with sample data</span></span></p>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(42px, 6vw, 78px); line-height: 0.96; letter-spacing: -0.035em">Your leads, <span class="hl">in one place.</span></h1>
+<p style="margin: 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: var(--body); max-width: 640px">Every request we book for you, where it stands, and what you owe on the jobs you’ve been paid for.</p>
+</div>
+</section>
+<section style="padding: 0 clamp(20px, 5vw, 64px) clamp(64px, 9vw, 116px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 12px">
+
+<div style="border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 2px; background: var(--surface); border: 1px solid var(--line)"><div style="font-size: 13px; font-weight: 600; opacity: 0.85">New</div><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.02em">1</div><div style="font-size: 13px; opacity: 0.8">Call by 7:15 PM</div></div>
+
+<div style="border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 2px; background: var(--surface); border: 1px solid var(--line)"><div style="font-size: 13px; font-weight: 600; opacity: 0.85">Booked</div><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.02em">1</div><div style="font-size: 13px; opacity: 0.8">Next: Thu 5:30 PM</div></div>
+
+<div style="border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 2px; background: var(--surface); border: 1px solid var(--line)"><div style="font-size: 13px; font-weight: 600; opacity: 0.85">Quoted</div><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.02em">1</div><div style="font-size: 13px; opacity: 0.8">Follow up Friday</div></div>
+
+<div style="border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 2px; background: var(--surface); border: 1px solid var(--line)"><div style="font-size: 13px; font-weight: 600; opacity: 0.85">Won this month</div><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.02em">2</div><div style="font-size: 13px; opacity: 0.8">$21,200 collected</div></div>
+
+<div style="border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 2px; background: #F5C400; color: #1E2226"><div style="font-size: 13px; font-weight: 600; opacity: 0.85">Fees due</div><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.02em">$2,380</div><div style="font-size: 13px; opacity: 0.8">By Nov 14</div></div>
+
+</div>
+<div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; overflow-x: auto; position: relative">
+<div role="table" aria-label="Sample leads" style="min-width: 924px">
+<div role="row" style="display: grid; grid-template-columns: 88px minmax(0, 1.5fr) minmax(0, 1fr) 104px minmax(0, 1.2fr) 108px 88px 120px; align-items: center; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11.5px; letter-spacing: 0.12em; color: var(--muted)">
+<span role="columnheader" style="padding: 16px 18px">LEAD</span><span role="columnheader" style="padding: 16px 10px">JOB</span><span role="columnheader" style="padding: 16px 10px">WHERE</span><span role="columnheader" style="padding: 16px 10px">STATUS</span><span role="columnheader" style="padding: 16px 10px">NEXT</span><span role="columnheader" style="padding: 16px 10px; text-align: right">COLLECTED</span><span role="columnheader" style="padding: 16px 10px; text-align: right">FEE</span><span role="columnheader" style="padding: 16px 18px"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Action</span></span>
+</div>
+
+<div role="row" style="display: grid; grid-template-columns: 88px minmax(0, 1.5fr) minmax(0, 1fr) 104px minmax(0, 1.2fr) 108px 88px 120px; align-items: center; border-top: 1px solid var(--line); font-size: 15px">
+<span role="cell" style="padding: 14px 18px; font-weight: 700; white-space: nowrap">DS-1055</span>
+<span role="cell" style="padding: 14px 10px; font-weight: 600">Gate won’t latch</span>
+<span role="cell" style="padding: 14px 10px; color: var(--body); white-space: nowrap">76110 · 4.0 mi</span>
+<span role="cell" style="padding: 14px 10px"><span style="display: inline-flex; align-items: center; min-height: 26px; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; background: #F5C400; color: #1E2226">New</span></span>
+<span role="cell" style="padding: 14px 10px; color: var(--body)">Call by 7:15 PM</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 600; white-space: nowrap">—</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 700; white-space: nowrap">—</span>
+<span role="cell" style="padding: 10px 16px 10px 8px; text-align: right"><button type="button" style="min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; white-space: nowrap; min-height: 40px; padding: 8px 14px; font-size: 14px">Report</button></span>
+</div>
+
+<div role="row" style="display: grid; grid-template-columns: 88px minmax(0, 1.5fr) minmax(0, 1fr) 104px minmax(0, 1.2fr) 108px 88px 120px; align-items: center; border-top: 1px solid var(--line); font-size: 15px">
+<span role="cell" style="padding: 14px 18px; font-weight: 700; white-space: nowrap">DS-1053</span>
+<span role="cell" style="padding: 14px 10px; font-weight: 600">Fence stain, 120 ft</span>
+<span role="cell" style="padding: 14px 10px; color: var(--body); white-space: nowrap">76109 · 2.2 mi</span>
+<span role="cell" style="padding: 14px 10px"><span style="display: inline-flex; align-items: center; min-height: 26px; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; border: 1.5px solid var(--text); color: var(--text)">Booked</span></span>
+<span role="cell" style="padding: 14px 10px; color: var(--body)">Thu 5:30 PM</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 600; white-space: nowrap">—</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 700; white-space: nowrap">—</span>
+<span role="cell" style="padding: 10px 16px 10px 8px; text-align: right"><button type="button" style="min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; white-space: nowrap; min-height: 40px; padding: 8px 14px; font-size: 14px">Report</button></span>
+</div>
+
+<div role="row" style="display: grid; grid-template-columns: 88px minmax(0, 1.5fr) minmax(0, 1fr) 104px minmax(0, 1.2fr) 108px 88px 120px; align-items: center; border-top: 1px solid var(--line); font-size: 15px">
+<span role="cell" style="padding: 14px 18px; font-weight: 700; white-space: nowrap">DS-1047</span>
+<span role="cell" style="padding: 14px 10px; font-weight: 600">Leaning fence posts</span>
+<span role="cell" style="padding: 14px 10px; color: var(--body); white-space: nowrap">76107 · 3.1 mi</span>
+<span role="cell" style="padding: 14px 10px"><span style="display: inline-flex; align-items: center; min-height: 26px; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; border: 1.5px dashed var(--line-strong); color: var(--text)">Quoted</span></span>
+<span role="cell" style="padding: 14px 10px; color: var(--body)">Follow up Friday</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 600; white-space: nowrap">—</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 700; white-space: nowrap">—</span>
+<span role="cell" style="padding: 10px 16px 10px 8px; text-align: right"><button type="button" style="min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; white-space: nowrap; min-height: 40px; padding: 8px 14px; font-size: 14px">Report</button></span>
+</div>
+
+<div role="row" style="display: grid; grid-template-columns: 88px minmax(0, 1.5fr) minmax(0, 1fr) 104px minmax(0, 1.2fr) 108px 88px 120px; align-items: center; border-top: 1px solid var(--line); font-size: 15px">
+<span role="cell" style="padding: 14px 18px; font-weight: 700; white-space: nowrap">DS-1042</span>
+<span role="cell" style="padding: 14px 10px; font-weight: 600">Storm-damaged fence</span>
+<span role="cell" style="padding: 14px 10px; color: var(--body); white-space: nowrap">76116 · 1.8 mi</span>
+<span role="cell" style="padding: 14px 10px"><span style="display: inline-flex; align-items: center; min-height: 26px; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; background: var(--text); color: var(--bg)">Won</span></span>
+<span role="cell" style="padding: 14px 10px; color: var(--body)">Fee due Nov 14</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 600; white-space: nowrap">$13,800</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 700; white-space: nowrap">$2,380</span>
+<span role="cell" style="padding: 10px 16px 10px 8px; text-align: right"></span>
+</div>
+
+<div role="row" style="display: grid; grid-template-columns: 88px minmax(0, 1.5fr) minmax(0, 1fr) 104px minmax(0, 1.2fr) 108px 88px 120px; align-items: center; border-top: 1px solid var(--line); font-size: 15px">
+<span role="cell" style="padding: 14px 18px; font-weight: 700; white-space: nowrap">DS-1038</span>
+<span role="cell" style="padding: 14px 10px; font-weight: 600">New cedar fence</span>
+<span role="cell" style="padding: 14px 10px; color: var(--body); white-space: nowrap">76132 · 5.5 mi</span>
+<span role="cell" style="padding: 14px 10px"><span style="display: inline-flex; align-items: center; min-height: 26px; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; background: var(--surface-2); color: var(--text)">Paid</span></span>
+<span role="cell" style="padding: 14px 10px; color: var(--body)">Fee paid Oct 30</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 600; white-space: nowrap">$7,400</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 700; white-space: nowrap">$1,480</span>
+<span role="cell" style="padding: 10px 16px 10px 8px; text-align: right"></span>
+</div>
+
+<div role="row" style="display: grid; grid-template-columns: 88px minmax(0, 1.5fr) minmax(0, 1fr) 104px minmax(0, 1.2fr) 108px 88px 120px; align-items: center; border-top: 1px solid var(--line); font-size: 15px">
+<span role="cell" style="padding: 14px 18px; font-weight: 700; white-space: nowrap">DS-1033</span>
+<span role="cell" style="padding: 14px 10px; font-weight: 600">Pool fence</span>
+<span role="cell" style="padding: 14px 10px; color: var(--body); white-space: nowrap">76123 · 8.2 mi</span>
+<span role="cell" style="padding: 14px 10px"><span style="display: inline-flex; align-items: center; min-height: 26px; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; color: var(--muted); border: 1.5px solid var(--line)">Lost</span></span>
+<span role="cell" style="padding: 14px 10px; color: var(--body)">No fee</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 600; white-space: nowrap">—</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 700; white-space: nowrap">$0</span>
+<span role="cell" style="padding: 10px 16px 10px 8px; text-align: right"></span>
+</div>
+
+<div role="row" style="display: grid; grid-template-columns: 88px minmax(0, 1.5fr) minmax(0, 1fr) 104px minmax(0, 1.2fr) 108px 88px 120px; align-items: center; border-top: 1px solid var(--line); font-size: 15px">
+<span role="cell" style="padding: 14px 18px; font-weight: 700; white-space: nowrap">DS-1029</span>
+<span role="cell" style="padding: 14px 10px; font-weight: 600">Wrong number</span>
+<span role="cell" style="padding: 14px 10px; color: var(--body); white-space: nowrap">76114</span>
+<span role="cell" style="padding: 14px 10px"><span style="display: inline-flex; align-items: center; min-height: 26px; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; color: var(--muted); border: 1.5px solid var(--line)">Credited</span></span>
+<span role="cell" style="padding: 14px 10px; color: var(--body)">Credited Oct 21</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 600; white-space: nowrap">—</span>
+<span role="cell" style="padding: 14px 10px; text-align: right; font-weight: 700; white-space: nowrap">$0</span>
+<span role="cell" style="padding: 10px 16px 10px 8px; text-align: right"></span>
+</div>
+
+</div>
+</div>
+<p style="margin: 0; font-size: 13px; color: var(--muted)">Sample data. Fees are figured per job: 20% of the first $10,000 collected and 10% of anything above.</p>
+</div>
+</section>
+
+
+</main>
+<footer style="padding: clamp(48px, 7vw, 80px) clamp(20px, 5vw, 64px) 36px; border-top: 1px solid var(--line)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px; grid-column: span 1">
+<span style="display: inline-flex; align-items: center; gap: 10px"><div style="position: relative; width: 32px; height: 32px; flex: none" role="img" aria-label="Downstreet Pro logo: a road bending around a yellow house"><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5F3EE; stroke-width: 26px; stroke-linecap: butt; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5C400; stroke-width: 3.6px; stroke-linecap: butt; stroke-linejoin: round; stroke-dasharray: 7 6"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M69 56 L84 68 V84 H54 V68 Z" style="fill: #F5C400; stroke: #F5C400; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round"></path></svg></div><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; line-height: 1; letter-spacing: -0.025em">Downstreet</span><span class="pro-tag">PRO</span></span>
+<p style="margin: 0; color: var(--body); max-width: 300px">Booked jobs from homeowners near you, for pros in and around Fort Worth. You pay after you’re paid.</p>
+<p style="margin: 0; font-weight: 600">[PHONE]<br>[EMAIL]</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><p style="margin: 0 0 6px; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11.5px; letter-spacing: 0.16em; color: var(--muted)">OFFER</p>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">How it works</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Pricing and calculator</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Rules of the road</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Get leads</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Report a job</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><p style="margin: 0 0 6px; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11.5px; letter-spacing: 0.16em; color: var(--muted)">COVERAGE</p>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Trades</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Areas</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Request a trade</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Pro portal</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px"><p style="margin: 0 0 6px; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11.5px; letter-spacing: 0.16em; color: var(--muted)">FOR HOMEOWNERS</p>
+<a href="/downstreet/" style="display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 700"><div style="position: relative; width: 28px; height: 28px; flex: none" role="img" aria-label="Downstreet logo"><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M50 6 L89 36 V72 H11 V36 Z" style="fill: #F5F3EE; stroke: #F5F3EE; stroke-width: 6px; stroke-linecap: round; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M40 42 H60 V72 H40 Z" style="fill: #F5C400; stroke: none; stroke-width: 0px; stroke-linecap: round; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M42 79 H58 L68 98 H32 Z" style="fill: #F5C400; stroke: none; stroke-width: 0px; stroke-linecap: round; stroke-linejoin: round"></path></svg></div><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Downstreet</span></a>
+<p style="margin: 0; color: var(--body); font-size: 15px">Where homeowners ask for help. Need a pro? There’s one down the street.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 22px; border-top: 1px solid var(--line); font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.14em; color: var(--muted)">
+<span>A REFERRAL SERVICE <span class="sep">·</span> INDEPENDENT PROS DO THE WORK</span>
+<span>© 2026 LEADS BY DELTA <span class="sep">·</span> FORT WORTH, TX <span class="sep">·</span> [PRIVACY] <span class="sep">·</span> [TERMS]</span>
+</div>
+</div>
+</footer>
+</div>
+</div>
+<noscript><p style="font-family:system-ui,sans-serif;padding:16px">Turn on JavaScript to use the forms and calculators on this site.</p></noscript>
+<script src="/downstreet/assets/config.js"></script>
+<script src="/downstreet/assets/morphdom.min.js"></script>
+<script src="/downstreet/assets/runtime.js"></script>
+<script src="/downstreet/assets/pro.js"></script>
+</body>
+</html>
