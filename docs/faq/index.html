@@ -34,7 +34,11 @@ a{color:#1E2226}
 .ds .hl{background:linear-gradient(transparent 60%, #F5C400 60%, #F5C400 92%, transparent 92%);padding:0 0.04em}
 .tabs{display:flex;align-items:center;gap:4px;margin-left:auto}
 @media (max-width: 900px){.tabs{order:3;width:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.nav-cta{margin-left:auto}}
-@media (max-width: 900px){.theme-toggle{margin-left:auto}.nav-cta{margin-left:0 !important}}
+.pro-link:hover{text-decoration:underline !important}
+@media (max-width: 900px){.pro-link{margin-left:auto}.theme-toggle{margin-left:0}.nav-cta{margin-left:0 !important}}
+@media (max-width: 640px){.pro-link{display:none !important}.theme-toggle{margin-left:auto !important}.pro-tab{display:inline-flex !important;padding:10px 8px;font-size:14px;min-height:44px;box-shadow:inset 0 -3px 0 #F5C400}}
+@media (max-width: 380px){.pro-tab{padding:10px 6px;font-size:13.5px}}
+@media (max-width: 350px){.ds .tabs button,.ds .pro-tab{padding:10px 3px !important;font-size:12px !important;letter-spacing:-0.01em}.ds .tabs{gap:0 !important}}
 @media (max-width: 640px){.ds nav{column-gap:10px !important}.nav-cta{padding:10px 14px !important;font-size:14px !important}.nav-cta svg{display:none}.brand-word{font-size:23px !important}.theme-toggle{width:40px !important;height:40px !important}}
 @media (max-width: 640px){.tabs{gap:0;justify-content:space-between}.tabs button{padding:10px 8px !important;font-size:14px !important}}
 @media (max-width: 380px){.tabs button{padding:10px 6px !important;font-size:13.5px !important}}
@@ -68,7 +72,9 @@ a{color:#1E2226}
 
 <button type="button" aria-current="page" style="min-height: 44px; padding: 10px 14px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; background: var(--tab-on); color: var(--text); font-weight: 600">FAQ</button>
 
+<a class="pro-tab" href="/downstreet/pro/" style="display: none; align-items: center; color: var(--text); text-decoration: none; font-weight: 600; white-space: nowrap">For pros</a>
 </div>
+<a class="pro-link" href="/downstreet/pro/" style="display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 0 4px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 15px; white-space: nowrap">For pros <span style="background: #F5C400; color: #1E2226; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; padding: 3px 6px; border-radius: 5px; line-height: 1">PRO</span></a>
 <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode" style="width: 44px; height: 44px; flex: none; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer; padding: 0">
 
 <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 A8.5 8.5 0 1 0 20 14.5 Z" style="fill: currentColor"></path></svg>
