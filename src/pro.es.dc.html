@@ -140,7 +140,7 @@ body{margin:0}
 <div class="route-line" aria-hidden="true"></div>
 <div style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 28px">
 <div style="position: relative; display: flex; flex-direction: column; gap: 12px">
-<div style="width: 78px; height: 78px; border-radius: 22px; background: var(--surface); border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: center"><div style="{{mHome36.box}}" role="img" aria-label="Logotipo de Downstreet"><sc-for list="{{mHome36.layers}}" as="l" hint-placeholder-count="3"><svg viewBox="0 0 100 100" style="{{l.svg}}" aria-hidden="true"><path d="{{l.d}}" style="{{l.st}}"></path></svg></sc-for></div></div>
+<div style="width: 78px; height: 78px; border-radius: 22px; background: var(--surface); border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: center"><div style="{{mHomeY36.box}}" role="img" aria-label="Logotipo de Downstreet"><sc-for list="{{mHomeY36.layers}}" as="l" hint-placeholder-count="3"><svg viewBox="0 0 100 100" style="{{l.svg}}" aria-hidden="true"><path d="{{l.d}}" style="{{l.st}}"></path></svg></sc-for></div></div>
 <p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-size: 11.5px">Parada 1</p>
 <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Le piden a Downstreet.</h3>
 <p style="margin: 0; color: var(--body)">Un dueño de casa cerca de usted nos dice qué se descompuso, en nuestro sitio o por teléfono.</p>
@@ -450,7 +450,7 @@ body{margin:0}
 <div class="route-line" aria-hidden="true"></div>
 <div style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 28px">
 <div style="position: relative; display: flex; flex-direction: column; gap: 12px">
-<div style="width: 78px; height: 78px; border-radius: 22px; background: var(--surface); border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: center"><div style="{{mHome36.box}}" role="img" aria-label="Logotipo de Downstreet"><sc-for list="{{mHome36.layers}}" as="l" hint-placeholder-count="3"><svg viewBox="0 0 100 100" style="{{l.svg}}" aria-hidden="true"><path d="{{l.d}}" style="{{l.st}}"></path></svg></sc-for></div></div>
+<div style="width: 78px; height: 78px; border-radius: 22px; background: var(--surface); border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: center"><div style="{{mHomeY36.box}}" role="img" aria-label="Logotipo de Downstreet"><sc-for list="{{mHomeY36.layers}}" as="l" hint-placeholder-count="3"><svg viewBox="0 0 100 100" style="{{l.svg}}" aria-hidden="true"><path d="{{l.d}}" style="{{l.st}}"></path></svg></sc-for></div></div>
 <p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-size: 11.5px">Parada 1</p>
 <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Le piden a Downstreet.</h3>
 <p style="margin: 0; color: var(--body)">Un dueño de casa cerca de usted nos dice qué se descompuso, en nuestro sitio o por teléfono.</p>
@@ -1120,7 +1120,9 @@ var MARK_HOME = [
 var PAL = {
   light: {main: INK, acc: YEL},
   dark: {main: CREAM, acc: YEL},
-  onYellow: {main: INK, acc: '#FFFFFF'}
+  onYellow: {main: INK, acc: '#FFFFFF'},
+  homeLight: {main: INK, acc: '#F5C400'},
+  homeDark: {main: CREAM, acc: '#F5C400'}
 };
 function mkL(L, pal, px) {
   var t = PAL[pal];
@@ -1443,7 +1445,7 @@ class Component extends DCLogic {
 
       mPro38: mkL(MARK_PRO, pal, 38), mPro32: mkL(MARK_PRO, pal, 32), mPro24: mkL(MARK_PRO, pal, 24), mPro36: mkL(MARK_PRO, pal, 36),
       mPro56: mkL(MARK_PRO, pal, 56), mProInk36: mkL(MARK_PRO, 'onYellow', 36), mProDark28: mkL(MARK_PRO, 'dark', 28),
-      mHome36: mkL(MARK_HOME, pal, 36), mHome28: mkL(MARK_HOME, pal, 28), mBand: mkL(MARK_PRO, 'dark', 230),
+      mHome36: mkL(MARK_HOME, pal, 36), mHomeY36: mkL(MARK_HOME, pal === 'dark' ? 'homeDark' : 'homeLight', 36), mHome28: mkL(MARK_HOME, pal, 28), mBand: mkL(MARK_PRO, 'dark', 230),
 
       stages: stages, stage: stage,
       nextStage: function () { self.setState({stage: Math.min(3, (self.state.stage || 0) + 1)}); },
