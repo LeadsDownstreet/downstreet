@@ -223,6 +223,11 @@
         shownPage = page;
       }
       if (titles[page]) { document.title = titles[page]; }
+      if (site.alt) {
+        var altHref = site.alt.base + (site.alt.routes[page] || '');
+        var langLinks = root.querySelectorAll('[data-lang-switch]');
+        for (var j = 0; j < langLinks.length; j++) { langLinks[j].setAttribute('href', altHref); }
+      }
       document.documentElement.setAttribute('data-ready', '1');
     }
 

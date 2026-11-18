@@ -34,6 +34,11 @@ a{color:#1E2226}
 @media (max-width: 640px){.ds nav{column-gap:10px !important}.nav-cta{padding:10px 14px !important;font-size:14px !important}.nav-cta svg{display:none}.brand-word{font-size:23px !important}.theme-toggle{width:40px !important;height:40px !important}}
 @media (max-width: 640px){.tabs{gap:0;justify-content:space-between}.tabs button{padding:10px 8px !important;font-size:14px !important}}
 @media (max-width: 380px){.tabs button{padding:10px 6px !important;font-size:13.5px !important}}
+.lang-short{display:none}.lang-link:hover{border-color:var(--text) !important}
+@media (max-width: 640px){.lang-long{display:none}.lang-short{display:inline}}
+@media (max-width: 640px){.ds .theme-toggle{display:none !important}.ds .lang-link{margin-left:auto !important;min-height:38px !important;min-width:40px !important;padding:0 10px !important}}
+@media (max-width: 400px){.ds .brand-word{font-size:21px !important}}
+@media (max-width: 359px){.ds .nav-cta{display:none !important}}
 </style>
 </helmet>
 <div class="{{rootClass}}" style="{{rootVars}} background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; font-size: 17px; line-height: 1.55">
@@ -55,6 +60,7 @@ a{color:#1E2226}
 <a class="pro-tab" href="DownstreetProSite.dc.html" style="display: none; align-items: center; color: var(--text); text-decoration: none; font-weight: 600; white-space: nowrap">For pros</a>
 </div>
 <a class="pro-link" href="DownstreetProSite.dc.html" style="display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 0 4px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 15px; white-space: nowrap">For pros <span style="background: #F5C400; color: #1E2226; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; padding: 3px 6px; border-radius: 5px; line-height: 1">PRO</span></a>
+<a class="lang-link " data-lang-switch href="#" hreflang="es" lang="es" aria-label="Ver este sitio en español" style="display: inline-flex; align-items: center; justify-content: center; min-height: 40px; min-width: 44px; padding: 0 12px; box-sizing: border-box; border: 1px solid var(--line); border-radius: 999px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 14px; white-space: nowrap"><span class="lang-long">Español</span><span class="lang-short">ES</span></a>
 <button type="button" class="theme-toggle" onClick="{{toggleTheme}}" aria-pressed="{{darkPressed}}" aria-label="{{themeLabel}}" title="{{themeLabel}}" style="width: 44px; height: 44px; flex: none; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer; padding: 0">
 <sc-if value="{{isDark}}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 4 V2 M12 22 V20 M4 12 H2 M22 12 H20 M6.3 6.3 L4.9 4.9 M19.1 19.1 L17.7 17.7 M6.3 17.7 L4.9 19.1 M19.1 4.9 L17.7 6.3" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round"></path><path d="M12 7 A5 5 0 1 0 12 17 A5 5 0 1 0 12 7 Z" style="fill: currentColor"></path></svg></sc-if>
 <sc-if value="{{isLight}}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 A8.5 8.5 0 1 0 20 14.5 Z" style="fill: currentColor"></path></svg></sc-if>

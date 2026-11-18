@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="es" data-site-base="/downstreet/es/pro/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Downstreet Pro · Trabajos agendados a la vuelta de la esquina</title>
+<meta name="description" content="Dueños de casa cerca de usted le piden ayuda a Downstreet. Agendamos la visita y le mandamos el trabajo. Pague el 20% de los primeros $10,000 y el 10% de lo que pase, solo después de que le pagan.">
+<link rel="canonical" href="https://leadsdownstreet.github.io/downstreet/es/pro/">
+<link rel="alternate" hreflang="en" href="https://leadsdownstreet.github.io/downstreet/pro/">
+<link rel="alternate" hreflang="es" href="https://leadsdownstreet.github.io/downstreet/es/pro/">
+<link rel="alternate" hreflang="x-default" href="https://leadsdownstreet.github.io/downstreet/pro/">
+<link rel="icon" href="/downstreet/assets/icon-pro.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/downstreet/assets/touch-pro-es.png">
+<meta name="theme-color" content="#111417">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_US">
+<meta property="og:title" content="Downstreet Pro · Trabajos agendados a la vuelta de la esquina">
+<meta property="og:description" content="Dueños de casa cerca de usted le piden ayuda a Downstreet. Agendamos la visita y le mandamos el trabajo. Pague el 20% de los primeros $10,000 y el 10% de lo que pase, solo después de que le pagan.">
+<meta property="og:url" content="https://leadsdownstreet.github.io/downstreet/es/pro/">
+<meta property="og:image" content="https://leadsdownstreet.github.io/downstreet/assets/og-pro-es.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Inter:wght@400;500;600;700;800&amp;family=Overpass:wght@700;800&amp;display=swap">
+<style>
+body{margin:0}
+.ds{-webkit-font-smoothing:antialiased}
+.ds *,.ds *::before,.ds *::after{box-sizing:border-box}
+.ds button,.ds a,.ds input,.ds select{-webkit-tap-highlight-color:transparent}
+.ds button:focus-visible,.ds a:focus-visible,.ds input:focus-visible,.ds select:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.ds input:focus,.ds select:focus{border-color:var(--text)}
+.ds ::placeholder{color:var(--muted);opacity:.7}
+.ds .sep{margin-right:0.2em}
+.ds .hl{color:#F5C400}
+.ds.light .hl{color:inherit;background:linear-gradient(transparent 62%,#F5C400 62%,#F5C400 93%,transparent 93%);padding:0 .04em}
+.ds .lane{display:inline-block;width:24px;height:4px;flex:none;background:repeating-linear-gradient(90deg,#F5C400 0 8px,transparent 8px 13px)}
+.ds .pro-tag{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;background:#F5C400;color:#1E2226;font-family:Inter,system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.12em;line-height:1;flex:none}
+.ds .btn-y:hover{background:#FFD21F}
+.ds .btn-o:hover{border-color:var(--text)}
+.ds .icon-btn{width:44px;height:44px;flex:none;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer;padding:0}
+.ds .icon-btn:hover{border-color:var(--text)}
+.ds .blade{display:inline-flex;align-items:center;min-height:46px;box-sizing:border-box;padding:10px 18px;border:none;border-radius:8px;background:var(--blade);color:#F5F3EE;font-family:Overpass,Inter,sans-serif;font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;box-shadow:inset 0 0 0 4px var(--blade),inset 0 0 0 5.5px rgba(245,243,238,.75)}
+.ds .blade:hover{box-shadow:inset 0 0 0 4px var(--blade),inset 0 0 0 5.5px #F5C400}
+.ds .blade.on{background:#F5C400;color:#1E2226;box-shadow:inset 0 0 0 4px #F5C400,inset 0 0 0 5.5px #1E2226}
+.ds .blade-sm{min-height:30px;padding:5px 12px;font-size:12px;cursor:default}
+.ds .route-line{position:absolute;left:39px;right:calc(25% - 60px);top:37px;height:4px;background:repeating-linear-gradient(90deg,#F5C400 0 16px,transparent 16px 28px);opacity:.9}
+.ds .range{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:999px;background:var(--surface-2);outline-offset:6px;margin:6px 0}
+.ds .range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:28px;height:28px;border-radius:50%;background:#F5C400;border:3px solid #1E2226;cursor:pointer}
+.ds .range::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#F5C400;border:3px solid #1E2226;cursor:pointer}
+.ds .hm-truck{animation:hm-drive 16s linear infinite}
+@keyframes hm-drive{0%{transform:translateX(-80px)}100%{transform:translateX(720px)}}
+.ds .hm-ring{transform-box:fill-box;transform-origin:center;animation:hm-pulse 2.4s ease-out infinite}
+@keyframes hm-pulse{0%{transform:scale(.4);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+.ds .hm-pin{animation:hm-bob 4s ease-in-out infinite}
+@keyframes hm-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.ds .blink{animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.ds.still .hm-truck,.ds.still .hm-ring,.ds.still .hm-pin,.ds.still .blink{animation:none}
+@media (prefers-reduced-motion: reduce){.ds .hm-truck,.ds .hm-ring,.ds .hm-pin,.ds .blink{animation:none}}
+.ds .show-md{display:none !important}
+.ds .home-link:hover{text-decoration:underline}
+@media (max-width: 1360px){.ds .nav-links{display:none !important}.ds .hide-md{display:none !important}.ds .show-md{display:inline-flex !important}.ds div.show-md{display:flex !important}}
+@media (max-width: 1599px){.ds .home-link{display:none !important}}
+.ds .menu-theme{display:none}
+@media (max-width: 480px){.ds .hide-xs{display:none !important}}
+@media (max-width: 520px){.ds .theme-btn{display:none !important}.ds .menu-theme{display:block}.ds header nav{gap:10px !important}}
+@media (max-width: 360px){.ds header .brand-word{font-size:21px !important}}
+@media (max-width: 1100px){.ds .route-line{display:none}}
+@media (max-width: 700px){.ds .hm-card{position:static !important;width:auto !important;margin:12px;border-radius:16px}.ds .hm-label{top:12px;bottom:auto !important}.ds .hide-sm{display:none !important}.ds .stage-row{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
+@media (max-width: 400px){.ds .hide-xs{display:none !important}.ds .pro-tag{height:18px;padding:0 5px;font-size:10px}}
+.lang-short{display:none}.lang-link:hover{border-color:var(--text) !important}
+</style>
+<style>#app:empty{min-height:100vh}</style>
+</head>
+<body>
+<div id="app">
+<div class="ds dark" style="--bg: #111417; --bg-2: #15191C; --surface: #1A1E22; --surface-2: #22272C; --line: #2A3036; --line-strong: #454C53; --text: #F5F3EE; --body: #C9C6BE; --muted: #A39F94; --accent-text: #F5C400; --focus: #F5C400; --col-hl: rgba(245,196,0,0.06); --blade: #2A3036; --input-bg: #111417; --field-line: #454C53; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; font-size: 17px; line-height: 1.55; min-height: 100vh">
+
+<div style="background: #F5C400; color: #1E2226; padding: 8px clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px 16px; flex-wrap: wrap; font-weight: 600; font-size: 15px; position: relative; padding-right: 40px">
+<span>Es temporada de luces de Navidad.</span>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; font-weight: 800; color: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Instaladores de luces: reclamen su zona</button>
+<button type="button" aria-label="Cerrar" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 999px; border: none; background: transparent; color: inherit; cursor: pointer; display: inline-flex; align-items: center; justify-content: center"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M6 6 L18 18 M18 6 L6 18"></path></svg></button>
+</div>
+</div>
+
+<header style="position: sticky; top: 0; z-index: 50; padding: 14px clamp(20px, 5vw, 64px); border-bottom: 1px solid var(--line); background: var(--bg)">
+<nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 14px" aria-label="Principal">
+<a href="#top" style="display: inline-flex; align-items: center; text-decoration: none; color: var(--text); flex: none" aria-label="Inicio de Downstreet Pro"><span style="display: inline-flex; align-items: center; gap: 10px"><div style="position: relative; width: 38px; height: 38px; flex: none" role="img" aria-label="Logotipo de Downstreet Pro: una calle que da vuelta alrededor de una casa amarilla"><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5F3EE; stroke-width: 26px; stroke-linecap: butt; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5C400; stroke-width: 3.6px; stroke-linecap: butt; stroke-linejoin: round; stroke-dasharray: 7 6"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M69 56 L84 68 V84 H54 V68 Z" style="fill: #F5C400; stroke: #F5C400; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round"></path></svg></div><span class="brand-word" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 25px; line-height: 1; letter-spacing: -0.025em">Downstreet</span><span class="pro-tag">PRO</span></span></a>
+<div class="nav-links" style="display: flex; align-items: center; gap: 2px; margin-left: 14px">
+<button type="button" style="min-height: 44px; padding: 10px 13px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; background: transparent; color: var(--body); font-weight: 500">Cómo funciona</button><button type="button" style="min-height: 44px; padding: 10px 13px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; background: transparent; color: var(--body); font-weight: 500">Precios</button><button type="button" style="min-height: 44px; padding: 10px 13px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; background: transparent; color: var(--body); font-weight: 500">Oficios</button><button type="button" style="min-height: 44px; padding: 10px 13px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; background: transparent; color: var(--body); font-weight: 500">Zonas</button><button type="button" style="min-height: 44px; padding: 10px 13px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; background: transparent; color: var(--body); font-weight: 500">Reglas del camino</button>
+</div>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 8px">
+<button type="button" class="icon-btn theme-btn" aria-label="Cambiar a modo claro" title="Cambiar a modo claro"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5 V4.5 M12 19.5 V21.5 M2.5 12 H4.5 M19.5 12 H21.5 M5.3 5.3 L6.7 6.7 M17.3 17.3 L18.7 18.7 M5.3 18.7 L6.7 17.3 M17.3 6.7 L18.7 5.3"></path></svg></button>
+<button type="button" class="icon-btn hide-sm" aria-label="Pausar animación" title="Pausar animación"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><rect x="7" y="5.5" width="3.5" height="13" rx="1"></rect><rect x="13.5" y="5.5" width="3.5" height="13" rx="1"></rect></svg></button>
+<a class="lang-link hide-md" data-lang-switch="" href="/downstreet/pro/" hreflang="en" lang="en" aria-label="View this site in English" style="display: inline-flex; align-items: center; justify-content: center; min-height: 40px; min-width: 44px; padding: 0 12px; box-sizing: border-box; border: 1px solid var(--line); border-radius: 999px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 14px; white-space: nowrap">EN</a>
+<a class="hide-md home-link" href="/downstreet/es/" style="min-height: 44px; display: inline-flex; align-items: center; padding: 10px 12px; color: var(--muted, var(--text)); text-decoration: none; font-weight: 600; font-size: 15px; white-space: nowrap">Para dueños de casa</a>
+<button type="button" class="hide-md" style="min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; white-space: nowrap; border-color: transparent">Entrar</button>
+<button type="button" class="btn-y hide-xs" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; border: none; background: #F5C400; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap; min-height: 44px; padding: 10px 18px; font-size: 15px">Recibir clientes</button>
+<button type="button" class="icon-btn show-md" aria-expanded="false" aria-label="Menú"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M4 7 H20 M4 12 H20 M4 17 H20"></path></svg></button>
+</div>
+</nav>
+
+</header>
+<main id="main">
+
+<section id="top" style="padding: clamp(40px, 6vw, 84px) clamp(20px, 5vw, 64px) clamp(56px, 7vw, 100px)">
+<div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr)); gap: clamp(36px, 5vw, 64px); align-items: center">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted)"><span class="lane" aria-hidden="true"></span><span>Para contratistas <span class="sep">·</span> Fort Worth y unas 50 millas a la redonda</span></p>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(46px, 7vw, 92px); line-height: 0.95; letter-spacing: -0.035em">Trabajos agendados <span class="hl">a la vuelta de la esquina.</span></h1>
+<p style="margin: 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: var(--body); max-width: 640px">Dueños de casa cerca de usted le piden ayuda a Downstreet. Nosotros les devolvemos la llamada, agendamos la visita en su calendario y le mandamos el trabajo. No paga nada hasta que el cliente le haya pagado.</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap">
+<button type="button" class="btn-y" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; border: none; background: #F5C400; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap">Recibir clientes <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"></path></svg></button>
+<button type="button" class="btn-o" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap">Cómo funciona</button>
+</div>
+<ul style="list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px">
+<li style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-weight: 600; font-size: 15px"><span style="color: var(--accent-text)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12.5 l4.5 4.5 L19 7.5"></path></svg></span>$0 para empezar</li>
+<li style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-weight: 600; font-size: 15px"><span style="color: var(--accent-text)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12.5 l4.5 4.5 L19 7.5"></path></svg></span>Un pro por oficio, por zona</li>
+<li style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-weight: 600; font-size: 15px"><span style="color: var(--accent-text)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12.5 l4.5 4.5 L19 7.5"></path></svg></span>20%, luego 10% arriba de $10K</li>
+</ul>
+</div>
+<div class="hm" style="position: relative; border-radius: 26px; overflow: hidden; border: 1px solid #2A3036; background: #171B1F; box-shadow: 0 30px 80px -40px rgba(0,0,0,0.6)">
+<svg viewBox="0 0 640 520" style="width: 100%; height: auto; display: block" role="img" aria-label="Ilustración: un mapa oscuro de un vecindario con marcadores amarillos para las solicitudes y una camioneta amarilla que va hacia una de ellas"><rect width="640" height="520" fill="#171B1F"></rect><g fill="none" stroke="#242A30" stroke-width="34"><path d="M-10 128 H650"></path><path d="M-10 340 H650"></path><path d="M176 -10 V530"></path><path d="M452 -10 V530"></path></g><g fill="none" stroke="#2C333A" stroke-width="1.5"><path d="M-10 111 H650 M-10 145 H650"></path><path d="M-10 323 H650 M-10 357 H650"></path><path d="M159 -10 V530 M193 -10 V530"></path><path d="M435 -10 V530 M469 -10 V530"></path></g><g fill="none" stroke="#4A5259" stroke-width="2" stroke-dasharray="9 10"><path d="M-10 128 H650"></path><path d="M-10 340 H650"></path><path d="M176 -10 V530"></path><path d="M452 -10 V530"></path></g><rect x="8" y="8" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M8 21 H42" stroke="#363E46" stroke-width="1.5"></path><rect x="50" y="8" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M50 21 H84" stroke="#363E46" stroke-width="1.5"></path><rect x="92" y="8" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M92 21 H126" stroke="#363E46" stroke-width="1.5"></path><rect x="32" y="99" width="7" height="12" fill="#20262B"></rect><rect x="8" y="73" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M8 86 H42" stroke="#363E46" stroke-width="1.5"></path><rect x="74" y="99" width="7" height="12" fill="#20262B"></rect><rect x="50" y="73" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M50 86 H84" stroke="#363E46" stroke-width="1.5"></path><rect x="116" y="99" width="7" height="12" fill="#20262B"></rect><rect x="92" y="73" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M92 86 H126" stroke="#363E46" stroke-width="1.5"></path><rect x="32" y="145" width="7" height="12" fill="#20262B"></rect><rect x="8" y="157" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M8 170 H42" stroke="#363E46" stroke-width="1.5"></path><rect x="74" y="145" width="7" height="12" fill="#20262B"></rect><rect x="50" y="157" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M50 170 H84" stroke="#363E46" stroke-width="1.5"></path><rect x="116" y="145" width="7" height="12" fill="#20262B"></rect><rect x="92" y="157" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M92 170 H126" stroke="#363E46" stroke-width="1.5"></path><rect x="32" y="311" width="7" height="12" fill="#20262B"></rect><rect x="8" y="285" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M8 298 H42" stroke="#363E46" stroke-width="1.5"></path><rect x="74" y="311" width="7" height="12" fill="#20262B"></rect><rect x="50" y="285" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M50 298 H84" stroke="#363E46" stroke-width="1.5"></path><rect x="116" y="311" width="7" height="12" fill="#20262B"></rect><rect x="92" y="285" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M92 298 H126" stroke="#363E46" stroke-width="1.5"></path><rect x="32" y="357" width="7" height="12" fill="#20262B"></rect><rect x="8" y="369" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M8 382 H42" stroke="#363E46" stroke-width="1.5"></path><rect x="74" y="357" width="7" height="12" fill="#20262B"></rect><rect x="50" y="369" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M50 382 H84" stroke="#363E46" stroke-width="1.5"></path><rect x="116" y="357" width="7" height="12" fill="#20262B"></rect><rect x="92" y="369" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M92 382 H126" stroke="#363E46" stroke-width="1.5"></path><rect x="50" y="476" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M50 489 H84" stroke="#363E46" stroke-width="1.5"></path><rect x="92" y="476" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M92 489 H126" stroke="#363E46" stroke-width="1.5"></path><rect x="201" y="8" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M201 21 H235" stroke="#363E46" stroke-width="1.5"></path><rect x="243" y="8" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M243 21 H277" stroke="#363E46" stroke-width="1.5"></path><rect x="369" y="8" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M369 21 H403" stroke="#363E46" stroke-width="1.5"></path><rect x="267" y="99" width="7" height="12" fill="#20262B"></rect><rect x="243" y="73" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M243 86 H277" stroke="#363E46" stroke-width="1.5"></path><rect x="309" y="99" width="7" height="12" fill="#20262B"></rect><rect x="285" y="73" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M285 86 H319" stroke="#363E46" stroke-width="1.5"></path><rect x="351" y="99" width="7" height="12" fill="#20262B"></rect><rect x="327" y="73" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M327 86 H361" stroke="#363E46" stroke-width="1.5"></path><rect x="393" y="99" width="7" height="12" fill="#20262B"></rect><rect x="369" y="73" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M369 86 H403" stroke="#363E46" stroke-width="1.5"></path><rect x="225" y="145" width="7" height="12" fill="#20262B"></rect><rect x="201" y="157" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M201 170 H235" stroke="#363E46" stroke-width="1.5"></path><rect x="267" y="145" width="7" height="12" fill="#20262B"></rect><rect x="243" y="157" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M243 170 H277" stroke="#363E46" stroke-width="1.5"></path><rect x="309" y="145" width="7" height="12" fill="#20262B"></rect><rect x="285" y="157" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M285 170 H319" stroke="#363E46" stroke-width="1.5"></path><rect x="351" y="145" width="7" height="12" fill="#20262B"></rect><rect x="327" y="157" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M327 170 H361" stroke="#363E46" stroke-width="1.5"></path><rect x="393" y="145" width="7" height="12" fill="#20262B"></rect><rect x="369" y="157" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M369 170 H403" stroke="#363E46" stroke-width="1.5"></path><rect x="225" y="311" width="7" height="12" fill="#20262B"></rect><rect x="201" y="285" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M201 298 H235" stroke="#363E46" stroke-width="1.5"></path><rect x="267" y="311" width="7" height="12" fill="#20262B"></rect><rect x="243" y="285" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M243 298 H277" stroke="#363E46" stroke-width="1.5"></path><rect x="309" y="311" width="7" height="12" fill="#20262B"></rect><rect x="285" y="285" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M285 298 H319" stroke="#363E46" stroke-width="1.5"></path><rect x="351" y="311" width="7" height="12" fill="#20262B"></rect><rect x="327" y="285" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M327 298 H361" stroke="#363E46" stroke-width="1.5"></path><rect x="393" y="311" width="7" height="12" fill="#20262B"></rect><rect x="369" y="285" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M369 298 H403" stroke="#363E46" stroke-width="1.5"></path><rect x="225" y="357" width="7" height="12" fill="#20262B"></rect><rect x="201" y="369" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M201 382 H235" stroke="#363E46" stroke-width="1.5"></path><rect x="309" y="357" width="7" height="12" fill="#20262B"></rect><rect x="285" y="369" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M285 382 H319" stroke="#363E46" stroke-width="1.5"></path><rect x="351" y="357" width="7" height="12" fill="#20262B"></rect><rect x="327" y="369" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M327 382 H361" stroke="#363E46" stroke-width="1.5"></path><rect x="393" y="357" width="7" height="12" fill="#20262B"></rect><rect x="369" y="369" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M369 382 H403" stroke="#363E46" stroke-width="1.5"></path><rect x="201" y="476" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M201 489 H235" stroke="#363E46" stroke-width="1.5"></path><rect x="243" y="476" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M243 489 H277" stroke="#363E46" stroke-width="1.5"></path><rect x="327" y="476" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M327 489 H361" stroke="#363E46" stroke-width="1.5"></path><rect x="369" y="476" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M369 489 H403" stroke="#363E46" stroke-width="1.5"></path><rect x="477" y="8" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M477 21 H511" stroke="#363E46" stroke-width="1.5"></path><rect x="519" y="8" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M519 21 H553" stroke="#363E46" stroke-width="1.5"></path><rect x="501" y="99" width="7" height="12" fill="#20262B"></rect><rect x="477" y="73" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M477 86 H511" stroke="#363E46" stroke-width="1.5"></path><rect x="543" y="99" width="7" height="12" fill="#20262B"></rect><rect x="519" y="73" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M519 86 H553" stroke="#363E46" stroke-width="1.5"></path><rect x="585" y="99" width="7" height="12" fill="#20262B"></rect><rect x="561" y="73" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M561 86 H595" stroke="#363E46" stroke-width="1.5"></path><rect x="501" y="145" width="7" height="12" fill="#20262B"></rect><rect x="477" y="157" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M477 170 H511" stroke="#363E46" stroke-width="1.5"></path><rect x="543" y="145" width="7" height="12" fill="#20262B"></rect><rect x="519" y="157" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M519 170 H553" stroke="#363E46" stroke-width="1.5"></path><rect x="585" y="145" width="7" height="12" fill="#20262B"></rect><rect x="561" y="157" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M561 170 H595" stroke="#363E46" stroke-width="1.5"></path><rect x="501" y="311" width="7" height="12" fill="#20262B"></rect><rect x="477" y="285" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M477 298 H511" stroke="#363E46" stroke-width="1.5"></path><rect x="543" y="311" width="7" height="12" fill="#20262B"></rect><rect x="519" y="285" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M519 298 H553" stroke="#363E46" stroke-width="1.5"></path><rect x="585" y="311" width="7" height="12" fill="#20262B"></rect><rect x="561" y="285" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M561 298 H595" stroke="#363E46" stroke-width="1.5"></path><rect x="543" y="357" width="7" height="12" fill="#20262B"></rect><rect x="519" y="369" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M519 382 H553" stroke="#363E46" stroke-width="1.5"></path><rect x="585" y="357" width="7" height="12" fill="#20262B"></rect><rect x="561" y="369" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M561 382 H595" stroke="#363E46" stroke-width="1.5"></path><rect x="477" y="476" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M477 489 H511" stroke="#363E46" stroke-width="1.5"></path><rect x="519" y="476" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M519 489 H553" stroke="#363E46" stroke-width="1.5"></path><rect x="561" y="476" width="34" height="26" rx="2" fill="#2B3238"></rect><path d="M561 489 H595" stroke="#363E46" stroke-width="1.5"></path><circle cx="25" cy="489" r="11.9" fill="#24312A"></circle><circle cx="21.4" cy="485.4" r="5.4" fill="#2C3B31"></circle><circle cx="302" cy="21" r="10.1" fill="#24312A"></circle><circle cx="299" cy="18" r="4.6" fill="#2C3B31"></circle><circle cx="344" cy="21" r="8.8" fill="#24312A"></circle><circle cx="341.4" cy="18.4" r="3.9" fill="#2C3B31"></circle><circle cx="218" cy="86" r="9.9" fill="#24312A"></circle><circle cx="215" cy="83" r="4.4" fill="#2C3B31"></circle><circle cx="260" cy="382" r="11.1" fill="#24312A"></circle><circle cx="256.7" cy="378.7" r="5" fill="#2C3B31"></circle><circle cx="302" cy="489" r="8.8" fill="#24312A"></circle><circle cx="299.3" cy="486.3" r="4" fill="#2C3B31"></circle><circle cx="578" cy="21" r="10.5" fill="#24312A"></circle><circle cx="574.8" cy="17.8" r="4.7" fill="#2C3B31"></circle><circle cx="494" cy="382" r="11.2" fill="#24312A"></circle><circle cx="490.6" cy="378.6" r="5" fill="#2C3B31"></circle><circle cx="31.6" cy="39" r="9.5" fill="#24312A"></circle><circle cx="28.7" cy="36.2" r="4.3" fill="#2C3B31"></circle><circle cx="80.9" cy="61.2" r="11.8" fill="#24312A"></circle><circle cx="77.3" cy="57.7" r="5.3" fill="#2C3B31"></circle><circle cx="35.9" cy="225.5" r="9.4" fill="#24312A"></circle><circle cx="33.1" cy="222.7" r="4.2" fill="#2C3B31"></circle><circle cx="93.8" cy="425.5" r="8.5" fill="#24312A"></circle><circle cx="91.2" cy="423" r="3.8" fill="#2C3B31"></circle><circle cx="274.3" cy="37.9" r="7.5" fill="#24312A"></circle><circle cx="272.1" cy="35.6" r="3.4" fill="#2C3B31"></circle><circle cx="391.8" cy="45.7" r="9.7" fill="#24312A"></circle><circle cx="388.9" cy="42.7" r="4.4" fill="#2C3B31"></circle><circle cx="279.3" cy="242.5" r="8.1" fill="#24312A"></circle><circle cx="276.9" cy="240.1" r="3.6" fill="#2C3B31"></circle><circle cx="341.4" cy="241.3" r="8.5" fill="#24312A"></circle><circle cx="338.8" cy="238.7" r="3.8" fill="#2C3B31"></circle><circle cx="394.3" cy="244.5" r="8.2" fill="#24312A"></circle><circle cx="391.9" cy="242" r="3.7" fill="#2C3B31"></circle><circle cx="382.9" cy="421" r="12.8" fill="#24312A"></circle><circle cx="379" cy="417.2" r="5.7" fill="#2C3B31"></circle><circle cx="501.7" cy="42.7" r="11.9" fill="#24312A"></circle><circle cx="498.1" cy="39.1" r="5.4" fill="#2C3B31"></circle><circle cx="604.2" cy="54.7" r="7.4" fill="#24312A"></circle><circle cx="601.9" cy="52.5" r="3.3" fill="#2C3B31"></circle><circle cx="499.1" cy="242.2" r="10.7" fill="#24312A"></circle><circle cx="495.9" cy="239" r="4.8" fill="#2C3B31"></circle><circle cx="561.5" cy="225.3" r="7.1" fill="#24312A"></circle><circle cx="559.4" cy="223.2" r="3.2" fill="#2C3B31"></circle><circle cx="609" cy="221.6" r="8.1" fill="#24312A"></circle><circle cx="606.6" cy="219.2" r="3.6" fill="#2C3B31"></circle><circle cx="499.3" cy="423.4" r="9.2" fill="#24312A"></circle><circle cx="496.5" cy="420.7" r="4.1" fill="#2C3B31"></circle><g transform="translate(344 287)"><circle class="hm-ring" r="16" fill="none" stroke="#F5C400" stroke-width="2.5"></circle><circle class="hm-ring" style="animation-delay: -1.2s" r="16" fill="none" stroke="#F5C400" stroke-width="2.5"></circle></g><rect x="327" y="285" width="34" height="26" rx="2" fill="#F5C400" opacity="0.9"></rect><path d="M327 298 H361" stroke="#C9A100" stroke-width="1.5"></path><g class="hm-pin" style="animation-delay: -0.8s"><ellipse cx="101" cy="171" rx="5.5" ry="2" fill="#000" opacity="0.35"></ellipse><path d="M101 170 C95.5 161 90.9 158.3 90.9 152.1 A10.1 10.1 0 0 1 111.1 152.1 C111.1 158.3 106.5 161 101 170 Z" fill="#F5C400" stroke="#1E2226" stroke-width="2.2" stroke-linejoin="round"></path><circle cx="101" cy="152.1" r="3.8" fill="#1E2226"></circle></g><g><rect x="115" y="140" width="116" height="22" rx="11" fill="#0F1214" stroke="#3A4148" stroke-width="1"></rect><circle cx="126" cy="151" r="3.5" fill="#F5C400"></circle><text x="135" y="155" font-family="Inter, sans-serif" font-weight="700" font-size="11" fill="#F5F3EE">Gotera en techo · 3.1 mi</text></g><g class="hm-pin" style="animation-delay: -2.1s"><ellipse cx="563" cy="87" rx="5.5" ry="2" fill="#000" opacity="0.35"></ellipse><path d="M563 86 C557.5 77 552.9 74.3 552.9 68.1 A10.1 10.1 0 0 1 573.1 68.1 C573.1 74.3 568.5 77 563 86 Z" fill="#F5C400" stroke="#1E2226" stroke-width="2.2" stroke-linejoin="round"></path><circle cx="563" cy="68.1" r="3.8" fill="#1E2226"></circle></g><g><rect x="441" y="56" width="108" height="22" rx="11" fill="#0F1214" stroke="#3A4148" stroke-width="1"></rect><circle cx="452" cy="67" r="3.5" fill="#F5C400"></circle><text x="461" y="71" font-family="Inter, sans-serif" font-weight="700" font-size="11" fill="#F5F3EE">Canaletas · 2.2 mi</text></g><g class="hm-pin" style="animation-delay: -3.3s"><ellipse cx="521" cy="383" rx="5.5" ry="2" fill="#000" opacity="0.35"></ellipse><path d="M521 382 C515.5 373 510.9 370.3 510.9 364.1 A10.1 10.1 0 0 1 531.1 364.1 C531.1 370.3 526.5 373 521 382 Z" fill="#F5C400" stroke="#1E2226" stroke-width="2.2" stroke-linejoin="round"></path><circle cx="521" cy="364.1" r="3.8" fill="#1E2226"></circle></g><g><rect x="407" y="352" width="100" height="22" rx="11" fill="#0F1214" stroke="#3A4148" stroke-width="1"></rect><circle cx="418" cy="363" r="3.5" fill="#F5C400"></circle><text x="427" y="367" font-family="Inter, sans-serif" font-weight="700" font-size="11" fill="#F5F3EE">Luces · 5.5 mi</text></g><g class="hm-pin" style="animation-delay: -1.6s"><ellipse cx="227" cy="496" rx="5.5" ry="2" fill="#000" opacity="0.35"></ellipse><path d="M227 495 C221.5 486 216.9 483.3 216.9 477.1 A10.1 10.1 0 0 1 237.1 477.1 C237.1 483.3 232.5 486 227 495 Z" fill="#F5C400" stroke="#1E2226" stroke-width="2.2" stroke-linejoin="round"></path><circle cx="227" cy="477.1" r="3.8" fill="#1E2226"></circle></g><g><rect x="241" y="465" width="110" height="22" rx="11" fill="#0F1214" stroke="#3A4148" stroke-width="1"></rect><circle cx="252" cy="476" r="3.5" fill="#F5C400"></circle><text x="261" y="480" font-family="Inter, sans-serif" font-weight="700" font-size="11" fill="#F5F3EE">Tablaroca · 4.0 mi</text></g><g class="hm-pin" style="animation-delay: -2.7s"><ellipse cx="143" cy="87" rx="5.5" ry="2" fill="#000" opacity="0.35"></ellipse><path d="M143 86 C137.5 77 132.9 74.3 132.9 68.1 A10.1 10.1 0 0 1 153.1 68.1 C153.1 74.3 148.5 77 143 86 Z" fill="#F5C400" stroke="#1E2226" stroke-width="2.2" stroke-linejoin="round"></path><circle cx="143" cy="68.1" r="3.8" fill="#1E2226"></circle></g><g><rect x="157" y="56" width="92" height="22" rx="11" fill="#0F1214" stroke="#3A4148" stroke-width="1"></rect><circle cx="168" cy="67" r="3.5" fill="#F5C400"></circle><text x="177" y="71" font-family="Inter, sans-serif" font-weight="700" font-size="11" fill="#F5F3EE">Portón · 4.4 mi</text></g><g class="hm-pin hm-main" style="animation-delay: 0s"><ellipse cx="344" cy="293" rx="7.5" ry="2.7" fill="#000" opacity="0.35"></ellipse><path d="M344 292 C336.5 279.8 330.3 276.2 330.3 267.7 A13.7 13.7 0 0 1 357.7 267.7 C357.7 276.2 351.5 279.8 344 292 Z" fill="#F5C400" stroke="#1E2226" stroke-width="2.2" stroke-linejoin="round"></path><circle cx="344" cy="267.7" r="5.2" fill="#1E2226"></circle></g><g class="hm-truck" style="animation-delay: -5.5s"><g transform="translate(0 348)"><rect x="-23" y="-9" width="46" height="18" rx="5" fill="#F5C400" stroke="#1E2226" stroke-width="2"></rect><rect x="-1" y="-7.5" width="14" height="15" rx="3.5" fill="#F5C400" stroke="#1E2226" stroke-width="1.6"></rect><path d="M14 -6.5 L19 -5.2 V5.2 L14 6.5 Z" fill="#1E2226"></path><rect x="-20" y="-6" width="16" height="12" rx="2" fill="#3A4047" stroke="#1E2226" stroke-width="1.4"></rect><path d="M23 -6 h10 M23 6 h10" stroke="#F5C400" stroke-width="3" stroke-linecap="round" opacity="0.35"></path></g></g></svg>
+<div class="hm-card" style="position: absolute; top: 16px; right: 16px; width: 272px; box-sizing: border-box; background: #0D1012; border: 1px solid #3A4148; border-radius: 18px; padding: 16px; color: #F5F3EE; display: flex; flex-direction: column; gap: 9px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.14em"><span style="display: inline-flex; align-items: center; gap: 8px"><span class="blink" style="width: 8px; height: 8px; border-radius: 50%; background: #F5C400"></span>NUEVA SOLICITUD</span><span style="color: #A39F94">HACE 4 MIN</span></div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; line-height: 1.12; letter-spacing: -0.01em">Cerca de atrás caída por la tormenta</div>
+<div style="font-size: 13.5px; color: #A39F94">76116 · a 1.8 mi de usted</div>
+<div style="height: 1px; background: #2E353B"></div>
+<div style="display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; background: #F5C400; color: #1E2226; border-radius: 999px; padding: 7px 12px; font-weight: 700; font-size: 14px"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M3.5 10 H20.5 M8 3 V7 M16 3 V7"></path><path d="M8.5 14.5 l2.5 2.5 4.5 -4.5"></path></svg>Agendado · jue 5:30 PM</div>
+<div style="font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 10.5px; letter-spacing: 0.14em; color: #F5C400">SOLO PARA USTED <span class="sep">·</span> NO SE COMPARTE</div>
+</div>
+<div class="hm-label" style="position: absolute; left: 16px; bottom: 14px; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 10.5px; letter-spacing: 0.14em; color: #8C887D">ILUSTRACIÓN</div>
+</div>
+</div>
+</section>
+<section style="background: var(--bg-2); padding: clamp(64px, 9vw, 116px) clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted)"><span class="lane" aria-hidden="true"></span><span>Cómo le llega un trabajo</span></p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 62px); line-height: 0.98; letter-spacing: -0.03em">De la puerta de su casa <span class="hl">a su calendario.</span></h2>
+<p style="margin: 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: var(--body); max-width: 640px">No compra nombres de una lista. Nosotros hacemos el seguimiento y usted recibe una visita agendada.</p>
+</div>
+<div style="position: relative">
+<div class="route-line" aria-hidden="true"></div>
+<div style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 28px">
+<div style="position: relative; display: flex; flex-direction: column; gap: 12px">
+<div style="width: 78px; height: 78px; border-radius: 22px; background: var(--surface); border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: center"><div style="position: relative; width: 36px; height: 36px; flex: none" role="img" aria-label="Logotipo de Downstreet"><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M50 6 L89 36 V72 H11 V36 Z" style="fill: #F5F3EE; stroke: #F5F3EE; stroke-width: 6px; stroke-linecap: round; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M40 42 H60 V72 H40 Z" style="fill: #F5C400; stroke: none; stroke-width: 0px; stroke-linecap: round; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M42 79 H58 L68 98 H32 Z" style="fill: #F5C400; stroke: none; stroke-width: 0px; stroke-linecap: round; stroke-linejoin: round"></path></svg></div></div>
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-size: 11.5px">Parada 1</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Le piden a Downstreet.</h3>
+<p style="margin: 0; color: var(--body)">Un dueño de casa cerca de usted nos dice qué se descompuso, en nuestro sitio o por teléfono.</p>
+</div><div style="position: relative; display: flex; flex-direction: column; gap: 12px">
+<div style="width: 78px; height: 78px; border-radius: 22px; background: var(--surface); border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: center"><span style="color: var(--text)"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M6.5 3.5 h3 l1.5 4 -2 1.5 a11 11 0 0 0 6 6 l1.5 -2 4 1.5 v3 a2 2 0 0 1 -2 2 A16 16 0 0 1 4.5 5.5 a2 2 0 0 1 2 -2 Z"></path></svg></span></div>
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-size: 11.5px">Parada 2</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Nosotros llamamos primero.</h3>
+<p style="margin: 0; color: var(--body)">Devolvemos la llamada rápido, tomamos los detalles y preguntamos cuándo lo quieren arreglado.</p>
+</div><div style="position: relative; display: flex; flex-direction: column; gap: 12px">
+<div style="width: 78px; height: 78px; border-radius: 22px; background: var(--surface); border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: center"><span style="color: var(--text)"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M3.5 10 H20.5 M8 3 V7 M16 3 V7"></path><path d="M8.5 14.5 l2.5 2.5 4.5 -4.5"></path></svg></span></div>
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-size: 11.5px">Parada 3</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Llega a su calendario.</h3>
+<p style="margin: 0; color: var(--body)">Una visita agendada con nombre, dirección y el trabajo. No un número que perseguir.</p>
+</div><div style="position: relative; display: flex; flex-direction: column; gap: 12px">
+<div style="width: 78px; height: 78px; border-radius: 22px; background: var(--surface); border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: center"><div style="position: relative; width: 36px; height: 36px; flex: none" role="img" aria-label="Logotipo de Downstreet Pro"><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5F3EE; stroke-width: 26px; stroke-linecap: butt; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5C400; stroke-width: 3.6px; stroke-linecap: butt; stroke-linejoin: round; stroke-dasharray: 7 6"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M69 56 L84 68 V84 H54 V68 Z" style="fill: #F5C400; stroke: #F5C400; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round"></path></svg></div></div>
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-size: 11.5px">Parada 4</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Usted hace el trabajo. Nosotros damos seguimiento.</h3>
+<p style="margin: 0; color: var(--body)">Le escribimos al cliente el día 7 y el día 30 para que el trabajo siga en marcha.</p>
+</div>
+</div>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 8px; border-top: 1px solid var(--line)">
+<p style="margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.14em; color: var(--muted); padding-top: 16px">SIN CUOTA DE INSCRIPCIÓN <span class="sep">·</span> SIN COBRO POR CLIENTE <span class="sep">·</span> REPORTE EN 7 DÍAS <span class="sep">·</span> CUENTA POR 12 MESES</p>
+<button type="button" class="btn-o" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap; margin-top: 16px">Todos los detalles <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"></path></svg></button>
+</div>
+</div>
+</section>
+<section style="padding: clamp(64px, 9vw, 116px) clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted)"><span class="lane" aria-hidden="true"></span><span>Un cliente, de principio a fin</span></p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 62px); line-height: 0.98; letter-spacing: -0.03em">No un número de teléfono. <span class="hl">Un trabajo agendado.</span></h2>
+<p style="margin: 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: var(--body); max-width: 640px">Recorra un cliente de ejemplo. Cada cliente que recibe llega así, y nadie más lo recibe.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div class="stage-row" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px" role="group" aria-label="Etapas del cliente">
+
+<button type="button" aria-pressed="true" style="min-height: 64px; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 16px; font: inherit; color: #1E2226; cursor: pointer; background: #F5C400; border: 1.5px solid #F5C400">
+<span style="width: 30px; height: 30px; flex: none; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; background: #1E2226; color: #F5C400">1</span>
+<span style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left"><span style="font-weight: 700; font-size: 15px">Solicitud nueva</span><span style="font-size: 12.5px; opacity: 0.8">lun 6:12 PM</span></span>
+</button>
+
+<button type="button" aria-pressed="false" style="min-height: 64px; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 16px; font: inherit; color: var(--text); cursor: pointer; background: var(--surface); border: 1.5px solid var(--line)">
+<span style="width: 30px; height: 30px; flex: none; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; background: var(--surface-2); color: var(--text)">2</span>
+<span style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left"><span style="font-weight: 700; font-size: 15px">Agendado</span><span style="font-size: 12.5px; opacity: 0.8">mar 9:05 AM</span></span>
+</button>
+
+<button type="button" aria-pressed="false" style="min-height: 64px; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 16px; font: inherit; color: var(--text); cursor: pointer; background: var(--surface); border: 1.5px solid var(--line)">
+<span style="width: 30px; height: 30px; flex: none; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; background: var(--surface-2); color: var(--text)">3</span>
+<span style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left"><span style="font-weight: 700; font-size: 15px">Firmado</span><span style="font-size: 12.5px; opacity: 0.8">Día 3</span></span>
+</button>
+
+<button type="button" aria-pressed="false" style="min-height: 64px; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 16px; font: inherit; color: var(--text); cursor: pointer; background: var(--surface); border: 1.5px solid var(--line)">
+<span style="width: 30px; height: 30px; flex: none; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; background: var(--surface-2); color: var(--text)">4</span>
+<span style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left"><span style="font-weight: 700; font-size: 15px">Pagado</span><span style="font-size: 12.5px; opacity: 0.8">Día 14</span></span>
+</button>
+
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 18px; align-items: stretch">
+<div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap">
+<span class="blade blade-sm">CERCAS</span>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.14em; color: var(--muted)"><span style="width: 8px; height: 8px; border-radius: 50%; background: #F5C400"></span><span>NUEVA SOLICITUD <span class="sep">·</span> EJEMPLO</span></span>
+</div>
+<div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 26px; line-height: 1.1; letter-spacing: -0.015em">Cerca de atrás caída por la tormenta</div>
+<div style="font-size: 14px; color: var(--muted); margin-top: 4px">76116 · Fort Worth · a 1.8 mi de usted</div>
+</div>
+<div style="display: flex; flex-direction: column">
+
+<div style="display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 14px; padding: 12px 0; border-top: 1px solid var(--line)">
+<span style="font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.12em; color: var(--muted); padding-top: 3px">CLIENTE</span>
+<span style="font-weight: 600">[Nombre] · pidió en Downstreet</span>
+</div>
+
+<div style="display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 14px; padding: 12px 0; border-top: 1px solid var(--line)">
+<span style="font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.12em; color: var(--muted); padding-top: 3px">QUÉ PASÓ</span>
+<span style="font-weight: 600">El viento tumbó unos 40 pies de cerca de cedro</span>
+</div>
+
+<div style="display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 14px; padding: 12px 0; border-top: 1px solid var(--line)">
+<span style="font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.12em; color: var(--muted); padding-top: 3px">QUIERE</span>
+<span style="font-weight: 600">Un presupuesto esta semana, después de las 5 PM</span>
+</div>
+
+</div>
+
+<div style="display: flex; align-items: center; gap: 8px; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.14em; color: var(--accent-text)"><span>SOLO PARA USTED <span class="sep">·</span> NO SE COMPARTE</span></div>
+</div>
+<div style="background: var(--surface-2); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-size: 11.5px">Lo que hizo Downstreet</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.45">Recibió la solicitud en Downstreet, le devolvió la llamada al cliente y tomó los detalles: qué se descompuso, dónde y cuándo lo quiere arreglado.</p>
+</div>
+<div style="height: 1px; background: var(--line)"></div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-size: 11.5px">Lo que hizo usted</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.45">Nada todavía. Le llegó un mensaje con el trabajo y dos botones: agendar o llamar ahora.</p>
+</div>
+<div style="margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap">
+<button type="button" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; border: none; background: #F5C400; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap">Siguiente: agendado <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"></path></svg></button>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section style="background: var(--bg-2); padding: clamp(64px, 9vw, 116px) clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted)"><span class="lane" aria-hidden="true"></span><span>Precios</span></p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 62px); line-height: 0.98; letter-spacing: -0.03em">Usted paga <span class="hl">después de que le pagan.</span></h2>
+</div>
+<button type="button" class="btn-o" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap">Cuentas y letra chica <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"></path></svg></button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px">
+<div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(64px, 7vw, 92px); line-height: 0.9; letter-spacing: -0.04em">20%</div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px">Sobre los primeros $10,000</div>
+<p style="margin: 0; color: var(--body)">De lo que cobra en cada trabajo. Aquí entran las reparaciones, las visitas de servicio y la mayoría de las instalaciones.</p>
+</div>
+<div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(64px, 7vw, 92px); line-height: 0.9; letter-spacing: -0.04em">10%</div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px">Sobre todo lo que pase de $10,000</div>
+<p style="margin: 0; color: var(--body)">Solo la parte del trabajo que pasa de $10,000. Techos y remodelaciones cuestan menos por dólar.</p>
+</div>
+<div style="background: #F5C400; color: #1E2226; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(64px, 7vw, 92px); line-height: 0.9; letter-spacing: -0.04em">$0</div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px">Hasta que el cliente le pague</div>
+<p style="margin: 0; color: #3A3A33">Sin cuota de inscripción, sin mensualidad, sin cobro por cliente. Si pierde el trabajo, no debe nada.</p>
+</div>
+</div>
+<div class="calc" style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(20px, 3vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(24px, 4vw, 44px)">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-size: 11.5px">Calculadora de comisión</p>
+<label style="display: flex; flex-direction: column; gap: 7px; font-size: 15px; font-weight: 600; color: var(--text)">Lo que el cliente le pagó
+<span style="position: relative; display: block">
+<span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 30px; color: var(--muted)" aria-hidden="true">$</span>
+<input type="text" inputmode="numeric" autocomplete="off" value="13,800" aria-describedby="calc-help" style="min-height: 50px; width: 100%; box-sizing: border-box; border: 1px solid var(--field-line); border-radius: 12px; padding: 10px 14px; font: inherit; font-size: 16px; font-weight: 400; background: var(--input-bg); color: var(--text); min-height: 68px; padding-left: 40px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 32px; letter-spacing: -0.02em">
+</span>
+</label>
+<input class="range" type="range" min="500" max="60000" step="100" value="13800" aria-label="Control del monto del trabajo">
+<div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--muted)"><span>$500</span><span>$10,000</span><span>$60,000</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span id="calc-help" style="font-size: 13px; color: var(--muted)">Pruebe un trabajo de ejemplo</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+
+<button type="button" aria-pressed="false" style="min-height: 44px; display: inline-flex; align-items: center; padding: 9px 16px; border-radius: 999px; font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; background: var(--surface); color: var(--text); border: 1.5px solid var(--line-strong)">Reparación chica · $800</button>
+
+<button type="button" aria-pressed="false" style="min-height: 44px; display: inline-flex; align-items: center; padding: 9px 16px; border-radius: 999px; font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; background: var(--surface); color: var(--text); border: 1.5px solid var(--line-strong)">Cerca · $6,500</button>
+
+<button type="button" aria-pressed="false" style="min-height: 44px; display: inline-flex; align-items: center; padding: 9px 16px; border-radius: 999px; font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; background: var(--surface); color: var(--text); border: 1.5px solid var(--line-strong)">Techo · $15,000</button>
+
+<button type="button" aria-pressed="false" style="min-height: 44px; display: inline-flex; align-items: center; padding: 9px 16px; border-radius: 999px; font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; background: var(--surface); color: var(--text); border: 1.5px solid var(--line-strong)">Cocina · $42,000</button>
+
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<div><div style="font-size: 13px; color: var(--muted)">Su comisión de Downstreet</div><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(54px, 6vw, 76px); line-height: 0.95; letter-spacing: -0.035em; color: var(--accent-text)">$2,380</div></div>
+<div style="text-align: right"><div style="font-size: 13px; color: var(--muted)">Usted se queda con</div><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.02em">$11,420</div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; height: 18px; border-radius: 999px; overflow: hidden; background: var(--surface-2)" aria-hidden="true">
+<div style="width: 72.46%; background: #F5C400"></div><div style="width: 27.54%; background: repeating-linear-gradient(135deg, #F5C400 0 5px, transparent 5px 10px); opacity: 0.55"></div>
+</div>
+<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted)"><span>$10,000 al 20%</span><span>$3,800 al 10%</span></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<div style="background: var(--surface-2); border-radius: 14px; padding: 12px 14px"><div style="font-size: 13px; color: var(--muted)">Primeros $10K al 20%</div><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px">$2,000</div></div>
+<div style="background: var(--surface-2); border-radius: 14px; padding: 12px 14px"><div style="font-size: 13px; color: var(--muted)">Arriba de $10K al 10%</div><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px">$380</div></div>
+<div style="background: var(--surface-2); border-radius: 14px; padding: 12px 14px"><div style="font-size: 13px; color: var(--muted)">Tasa efectiva</div><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px">17.2%</div></div>
+</div>
+<p style="margin: 0; font-size: 13px; color: var(--muted)">Se calcula por trabajo, sobre el dinero que ya cobró. No se debe nada en trabajos que pierde.</p>
+</div>
+</div>
+</div>
+</section>
+<section style="padding: clamp(64px, 9vw, 116px) clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted)"><span class="lane" aria-hidden="true"></span><span>Oficios</span></p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 62px); line-height: 0.98; letter-spacing: -0.03em">Treinta oficios. <span class="hl">Un pro en cada uno</span> por zona.</h2>
+<p style="margin: 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: var(--body); max-width: 640px">Desde luces de Navidad hasta remodelaciones de toda la casa. Toque el suyo y resérvelo antes que otro pro de la zona.</p>
+</div>
+<button type="button" class="btn-o" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap">Los 30 oficios <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"></path></svg></button>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+
+<button type="button" class="blade" aria-pressed="false">Luces de Navidad</button>
+
+<button type="button" class="blade" aria-pressed="false">Techos</button>
+
+<button type="button" class="blade" aria-pressed="false">Cercas</button>
+
+<button type="button" class="blade" aria-pressed="false">Pintura</button>
+
+<button type="button" class="blade" aria-pressed="false">Pisos</button>
+
+<button type="button" class="blade" aria-pressed="false">Reparaciones generales</button>
+
+<button type="button" class="blade" aria-pressed="false">Remodelación de cocina</button>
+
+<button type="button" class="blade" aria-pressed="false">Remodelación de baño</button>
+
+<button type="button" class="blade" aria-pressed="false">Concreto y entradas de auto</button>
+
+<button type="button" class="blade" aria-pressed="false">Jardinería y paisajismo</button>
+
+<button type="button" class="blade" aria-pressed="false">Ventanas y puertas</button>
+
+<button type="button" class="blade" aria-pressed="false">Canaletas y limpieza de canaletas</button>
+
+</div>
+
+</div>
+</section>
+<section style="background: var(--bg-2); padding: clamp(64px, 9vw, 116px) clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted)"><span class="lane" aria-hidden="true"></span><span>La diferencia</span></p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 62px); line-height: 0.98; letter-spacing: -0.03em">No es otro <span class="hl">mercado de clientes.</span></h2>
+<p style="margin: 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: var(--body); max-width: 640px">Los mercados venden la misma solicitud a varios pros y le cobran gane o no el trabajo. Nosotros lo hacemos al revés.</p>
+</div>
+<div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; overflow-x: auto; position: relative">
+<table style="width: 100%; min-width: 680px; border-collapse: collapse; font-size: 16px">
+<caption style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Downstreet Pro comparado con los mercados de clientes</caption>
+<thead><tr>
+<th scope="col" style="width: 26%; text-align: left; padding: 18px"></th>
+<th scope="col" style="width: 37%; text-align: left; padding: 18px; background: var(--col-hl); border-top: 4px solid #F5C400"><span style="display: inline-flex; align-items: center; gap: 10px"><div style="position: relative; width: 24px; height: 24px; flex: none" role="img" aria-label="Logotipo de Downstreet Pro: una calle que da vuelta alrededor de una casa amarilla"><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5F3EE; stroke-width: 26px; stroke-linecap: butt; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5C400; stroke-width: 3.6px; stroke-linecap: butt; stroke-linejoin: round; stroke-dasharray: 7 6"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M69 56 L84 68 V84 H54 V68 Z" style="fill: #F5C400; stroke: #F5C400; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round"></path></svg></div><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 19px; line-height: 1; letter-spacing: -0.025em">Downstreet</span><span class="pro-tag">PRO</span></span></th>
+<th scope="col" style="width: 37%; text-align: left; padding: 18px; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.14em; color: var(--muted)">MERCADOS DE CLIENTES</th>
+</tr></thead>
+<tbody><tr>
+<th scope="row" style="text-align: left; padding: 16px 18px; border-top: 1px solid var(--line); font-weight: 700; vertical-align: top">Por qué paga</th>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); background: var(--col-hl); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start; font-weight: 600"><span style="color: var(--accent-text)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12.5 l4.5 4.5 L19 7.5"></path></svg></span>Un trabajo que cerró y ya le pagaron</span></td>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); color: var(--body); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start"><span style="color: var(--muted)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M6 12 H18"></path></svg></span>Cada cliente o contacto, lo gane o lo pierda</span></td>
+</tr><tr>
+<th scope="row" style="text-align: left; padding: 16px 18px; border-top: 1px solid var(--line); font-weight: 700; vertical-align: top">Quién más recibe el cliente</th>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); background: var(--col-hl); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start; font-weight: 600"><span style="color: var(--accent-text)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12.5 l4.5 4.5 L19 7.5"></path></svg></span>Nadie. Un pro por oficio, por zona</span></td>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); color: var(--body); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start"><span style="color: var(--muted)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M6 12 H18"></path></svg></span>Muchas veces varios pros a la vez</span></td>
+</tr><tr>
+<th scope="row" style="text-align: left; padding: 16px 18px; border-top: 1px solid var(--line); font-weight: 700; vertical-align: top">Quién llama al cliente</th>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); background: var(--col-hl); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start; font-weight: 600"><span style="color: var(--accent-text)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12.5 l4.5 4.5 L19 7.5"></path></svg></span>Nosotros, y agendamos la visita</span></td>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); color: var(--body); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start"><span style="color: var(--muted)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M6 12 H18"></path></svg></span>Usted compite con otros pros para llamar primero</span></td>
+</tr><tr>
+<th scope="row" style="text-align: left; padding: 16px 18px; border-top: 1px solid var(--line); font-weight: 700; vertical-align: top">Costo para empezar</th>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); background: var(--col-hl); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start; font-weight: 600"><span style="color: var(--accent-text)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12.5 l4.5 4.5 L19 7.5"></path></svg></span>$0. Sin inscripción ni mensualidad</span></td>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); color: var(--body); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start"><span style="color: var(--muted)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M6 12 H18"></path></svg></span>Presupuestos o suscripciones en muchos planes</span></td>
+</tr><tr>
+<th scope="row" style="text-align: left; padding: 16px 18px; border-top: 1px solid var(--line); font-weight: 700; vertical-align: top">Clientes malos</th>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); background: var(--col-hl); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start; font-weight: 600"><span style="color: var(--accent-text)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12.5 l4.5 4.5 L19 7.5"></path></svg></span>Se acreditan automáticamente</span></td>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); color: var(--body); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start"><span style="color: var(--muted)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M6 12 H18"></path></svg></span>Solicitudes de reembolso, revisadas caso por caso</span></td>
+</tr><tr>
+<th scope="row" style="text-align: left; padding: 16px 18px; border-top: 1px solid var(--line); font-weight: 700; vertical-align: top">Compromiso</th>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); background: var(--col-hl); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start; font-weight: 600"><span style="color: var(--accent-text)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12.5 l4.5 4.5 L19 7.5"></path></svg></span>Mes a mes, con 30 días de aviso</span></td>
+<td style="padding: 16px 18px; border-top: 1px solid var(--line); color: var(--body); vertical-align: top"><span style="display: flex; gap: 10px; align-items: flex-start"><span style="color: var(--muted)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M6 12 H18"></path></svg></span>Varía; algunos planes son anuales</span></td>
+</tr></tbody>
+</table>
+</div>
+<p style="margin: 0; font-size: 13px; color: var(--muted)">Los términos de los mercados varían por plataforma, oficio y zona, y cambian seguido. Revise los términos actuales de cada uno.</p>
+</div>
+</section>
+<section style="padding: clamp(64px, 9vw, 116px) clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted)"><span class="lane" aria-hidden="true"></span><span>Reglas del camino</span></p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 62px); line-height: 0.98; letter-spacing: -0.03em">Reglas claras. <span class="hl">Iguales para todos los pros.</span></h2>
+<p style="margin: 0; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.5; color: var(--body); max-width: 640px">Están escritas en el acuerdo de socio, así sabe exactamente a qué atenerse.</p>
+</div>
+<button type="button" class="btn-o" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap">Preguntas y respuestas <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"></path></svg></button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 16px"><div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<svg viewBox="0 0 72 72" width="72" height="72" style="display: block; flex: none" aria-hidden="true"><rect x="4" y="20" width="64" height="32" rx="3" fill="#1E2226" stroke="#F5F3EE" stroke-width="2"></rect><path d="M10 30 H46 V25 L62 36 L46 47 V42 H10 Z" fill="#F5F3EE"></path><text x="29" y="39.5" text-anchor="middle" font-family="Overpass, Inter, sans-serif" font-weight="800" font-size="8.5" letter-spacing="0.4" fill="#1E2226">UN PRO</text></svg>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Solo para usted</h3>
+<p style="margin: 0; color: var(--body)">Un pro por oficio en cada zona. Nunca vendemos el mismo cliente dos veces.</p>
+</div><div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<svg viewBox="0 0 72 72" width="72" height="72" style="display: block; flex: none" aria-hidden="true"><path d="M36 3 L69 36 L36 69 L3 36 Z" fill="#F5C400" stroke="#1E2226" stroke-width="3" stroke-linejoin="round"></path><path d="M36 8 L64 36 L36 64 L8 36 Z" fill="none" stroke="#1E2226" stroke-width="1.5" stroke-linejoin="round"></path><rect x="24" y="26" width="24" height="21" rx="2.5" fill="none" stroke="#1E2226" stroke-width="3"></rect><path d="M24 32.5 H48 M30 22.5 V28 M42 22.5 V28" stroke="#1E2226" stroke-width="3" stroke-linecap="round"></path><path d="M30.5 39.5 L34.5 43 L41.5 35.5" fill="none" stroke="#1E2226" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Un cliente es una visita agendada</h3>
+<p style="margin: 0; color: var(--body)">Un dueño de casa con quien ya hablamos, con dirección en su zona, que pide su oficio, con una hora en su calendario.</p>
+</div><div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<svg viewBox="0 0 72 72" width="72" height="72" style="display: block; flex: none" aria-hidden="true"><rect x="8" y="8" width="56" height="56" rx="4" fill="#F5F3EE" stroke="#1E2226" stroke-width="3"></rect><path d="M46 56 V32 A10 10 0 0 0 26 32 V44" fill="none" stroke="#1E2226" stroke-width="6" stroke-linecap="butt"></path><path d="M17 41 L26 53 L35 41 Z" fill="#1E2226"></path></svg>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Los clientes malos se reponen</h3>
+<p style="margin: 0; color: var(--body)">¿Número equivocado, duplicado, fuera de zona u otro oficio? Se acredita automáticamente. No tiene que pedirlo.</p>
+</div><div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<svg viewBox="0 0 72 72" width="72" height="72" style="display: block; flex: none" aria-hidden="true"><rect x="14" y="3" width="44" height="66" rx="4" fill="#F5F3EE" stroke="#1E2226" stroke-width="3"></rect><text x="36" y="17" text-anchor="middle" font-family="Overpass, Inter, sans-serif" font-weight="800" font-size="8" letter-spacing="0.6" fill="#1E2226">REPORTE</text><text x="36" y="26" text-anchor="middle" font-family="Overpass, Inter, sans-serif" font-weight="800" font-size="8" letter-spacing="0.6" fill="#1E2226">EN</text><text x="36" y="55" text-anchor="middle" font-family="Overpass, Inter, sans-serif" font-weight="800" font-size="30" fill="#1E2226">7</text><text x="36" y="64" text-anchor="middle" font-family="Overpass, Inter, sans-serif" font-weight="800" font-size="8" letter-spacing="0.6" fill="#1E2226">DÍAS</text></svg>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Reporte en 7 días</h3>
+<p style="margin: 0; color: var(--body)">Agendado, cotizado, ganado, perdido o no se presentó. Un mensaje de dos palabras basta.</p>
+</div><div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<svg viewBox="0 0 72 72" width="72" height="72" style="display: block; flex: none" aria-hidden="true"><rect x="8" y="10" width="56" height="52" rx="4" fill="#F5F3EE" stroke="#1E2226" stroke-width="3"></rect><path d="M22 34 L32 44 L51 23" fill="none" stroke="#1E2226" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><text x="36" y="56" text-anchor="middle" font-family="Overpass, Inter, sans-serif" font-weight="800" font-size="8" letter-spacing="0.8" fill="#1E2226">PRUEBA</text></svg>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Prueba sencilla</h3>
+<p style="margin: 0; color: var(--body)">Un trabajo cerrado es un contrato firmado o una factura final. Es todo lo que pedimos.</p>
+</div><div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<svg viewBox="0 0 72 72" width="72" height="72" style="display: block; flex: none" aria-hidden="true"><rect x="20" y="2" width="32" height="56" rx="4" fill="#1E2226" stroke="#F5F3EE" stroke-width="2"></rect><text x="36" y="17" text-anchor="middle" font-family="Overpass, Inter, sans-serif" font-weight="800" font-size="8" letter-spacing="0.8" fill="#F5F3EE">MILLA</text><text x="36" y="45" text-anchor="middle" font-family="Overpass, Inter, sans-serif" font-weight="800" font-size="22" fill="#F5F3EE">12</text><rect x="33.5" y="58" width="5" height="12" fill="#8C887D"></rect></svg>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Cuenta por 12 meses</h3>
+<p style="margin: 0; color: var(--body)">Si un cliente que le enviamos vuelve dentro de 12 meses, sigue siendo un trabajo de Downstreet.</p>
+</div><div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<svg viewBox="0 0 72 72" width="72" height="72" style="display: block; flex: none" aria-hidden="true"><path d="M5 8 H67 L36 64 Z" fill="#F5F3EE" stroke="#F5C400" stroke-width="7" stroke-linejoin="round"></path><path d="M5 8 H67 L36 64 Z" fill="none" stroke="#1E2226" stroke-width="1.5" stroke-linejoin="round"></path><rect x="28" y="18" width="5.5" height="20" rx="1" fill="#1E2226"></rect><rect x="38.5" y="18" width="5.5" height="20" rx="1" fill="#1E2226"></rect></svg>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Sin reporte, en pausa</h3>
+<p style="margin: 0; color: var(--body)">Si deja de reportar, los clientes nuevos se pausan hasta que se ponga al día. Sin multa.</p>
+</div><div style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<svg viewBox="0 0 72 72" width="72" height="72" style="display: block; flex: none" aria-hidden="true"><rect x="38" y="6" width="28" height="16" rx="2" fill="#F5C400" stroke="#1E2226" stroke-width="2"></rect><text x="52" y="18" text-anchor="middle" font-family="Overpass, Inter, sans-serif" font-weight="800" font-size="9" letter-spacing="0.6" fill="#1E2226">SALIDA</text><rect x="4" y="20" width="64" height="44" rx="4" fill="#1E2226" stroke="#F5F3EE" stroke-width="2"></rect><text x="36" y="48" text-anchor="middle" font-family="Overpass, Inter, sans-serif" font-weight="800" font-size="22" fill="#F5F3EE">30</text><text x="36" y="58" text-anchor="middle" font-family="Overpass, Inter, sans-serif" font-weight="800" font-size="7.5" letter-spacing="0.8" fill="#F5F3EE">DÍAS</text></svg>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Puede salir cuando quiera</h3>
+<p style="margin: 0; color: var(--body)">Mes a mes con 30 días de aviso. Los trabajos ya abiertos se liquidan igual.</p>
+</div></div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section class="on-dark" style="background: #1A1E22; color: #F5F3EE; padding: clamp(64px, 9vw, 116px) clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<p style="display: flex; align-items: center; gap: 10px; margin: 0; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); color: #F5C400"><span class="lane" aria-hidden="true"></span><span>Downstreet Pro</span></p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 62px); line-height: 0.98; letter-spacing: -0.03em">Su próximo trabajo está <span style="color: #F5C400">a la vuelta de la esquina.</span></h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.5; color: #C9C6BE; max-width: 520px">Díganos su oficio y su zona. Si está disponible, lo damos de alta y empezamos a agendar.</p>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 7px; font-size: 15px; font-weight: 600; color: var(--text); color: #F5F3EE">¿Su zona está disponible? Escriba el código postal de su negocio
+<input type="text" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="76107" value="" style="min-height: 50px; width: 100%; box-sizing: border-box; border: 1px solid var(--field-line); border-radius: 12px; padding: 10px 14px; font: inherit; font-size: 16px; font-weight: 400; background: #0F1214; color: #F5F3EE; border-color: #3A4148; max-width: 260px; font-weight: 700; letter-spacing: 0.08em">
+</label>
+
+
+</div>
+<div style="display: flex; gap: 12px; flex-wrap: wrap">
+<button type="button" class="btn-y" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; border: none; background: #F5C400; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap">Recibir clientes <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"></path></svg></button>
+<span style="min-height: 50px; display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px; border: 1.5px solid #3E454C; font-weight: 700"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M6.5 3.5 h3 l1.5 4 -2 1.5 a11 11 0 0 0 6 6 l1.5 -2 4 1.5 v3 a2 2 0 0 1 -2 2 A16 16 0 0 1 4.5 5.5 a2 2 0 0 1 2 -2 Z"></path></svg>Llame al [PHONE]</span>
+</div>
+</div>
+<div style="display: flex; justify-content: center"><div style="position: relative; width: 230px; height: 230px; flex: none" role="img" aria-label="Logotipo de Downstreet Pro: una calle que da vuelta alrededor de una casa amarilla"><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5F3EE; stroke-width: 26px; stroke-linecap: butt; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5C400; stroke-width: 3.6px; stroke-linecap: butt; stroke-linejoin: round; stroke-dasharray: 7 6"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M69 56 L84 68 V84 H54 V68 Z" style="fill: #F5C400; stroke: #F5C400; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round"></path></svg></div></div>
+</div>
+</section>
+
+</main>
+<footer style="padding: clamp(48px, 7vw, 80px) clamp(20px, 5vw, 64px) 36px; border-top: 1px solid var(--line)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px; grid-column: span 1">
+<span style="display: inline-flex; align-items: center; gap: 10px"><div style="position: relative; width: 32px; height: 32px; flex: none" role="img" aria-label="Logotipo de Downstreet Pro: una calle que da vuelta alrededor de una casa amarilla"><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5F3EE; stroke-width: 26px; stroke-linecap: butt; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M26 98 V62 A36 36 0 0 1 62 26 H98" style="fill: none; stroke: #F5C400; stroke-width: 3.6px; stroke-linecap: butt; stroke-linejoin: round; stroke-dasharray: 7 6"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M69 56 L84 68 V84 H54 V68 Z" style="fill: #F5C400; stroke: #F5C400; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round"></path></svg></div><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; line-height: 1; letter-spacing: -0.025em">Downstreet</span><span class="pro-tag">PRO</span></span>
+<p style="margin: 0; color: var(--body); max-width: 300px">Trabajos agendados de dueños de casa cerca de usted, para pros de Fort Worth y sus alrededores. Usted paga después de que le pagan.</p>
+<p style="margin: 0; font-weight: 600">[PHONE]<br>[EMAIL]</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><p style="margin: 0 0 6px; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11.5px; letter-spacing: 0.16em; color: var(--muted)">OFERTA</p>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Cómo funciona</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Precios y calculadora</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Reglas del camino</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Recibir clientes</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Reportar un trabajo</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><p style="margin: 0 0 6px; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11.5px; letter-spacing: 0.16em; color: var(--muted)">COBERTURA</p>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Oficios</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Zonas</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Pedir un oficio</button>
+<button type="button" style="background: none; border: none; padding: 4px 0; font: inherit; color: var(--body); cursor: pointer; text-align: left">Portal de pros</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px"><p style="margin: 0 0 6px; font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11.5px; letter-spacing: 0.16em; color: var(--muted)">PARA DUEÑOS DE CASA</p>
+<a href="/downstreet/es/" style="display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 700"><div style="position: relative; width: 28px; height: 28px; flex: none" role="img" aria-label="Logotipo de Downstreet"><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M50 6 L89 36 V72 H11 V36 Z" style="fill: #F5F3EE; stroke: #F5F3EE; stroke-width: 6px; stroke-linecap: round; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M40 42 H60 V72 H40 Z" style="fill: #F5C400; stroke: none; stroke-width: 0px; stroke-linecap: round; stroke-linejoin: round"></path></svg><svg viewBox="0 0 100 100" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true"><path d="M42 79 H58 L68 98 H32 Z" style="fill: #F5C400; stroke: none; stroke-width: 0px; stroke-linecap: round; stroke-linejoin: round"></path></svg></div><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.02em">Downstreet</span></a>
+<p style="margin: 0; color: var(--body); font-size: 15px">Donde los dueños de casa piden ayuda. ¿Necesita un profesional? Hay uno a la vuelta de la esquina.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 22px; border-top: 1px solid var(--line); font-family: Overpass, Inter, sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.14em; color: var(--muted)">
+<span>UN SERVICIO DE REFERENCIAS <span class="sep">·</span> EL TRABAJO LO HACEN PROS INDEPENDIENTES</span>
+<span>© 2026 LEADS BY DELTA <span class="sep">·</span> FORT WORTH, TX <span class="sep">·</span> [PRIVACY] <span class="sep">·</span> [TERMS]</span>
+</div>
+</div>
+</footer>
+</div>
+</div>
+<noscript><p style="font-family:system-ui,sans-serif;padding:16px">Active JavaScript para usar los formularios y las calculadoras de este sitio.</p></noscript>
+<script src="/downstreet/assets/config.js"></script>
+<script src="/downstreet/assets/morphdom.min.js"></script>
+<script src="/downstreet/assets/runtime.js"></script>
+<script src="/downstreet/assets/pro-es.js"></script>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Downstreet · Homeowner site</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#1E2226}
+.ds button,.ds a,.ds input,.ds select,.ds textarea{-webkit-tap-highlight-color:transparent}
+.ds button:focus-visible,.ds a:focus-visible,.ds input:focus-visible,.ds select:focus-visible,.ds textarea:focus-visible{outline:3px solid var(--text);outline-offset:2px}
+.ds .on-dark button:focus-visible,.ds .on-dark a:focus-visible{outline-color:#F5C400}
+.ds input:focus,.ds select:focus,.ds textarea:focus{border-color:var(--text)}
+.ds .chip:hover{border-color:var(--text)}
+.ds .btn-ink:hover{filter:brightness(1.12)}
+.ds.dark .hl{background:linear-gradient(transparent 84%, #F5C400 84%, #F5C400 96%, transparent 96%)}
+.ds.dark input::placeholder,.ds.dark textarea::placeholder{color:#8C887D}
+.ds .theme-toggle:hover{border-color:var(--text)}
+.ds .btn-yellow:hover{background:#FFD21F}
+.ds .hl{background:linear-gradient(transparent 60%, #F5C400 60%, #F5C400 92%, transparent 92%);padding:0 0.04em}
+.tabs{display:flex;align-items:center;gap:4px;margin-left:auto}
+@media (max-width: 900px){.tabs{order:3;width:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.nav-cta{margin-left:auto}}
+@media (max-width: 820px){.near-list{border-left:0 !important;border-top:1px solid var(--line);padding-top:28px !important}}
+.pro-link:hover{text-decoration:underline !important}
+@media (max-width: 900px){.pro-link{margin-left:auto}.theme-toggle{margin-left:0}.nav-cta{margin-left:0 !important}}
+@media (max-width: 640px){.pro-link{display:none !important}.theme-toggle{margin-left:auto !important}.pro-tab{display:inline-flex !important;padding:10px 8px;font-size:14px;min-height:44px;box-shadow:inset 0 -3px 0 #F5C400}}
+@media (max-width: 380px){.pro-tab{padding:10px 6px;font-size:13.5px}}
+@media (max-width: 350px){.ds .tabs button,.ds .pro-tab{padding:10px 3px !important;font-size:12px !important;letter-spacing:-0.01em}.ds .tabs{gap:0 !important}}
+@media (max-width: 640px){.ds nav{column-gap:10px !important}.nav-cta{padding:10px 14px !important;font-size:14px !important}.nav-cta svg{display:none}.brand-word{font-size:23px !important}.theme-toggle{width:40px !important;height:40px !important}}
+@media (max-width: 640px){.tabs{gap:0;justify-content:space-between}.tabs button{padding:10px 8px !important;font-size:14px !important}}
+@media (max-width: 380px){.tabs button{padding:10px 6px !important;font-size:13.5px !important}}
+.lang-short{display:none}.lang-link:hover{border-color:var(--text) !important}
+@media (max-width: 640px){.lang-long{display:none}.lang-short{display:inline}}
+@media (max-width: 640px){.ds .theme-toggle{display:none !important}.ds .lang-link{margin-left:auto !important;min-height:38px !important;min-width:40px !important;padding:0 10px !important}}
+@media (max-width: 400px){.ds .brand-word{font-size:21px !important}}
+@media (max-width: 359px){.ds .nav-cta{display:none !important}}
+@media (max-width: 640px){.ds .tabs > button:first-child{display:none !important}}
+@media (max-width: 430px){.ds .tabs button,.ds .pro-tab{padding:10px 7px !important;font-size:14px !important}}
+@media (max-width: 400px){.ds .nav-cta{display:none !important}.ds .tabs button,.ds .pro-tab{padding:10px 5px !important;font-size:13px !important}}
+@media (max-width: 360px){.ds .tabs button,.ds .pro-tab{padding:10px 3px !important;font-size:12px !important;letter-spacing:-0.01em}}
+</style>
+</helmet>
+<div class="{{rootClass}}" style="{{rootVars}} background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; font-size: 17px; line-height: 1.55">
+
+<header style="position: sticky; top: 0; z-index: 50; padding: 18px clamp(20px, 5vw, 64px); border-bottom: 1px solid var(--line); background: var(--bg)">
+<nav style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px" aria-label="Principal">
+<a href="#top" onClick="{{goHome}}" style="display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--text)">
+<div style="{{m40.box}}" role="img" aria-label="{{brandAlt}}">
+<sc-for list="{{m40.layers}}" as="l" hint-placeholder-count="2">
+<svg viewBox="0 0 100 100" style="{{l.svg}}" aria-hidden="true"><path d="{{l.d}}" style="{{l.st}}"></path></svg>
+</sc-for>
+</div>
+<span class="brand-word" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 27px; line-height: 1; letter-spacing: -0.025em">Downstreet</span>
+</a>
+<div class="tabs">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="5">
+<button type="button" onClick="{{t.go}}" aria-current="{{t.current}}" style="{{t.style}}">{{t.label}}</button>
+</sc-for>
+<a class="pro-tab" href="DownstreetProSite.dc.html" style="display: none; align-items: center; color: var(--text); text-decoration: none; font-weight: 600; white-space: nowrap">Para pros</a>
+</div>
+<a class="pro-link" href="DownstreetProSite.dc.html" style="display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 0 4px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 15px; white-space: nowrap">Para pros <span style="background: #F5C400; color: #1E2226; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; padding: 3px 6px; border-radius: 5px; line-height: 1">PRO</span></a>
+<a class="lang-link " data-lang-switch href="#" hreflang="en" lang="en" aria-label="View this site in English" style="display: inline-flex; align-items: center; justify-content: center; min-height: 40px; min-width: 44px; padding: 0 12px; box-sizing: border-box; border: 1px solid var(--line); border-radius: 999px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 14px; white-space: nowrap"><span class="lang-long">English</span><span class="lang-short">EN</span></a>
+<button type="button" class="theme-toggle" onClick="{{toggleTheme}}" aria-pressed="{{darkPressed}}" aria-label="{{themeLabel}}" title="{{themeLabel}}" style="width: 44px; height: 44px; flex: none; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer; padding: 0">
+<sc-if value="{{isDark}}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 4 V2 M12 22 V20 M4 12 H2 M22 12 H20 M6.3 6.3 L4.9 4.9 M19.1 19.1 L17.7 17.7 M6.3 17.7 L4.9 19.1 M19.1 4.9 L17.7 6.3" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round"></path><path d="M12 7 A5 5 0 1 0 12 17 A5 5 0 1 0 12 7 Z" style="fill: currentColor"></path></svg></sc-if>
+<sc-if value="{{isLight}}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 A8.5 8.5 0 1 0 20 14.5 Z" style="fill: currentColor"></path></svg></sc-if>
+</button>
+<button type="button" class="{{ctaClass}}" onClick="{{ctaGo}}" style="min-height: 44px; display: inline-flex; align-items: center; gap: 8px; background: var(--btn); color: var(--btn-text); border: none; padding: 11px 20px; border-radius: 999px; font: inherit; font-weight: 700; font-size: 15px; white-space: nowrap; cursor: pointer"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="flex: none"><path d="M7 22 V13 C7 9.5 9.5 7 13 7 H15" style="fill: none; stroke: currentColor; stroke-width: 3.2; stroke-linecap: butt"></path><path d="M14 2 L21.5 7 L14 12 Z" style="fill: currentColor"></path></svg>{{ctaLabel}}</button>
+</nav>
+</header>
+
+<sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}">
+<section id="top" style="padding: clamp(40px, 7vw, 88px) clamp(20px, 5vw, 64px) clamp(48px, 7vw, 88px)">
+<div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: clamp(36px, 5vw, 64px); align-items: center">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: var(--muted)">PROFESIONALES PARA EL HOGAR · FORT WORTH Y ALREDEDORES</div>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(44px, 6.2vw, 80px); line-height: 0.98; letter-spacing: -0.03em">¿Necesita un profesional? Hay uno <span class="hl">a la vuelta de la esquina.</span></h1>
+<p style="margin: 0; max-width: 520px; font-size: 20px; color: var(--body)">Díganos qué necesita. Le conectamos con un profesional local que le devuelve la llamada.</p>
+<ul style="list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{points}}" as="p" hint-placeholder-count="3">
+<li style="display: flex; align-items: center; gap: 12px; font-weight: 600"><span style="width: 18px; height: 5px; border-radius: 3px; background: #F5C400; box-shadow: 0 0 0 1px rgba(30,34,38,0.18); flex: none" aria-hidden="true"></span>{{p}}</li>
+</sc-for>
+</ul>
+</div>
+
+<div id="get" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: clamp(22px, 3.4vw, 36px); box-shadow: 0 18px 40px -28px rgba(30,34,38,0.45)">
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px; min-height: 520px; justify-content: center">
+<div style="{{m56.box}}" role="img" aria-label="Logotipo de Downstreet">
+<sc-for list="{{m56.layers}}" as="l" hint-placeholder-count="2">
+<svg viewBox="0 0 100 100" style="{{l.svg}}" aria-hidden="true"><path d="{{l.d}}" style="{{l.st}}"></path></svg>
+</sc-for>
+</div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; line-height: 1.05; letter-spacing: -0.02em">{{thanksTitle}}</div>
+<p style="margin: 0; color: var(--body)">{{thanksBody}}</p>
+<button type="button" onClick="{{reset}}" style="align-self: flex-start; min-height: 44px; margin-top: 6px; background: none; border: 2px solid var(--text); border-radius: 999px; padding: 10px 22px; font: inherit; font-weight: 600; color: var(--text); cursor: pointer">Enviar otra solicitud</button>
+</div>
+</sc-if>
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<form onSubmit="{{submit}}" style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px; line-height: 1.1; letter-spacing: -0.02em">Consiga un profesional local</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600">¿Con qué necesita ayuda?
+<select name="service" required="required" style="min-height: 50px; box-sizing: border-box; border: 1px solid var(--field-line); border-radius: 12px; padding: 10px 14px; font: inherit; font-weight: 400; background: var(--surface); color: var(--text)">
+<sc-for list="{{serviceOptions}}" as="s" hint-placeholder-count="30">
+<option value="{{s.v}}">{{s.label}}</option>
+</sc-for>
+</select>
+</label>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 14px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600">Código postal
+<input type="text" name="zip" required="required" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" style="min-height: 50px; box-sizing: border-box; border: 1px solid var(--field-line); border-radius: 12px; padding: 10px 14px; font: inherit; font-weight: 400; background: var(--surface); color: var(--text)">
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600">Su nombre
+<input type="text" name="name" required="required" autocomplete="name" style="min-height: 50px; box-sizing: border-box; border: 1px solid var(--field-line); border-radius: 12px; padding: 10px 14px; font: inherit; font-weight: 400; background: var(--surface); color: var(--text)">
+</label>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600">Número de celular
+<input type="tel" name="phone" required="required" autocomplete="tel" inputmode="tel" style="min-height: 50px; box-sizing: border-box; border: 1px solid var(--field-line); border-radius: 12px; padding: 10px 14px; font: inherit; font-weight: 400; background: var(--surface); color: var(--text)">
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600"><span>Sobre el trabajo <span style="font-weight: 400; color: var(--muted)">(opcional)</span></span>
+<textarea name="details" rows="2" placeholder="Ejemplo: la cerca de atrás quedó inclinada después de la tormenta" style="box-sizing: border-box; border: 1px solid var(--field-line); border-radius: 12px; padding: 12px 14px; font: inherit; font-weight: 400; background: var(--surface); color: var(--text); resize: vertical"></textarea>
+</label>
+<button type="submit" class="btn-ink" style="min-height: 54px; margin-top: 4px; background: var(--btn); color: var(--btn-text); border: none; border-radius: 999px; font: inherit; font-weight: 700; font-size: 18px; cursor: pointer">Conseguir mi profesional</button>
+<p style="margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--muted)">Al tocar Conseguir mi profesional, usted acepta que Downstreet y el profesional local que le asignemos le llamen o le envíen mensajes de texto a este número sobre su solicitud, incluso por medios automatizados. Su consentimiento no es condición para ninguna compra. Pueden aplicarse tarifas de mensajes y datos. Responda STOP para cancelar. Consulte nuestra <span style="text-decoration: underline">política de privacidad</span>.</p>
+</form>
+</sc-if>
+</div>
+</div>
+</section>
+
+<section style="padding: 0 clamp(20px, 5vw, 64px) clamp(56px, 8vw, 96px)">
+<div style="max-width: 1200px; margin: 0 auto; background: var(--surface); border: 1px solid var(--line); border-radius: 28px; overflow: hidden; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); align-items: center">
+<div style="padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; gap: 16px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: var(--muted)">CERCA DE USTED</div>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(32px, 4.2vw, 50px); line-height: 1.02; letter-spacing: -0.025em">Profesionales de su zona.</h2>
+<p style="margin: 0; max-width: 440px; color: var(--body)">Le conectamos con contratistas que ya trabajan cerca de su casa, así que quien le llama conoce la zona.</p>
+</div>
+<ol class="near-list" style="list-style: none; margin: 0; padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; gap: 24px; align-self: stretch; justify-content: center; border-left: 1px solid var(--line)"><li style="display: flex; flex-direction: column; gap: 6px"><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; line-height: 1.2">1. Ya trabajan cerca de usted.</div><p style="margin: 0; color: var(--body); font-size: 16px; line-height: 1.55">Solo enviamos su trabajo a un contratista que ya trabaja en su zona. Menos manejo para ellos significa una visita más rápida para usted.</p></li><li style="display: flex; flex-direction: column; gap: 6px"><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; line-height: 1.2">2. Un solo profesional, no una subasta.</div><p style="margin: 0; color: var(--body); font-size: 16px; line-height: 1.55">Su solicitud va a un solo contratista de ese oficio y a nadie más. Su teléfono no va a sonar sin parar.</p></li><li style="display: flex; flex-direction: column; gap: 6px"><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; line-height: 1.2">3. Revisados antes de recibir trabajos.</div><p style="margin: 0; color: var(--body); font-size: 16px; line-height: 1.55">Con licencia donde Texas la exige, con seguro y con sus reseñas públicas revisadas. Quien no devuelve la llamada queda fuera.</p></li><li style="display: flex; flex-direction: column; gap: 6px"><div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; line-height: 1.2">4. Gratis para usted.</div><p style="margin: 0; color: var(--body); font-size: 16px; line-height: 1.55">El contratista le paga a Downstreet, y solo después de terminar un trabajo que vino de nosotros.</p></li></ol>
+</div>
+</section>
+
+<section style="padding: 0 clamp(20px, 5vw, 64px) clamp(56px, 8vw, 96px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px 24px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(30px, 4vw, 44px); line-height: 1.05; letter-spacing: -0.02em">¿Qué necesita?</h2>
+<p style="margin: 0; color: var(--muted); font-size: 16px">Toque un trabajo y se llena el formulario.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{common}}" as="c" hint-placeholder-count="8">
+<button type="button" class="chip" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="{{c.style}}">{{c.label}}</button>
+</sc-for>
+<button type="button" class="chip" onClick="{{goServices}}" style="min-height: 46px; padding: 10px 18px; border-radius: 999px; font: inherit; font-weight: 600; font-size: 16px; cursor: pointer; background: transparent; color: var(--text); border: 1px dashed #8C887D">Los 30 servicios →</button>
+</div>
+</div>
+</section>
+
+<section style="padding: 0 clamp(20px, 5vw, 64px) clamp(56px, 8vw, 96px)">
+<div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px">
+<sc-for list="{{stepsShort}}" as="s" hint-placeholder-count="3">
+<div style="display: flex; gap: 16px; align-items: flex-start; padding: 22px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line)">
+<div style="{{s.icon44.box}}" role="img" aria-label="{{s.alt}}">
+<sc-for list="{{s.icon44.layers}}" as="l" hint-placeholder-count="4">
+<svg viewBox="0 0 100 100" style="{{l.svg}}" aria-hidden="true"><path d="{{l.d}}" style="{{l.st}}"></path></svg>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; line-height: 1.2">{{s.title}}</div>
+<div style="color: var(--muted); font-size: 16px">{{s.short}}</div>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{isHow}}" hint-placeholder-val="{{ false }}">
+<section style="padding: clamp(56px, 8vw, 104px) clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: var(--muted)">CÓMO FUNCIONA</div>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(38px, 5.4vw, 64px); line-height: 1; letter-spacing: -0.025em">Usted da el primer paso.<br><span class="hl">Nosotros hacemos el resto.</span></h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+<div style="background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+<div style="{{s.icon64.box}}" role="img" aria-label="{{s.alt}}">
+<sc-for list="{{s.icon64.layers}}" as="l" hint-placeholder-count="4">
+<svg viewBox="0 0 100 100" style="{{l.svg}}" aria-hidden="true"><path d="{{l.d}}" style="{{l.st}}"></path></svg>
+</sc-for>
+</div>
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: var(--muted)">PASO {{s.n}}</div>
+</div>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px; line-height: 1.1">{{s.title}}</h3>
+<p style="margin: 0; color: var(--body)">{{s.body}}</p>
+</div>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px">
+<div style="background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: var(--muted)">LO QUE NOS PAGA</div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 72px; line-height: 1; letter-spacing: -0.03em">$0</div>
+<p style="margin: 0; color: var(--body)">Las solicitudes son gratis. Downstreet nunca les cobra a los dueños de casa.</p>
+</div>
+<div style="background: var(--band); color: #F5F3EE; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #F5C400">CÓMO NOS PAGAN</div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 32px; line-height: 1.1; letter-spacing: -0.02em">El profesional paga una comisión, solo si usted lo contrata.</div>
+<p style="margin: 0; color: #CFCCC4">Así es gratis para usted, y por eso solo enviamos profesionales que vale la pena contratar.</p>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{isServices}}" hint-placeholder-val="{{ false }}">
+<section style="padding: clamp(56px, 8vw, 104px) clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: var(--muted)">SERVICIOS</div>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(38px, 5.4vw, 64px); line-height: 1; letter-spacing: -0.025em">30 tipos de trabajos para el hogar.</h2>
+</div>
+<p style="margin: 0; max-width: 400px; color: var(--body)">Toque uno para empezar una solicitud. Remodelaciones grandes y arreglos rápidos. ¿No ve el suyo? Elija «Otro».</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 30px">
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px"><h3 style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; color: var(--text)">{{g.name}}</h3><span style="font-size: 15px; color: var(--muted)">{{g.desc}}</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<sc-for list="{{g.items}}" as="c" hint-placeholder-count="12">
+<button type="button" class="chip" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="{{c.style}}">{{c.label}}</button>
+</sc-for>
+</div>
+</div>
+</sc-for>
+<div>
+<button type="button" class="chip" onClick="{{pickOther}}" style="min-height: 46px; padding: 10px 18px; border-radius: 999px; font: inherit; font-weight: 600; font-size: 16px; cursor: pointer; background: transparent; color: var(--text); border: 1px dashed #8C887D">Otro</button>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{isFaq}}" hint-placeholder-val="{{ false }}">
+<section style="padding: clamp(56px, 8vw, 104px) clamp(20px, 5vw, 64px)">
+<div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: var(--muted)">Preguntas</div>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(38px, 5.4vw, 64px); line-height: 1; letter-spacing: -0.025em">Buenas preguntas.</h2>
+</div>
+<div style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 6px clamp(20px, 4vw, 40px)">
+<sc-for list="{{faqs}}" as="f" hint-placeholder-count="6">
+<div style="{{f.row}}">
+<button type="button" onClick="{{f.toggle}}" aria-expanded="{{f.expanded}}" style="width: 100%; min-height: 64px; display: flex; justify-content: space-between; align-items: center; gap: 16px; background: none; border: none; padding: 18px 0; font: inherit; font-weight: 600; font-size: 19px; color: var(--text); text-align: left; cursor: pointer">
+<span>{{f.q}}</span>
+<span style="{{f.signStyle}}" aria-hidden="true">{{f.sign}}</span>
+</button>
+<sc-if value="{{f.open}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0 0 22px; color: var(--body); max-width: 700px">{{f.a}}</p>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{showBand}}" hint-placeholder-val="{{ true }}">
+<section class="on-dark" style="background: var(--band); color: #F5F3EE; padding: clamp(56px, 8vw, 100px) clamp(20px, 5vw, 64px)">
+<div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #F5C400">SOLO LOCAL</div>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(38px, 5.4vw, 64px); line-height: 1; letter-spacing: -0.025em">El profesional indicado está más cerca de lo que cree.</h2>
+<p style="margin: 0; max-width: 480px; color: #CFCCC4">Solo trabajamos con profesionales de Fort Worth y sus alrededores, así que quien le llama conoce la zona.</p>
+<button type="button" class="btn-yellow" onClick="{{goForm}}" style="align-self: flex-start; min-height: 54px; margin-top: 6px; display: inline-flex; align-items: center; gap: 10px; background: #F5C400; color: #1E2226; border: none; border-radius: 999px; padding: 14px 28px; font: inherit; font-weight: 700; font-size: 18px; cursor: pointer"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="flex: none"><path d="M7 22 V13 C7 9.5 9.5 7 13 7 H15" style="fill: none; stroke: currentColor; stroke-width: 3.2; stroke-linecap: butt"></path><path d="M14 2 L21.5 7 L14 12 Z" style="fill: currentColor"></path></svg>Pedir un pro</button>
+</div>
+<div style="display: flex; justify-content: center; align-items: center; min-height: 260px">
+<div style="{{mBand.box}}" role="img" aria-label="Logotipo de Downstreet: una casa con puerta amarilla y un camino hacia la calle">
+<sc-for list="{{mBand.layers}}" as="l" hint-placeholder-count="4">
+<svg viewBox="0 0 100 100" style="{{l.svg}}" aria-hidden="true"><path d="{{l.d}}" style="{{l.st}}"></path></svg>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<footer style="padding: 36px clamp(20px, 5vw, 64px) 44px; border-top: 1px solid var(--line)">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: center; justify-content: space-between; font-size: 15px; color: var(--muted)">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="{{m32.box}}" role="img" aria-label="{{brandAlt}}">
+<sc-for list="{{m32.layers}}" as="l" hint-placeholder-count="2">
+<svg viewBox="0 0 100 100" style="{{l.svg}}" aria-hidden="true"><path d="{{l.d}}" style="{{l.st}}"></path></svg>
+</sc-for>
+</div>
+<span><strong style="color: var(--text)">{{footName}}</strong> · {{footLine}}</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 22px">
+<span>Fort Worth, TX</span>
+<span>[PHONE]</span>
+<span>[EMAIL]</span>
+<span style="text-decoration: underline">Política de privacidad</span>
+<a href="DownstreetProSite.dc.html" style="color: inherit; text-decoration: none">¿Es contratista? <strong style="color: var(--text); text-decoration: underline">Downstreet Pro</strong></a>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2700}}'>
+var C = {ink:'#1E2226', yellow:'#F5C400', ground:'#F5F3EE'};
+var MARK = [
+  {d: 'M50 6 L89 36 V72 H11 V36 Z', f: 'main', s: 'main', w: 6},
+  {d: 'M40 42 H60 V72 H40 Z', f: 'acc'},
+  {d: 'M42 79 H58 L68 98 H32 Z', f: 'acc'}
+];
+function scalePath(d, k) {
+  return d.replace(/-?\d*\.?\d+/g, function (n) { return String(Math.round(parseFloat(n) * k * 100) / 100); });
+}
+var TILE = 'M10 3 H90 Q97 3 97 10 V90 Q97 97 90 97 H10 Q3 97 3 90 V10 Q3 3 10 3 Z';
+var ICONS = [
+  [{d: 'M50 9 L89 40 V75 H40 L26 90 V75 H11 V40 Z', f: 'bub', s: 'line', w: 6}, {d: 'M28 55 H72', s: 'dot', w: 7, cap: 'butt', da: '12 4'}],
+  [{d: TILE, f: 'asph'}, {d: 'M38 100 V62 C38 46 47 39 60 39', s: 'white', w: 12, cap: 'butt', clip: TILE}, {d: 'M58 22 L83 39 L58 56 Z', f: 'white', s: 'white', w: 4}, {d: 'M15 0 V100', s: 'paint', w: 3.5, cap: 'butt', da: '9 8', clip: TILE}],
+  null
+];
+function mk(theme, px) { return mkL(MARK, theme, px); }
+function mkL(L, theme, px) {
+  var t = theme === 'dark' ? {main: C.ground, acc: C.yellow, line: C.ink, asph: '#3A4047', paint: C.yellow, white: '#FFFFFF', bub: C.ground, dot: C.ink} : {main: C.ink, acc: C.yellow, line: C.ink, asph: C.ink, paint: C.yellow, white: '#FFFFFF', bub: C.yellow, dot: C.ink};
+  return {
+    box: 'position: relative; width: ' + px + 'px; height: ' + px + 'px; flex: none',
+    layers: L.map(function (l) {
+      return {
+        d: l.d,
+        svg: 'position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible' + (l.clip ? "; clip-path: path('" + scalePath(l.clip, px / 100) + "')" : ''),
+        st: 'fill: ' + (l.f ? t[l.f] : 'none') + '; stroke: ' + (l.s ? t[l.s] : 'none') + '; stroke-width: ' + (l.w || 0) + 'px; stroke-linecap: ' + (l.cap || 'round') + '; stroke-linejoin: round' + (l.da ? '; stroke-dasharray: ' + l.da : '') + (l.dof != null ? '; stroke-dashoffset: ' + l.dof : '')
+      };
+    })
+  };
+}
+var GROUPS = [
+  {name:'TRABAJOS LIGEROS', desc:'Trabajos rápidos, muchas veces listos en uno o dos días.', items:['Luces de Navidad', 'Reparaciones generales', 'Pintura', 'Tablaroca (drywall)', 'Canaletas y limpieza de canaletas', 'Lavado a presión', 'Reparación de electrodomésticos']},
+  {name:'MEDIANOS', desc:'Instalaciones y mejoras que toman de unos días a una semana más o menos.', items:['Pisos', 'Recubrimientos epóxicos para pisos', 'Gabinetes y encimeras', 'Ventanas y puertas', 'Cercas', 'Terrazas de madera (decks)', 'Aislamiento', 'Jardinería y paisajismo', 'Chimeneas', 'Generadores', 'Tratamiento y suavizadores de agua', 'Casa inteligente y seguridad']},
+  {name:'PROYECTOS GRANDES', desc:'Proyectos grandes. Cuadrillas más grandes, más tiempo y muchas veces permisos.', items:['Remodelación de cocina', 'Remodelación de baño', 'Sótanos', 'Ampliaciones y remodelaciones', 'Techos', 'Revestimiento exterior (siding)', 'Cimientos e impermeabilización', 'Concreto y entradas de auto', 'Albañilería y estuco', 'Paneles solares', 'Sépticos y drenaje']}
+];
+var ALL = ['Luces de Navidad'].concat(GROUPS.reduce(function (all, g) { return all.concat(g.items); }, []).filter(function (t) { return t !== 'Luces de Navidad'; }).sort());
+var COMMON = ['Luces de Navidad', 'Techos', 'Cercas', 'Remodelación de cocina', 'Remodelación de baño', 'Pintura', 'Pisos', 'Canaletas y limpieza de canaletas', 'Reparaciones generales'];
+var POINTS = ['Gratis para dueños de casa', 'Profesionales que trabajan cerca', 'Sin obligación de contratar'];
+var STEPS = [
+  {n:'1', title:'Cuéntenos el trabajo.', short:'Qué es, su código postal y su número.', body:'Elija lo que necesita, ponga su código postal y el mejor número para comunicarnos. Una línea sobre el trabajo ayuda, pero es opcional.'},
+  {n:'2', title:'Buscamos su profesional.', short:'Un profesional local que hace ese tipo de trabajo.', body:'Conectamos su solicitud con un profesional local que hace ese tipo de trabajo en su zona.'},
+  {n:'3', title:'Él le llama.', short:'Reciba un presupuesto. Contratarlo es decisión suya.', body:'Hablen del trabajo, reciba un presupuesto y decida. Usted nunca le debe nada a Downstreet.'}
+];
+var FAQS = [
+  {q:'¿De verdad es gratis?', a:'Sí. Los dueños de casa nunca le pagan a Downstreet. El profesional nos paga una comisión si usted lo contrata.'},
+  {q:'¿Tengo que contratar al profesional que me llama?', a:'No. Haga sus preguntas, reciba un presupuesto y decida. Si no le conviene, solo dígalo.'},
+  {q:'¿Quiénes son los profesionales?', a:'Contratistas locales que trabajan en Fort Worth y sus alrededores. [Agregar cómo los revisan: licencia, seguro, reseñas.]'},
+  {q:'¿Quién recibe mi número?', a:'Nosotros y el único profesional que le asignamos. No vendemos su número a una lista de empresas.'},
+  {q:'¿Dónde trabajan?', a:'Fort Worth y ciudades a unas 50 millas a la redonda. [Agregar la lista de ciudades.]'},
+  {q:'¿Por qué el nombre Downstreet?', a:'Porque el profesional indicado suele estar más cerca de lo que cree. Muchas veces, en la misma calle.'}
+];
+var PAGES = [
+  {id:'home', label:'Inicio'},
+  {id:'how', label:'Cómo funciona'},
+  {id:'services', label:'Servicios'},
+  {id:'faq', label:'Preguntas'}
+];
+var THEME = {
+  light: {'--bg': '#F5F3EE', '--text': '#1E2226', '--surface': '#FFFFFF', '--line': '#E4E2DC', '--muted': '#5E5A4E', '--body': '#45484C', '--field-line': '#BDB9AE', '--btn': '#1E2226', '--btn-text': '#F5C400', '--band': '#1E2226', '--tab-on': '#E8E5DD', '--chip-line': '#CFCBC0'},
+  dark: {'--bg': '#15181B', '--text': '#F5F3EE', '--surface': '#1F2428', '--line': '#33393F', '--muted': '#B5B0A3', '--body': '#C9C6BE', '--field-line': '#4A5057', '--btn': '#F5C400', '--btn-text': '#1E2226', '--band': '#22282D', '--tab-on': '#2C3237', '--chip-line': '#4A5057'}
+};
+function vars(mode) { var v = THEME[mode]; return Object.keys(v).map(function (k) { return k + ': ' + v[k] + ';'; }).join(' '); }
+var CHIP = 'min-height: 46px; padding: 10px 18px; border-radius: 999px; font: inherit; font-weight: 600; font-size: 16px; cursor: pointer; ';
+function chipStyle(on) {
+  return CHIP + (on ? 'background: var(--btn); color: var(--btn-text); border: 1px solid var(--btn)' : 'background: var(--surface); color: var(--text); border: 1px solid var(--chip-line)');
+}
+function dsSubmit(kind, data) { try { if (typeof window !== 'undefined' && window.DS_SUBMIT) { window.DS_SUBMIT(kind, data); } } catch (err) {} }
+function field(form, name) {
+  try {
+    var el = form && form.elements && form.elements.namedItem(name);
+    return el && el.value ? String(el.value).trim() : '';
+  } catch (err) { return ''; }
+}
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    var prefersDark = false;
+    try { prefersDark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches); } catch (err) {}
+    try { var saved = window.localStorage.getItem('downstreet-theme'); if (saved) { prefersDark = saved === 'dark'; } } catch (err) {}
+    this.state = { page: 'home', trade: '', open: 0, sent: false, sentName: '', sentTrade: '', sentZip: '', sentPhone: '', dark: prefersDark };
+  }
+  go(page, e) {
+    if (e && e.preventDefault) { e.preventDefault(); }
+    this.setState({ page: page });
+    try { window.scrollTo(0, 0); } catch (err) {}
+  }
+  pick(trade) {
+    this.setState({ trade: trade, page: 'home', sent: false });
+    try { window.scrollTo(0, 0); } catch (err) {}
+  }
+  renderVals() {
+    var self = this;
+    var st = this.state;
+    var page = st.page;
+    var mode = st.dark ? 'dark' : 'light';
+    var TAB_BASE = 'min-height: 44px; padding: 10px 14px; border: none; border-radius: 999px; font: inherit; font-size: 15px; white-space: nowrap; cursor: pointer; ';
+    var first = st.sentName ? st.sentName.split(' ')[0] : '';
+    var job = st.sentTrade && st.sentTrade !== 'Otro' ? st.sentTrade.toLowerCase() + ' ' : '';
+    var options = st.trade
+      ? [{v: st.trade, label: st.trade}].concat(ALL.filter(function (t) { return t !== st.trade; }).map(function (t) { return {v: t, label: t}; }))
+      : [{v: '', label: 'Elija un servicio'}].concat(ALL.map(function (t) { return {v: t, label: t}; }));
+    if (st.trade !== 'Otro') { options.push({v: 'Otro', label: 'Otro'}); }
+    function chips(list) {
+      return list.map(function (t) {
+        var on = st.trade === t;
+        return { label: t, pressed: on ? 'true' : 'false', style: chipStyle(on), pick: function () { self.pick(t); } };
+      });
+    }
+    return {
+      tabs: PAGES.map(function (p) {
+        var on = p.id === page;
+        return {
+          label: p.label,
+          current: on ? 'page' : undefined,
+          style: TAB_BASE + (on ? 'background: var(--tab-on); color: var(--text); font-weight: 600' : 'background: transparent; color: var(--body); font-weight: 500'),
+          go: function (e) { self.go(p.id, e); }
+        };
+      }),
+      isHome: page === 'home',
+      isHow: page === 'how',
+      isServices: page === 'services',
+      isFaq: page === 'faq',
+      showBand: true,
+      goHome: function (e) { self.go('home', e); },
+      goForm: function (e) { self.go('home', e); },
+      goServices: function (e) { self.go('services', e); },
+      pickOther: function () { self.pick('Otro'); },
+      m40: mk(mode, 40),
+      m32: mk(mode, 32),
+      brandAlt: 'Logotipo de Downstreet',
+      ctaLabel: 'Pedir un pro',
+      ctaClass: 'nav-cta btn-ink',
+      ctaGo: function (e) { self.go('home', e); },
+      footName: 'Downstreet',
+      footLine: '¿Necesita un profesional? Hay uno a la vuelta de la esquina.',
+      m56: mk(mode, 56),
+      mBand: mkL(MARK, 'dark', 240),
+      rootClass: st.dark ? 'ds dark' : 'ds',
+      rootVars: vars(mode),
+      isDark: !!st.dark,
+      isLight: !st.dark,
+      darkPressed: st.dark ? 'true' : 'false',
+      themeLabel: st.dark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro',
+      toggleTheme: function () { var next = !self.state.dark; try { window.localStorage.setItem('downstreet-theme', next ? 'dark' : 'light'); } catch (err) {} self.setState({ dark: next }); },
+      
+      points: POINTS,
+      common: chips(COMMON),
+      groups: GROUPS.map(function (g) { return { name: g.name, desc: g.desc, items: chips(g.items) }; }),
+      allServices: ALL,
+      serviceOptions: options,
+      stepsShort: STEPS.map(function (x, i) { return Object.assign({}, x, {alt: x.title, icon44: mkL(ICONS[i] || MARK, mode, 44)}); }),
+      steps: STEPS.map(function (x, i) { return Object.assign({}, x, {alt: x.title, icon64: mkL(ICONS[i] || MARK, mode, 64)}); }),
+      faqs: FAQS.map(function (f, i) {
+        var open = st.open === i;
+        return {
+          q: f.q, a: f.a, open: open,
+          expanded: open ? 'true' : 'false',
+          row: i < FAQS.length - 1 ? 'border-bottom: 1px solid var(--line)' : '',
+          sign: open ? '−' : '+',
+          signStyle: 'width: 32px; height: 32px; flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1; ' + (open ? 'background: var(--btn); color: var(--btn-text)' : 'background: #F5C400; color: #1E2226'),
+          toggle: function () { self.setState({ open: open ? -1 : i }); }
+        };
+      }),
+      sent: st.sent,
+      notSent: !st.sent,
+      thanksTitle: (first ? '¡Listo, ' + first + '!' : '¡Listo!'),
+      thanksBody: 'Estamos buscando un profesional para su solicitud' + (st.sentTrade && st.sentTrade !== 'Otro' ? ' de ' + st.sentTrade.toLowerCase() : '') + (st.sentZip ? ' cerca de ' + st.sentZip : '') + '. Un profesional local le llamará' + (st.sentPhone ? ' al ' + st.sentPhone : '') + '.',
+      submit: function (e) {
+        if (e && e.preventDefault) { e.preventDefault(); }
+        var form = e && (e.currentTarget || e.target);
+        var data = { name: field(form, 'name'), phone: field(form, 'phone'), service: field(form, 'service'), zip: field(form, 'zip'), details: field(form, 'details') };
+        dsSubmit('homeowner-request', data);
+        self.setState({ sent: true, sentName: data.name, sentTrade: data.service, sentZip: data.zip, sentPhone: data.phone });
+      },
+      reset: function () { self.setState({ sent: false, trade: '' }); },
+      _end: true
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -33,6 +33,8 @@ OUT = os.path.join(ROOT, 'docs')
 SITES = [
     {
         'id': 'home',
+        'lang': 'en',
+        'pair': 'home-es',
         'source': 'home.dc.html',
         'path': '',                       # served at the site root
         'favicon': 'assets/icon-home.svg',
@@ -51,6 +53,8 @@ SITES = [
     },
     {
         'id': 'pro',
+        'lang': 'en',
+        'pair': 'pro-es',
         'source': 'pro.dc.html',
         'path': 'pro/',
         'favicon': 'assets/icon-pro.svg',
@@ -78,7 +82,59 @@ SITES = [
         ],
         'noindex': {'report', 'portal'},
     },
+    {
+        'id': 'home-es',
+        'lang': 'es',
+        'pair': 'home',
+        'source': 'home.es.dc.html',
+        'path': 'es/',
+        'favicon': 'assets/icon-home.svg',
+        'og_image': 'assets/og-home-es.png',
+        'theme_color': '#F5F3EE',
+        'pages': [
+            ('home', '', 'Downstreet · ¿Necesita un profesional? Hay uno a la vuelta de la esquina.',
+             'Díganos qué necesita arreglar en su casa. Downstreet le consigue un profesional local en Fort Worth y unas 50 millas a la redonda. Gratis para dueños de casa.'),
+            ('how', 'como-funciona/', 'Cómo funciona · Downstreet',
+             'Cuéntenos el trabajo, buscamos un profesional local que haga ese trabajo y él le llama. Gratis para dueños de casa, sin obligación de contratar.'),
+            ('services', 'servicios/', 'Servicios · Downstreet',
+             'Treinta tipos de trabajos para el hogar, desde luces de Navidad y reparaciones generales hasta techos y remodelaciones, en Fort Worth y alrededores.'),
+            ('faq', 'preguntas/', 'Preguntas · Downstreet',
+             '¿Downstreet es gratis? ¿Quiénes son los profesionales? ¿Quién recibe su número? Respuestas a preguntas comunes.'),
+        ],
+    },
+    {
+        'id': 'pro-es',
+        'lang': 'es',
+        'pair': 'pro',
+        'source': 'pro.es.dc.html',
+        'path': 'es/pro/',
+        'favicon': 'assets/icon-pro.svg',
+        'og_image': 'assets/og-pro-es.png',
+        'theme_color': '#111417',
+        'pages': [
+            ('home', '', 'Downstreet Pro · Trabajos agendados a la vuelta de la esquina',
+             'Dueños de casa cerca de usted le piden ayuda a Downstreet. Agendamos la visita y le mandamos el trabajo. Pague el 20% de los primeros $10,000 y el 10% de lo que pase, solo después de que le pagan.'),
+            ('how', 'como-funciona/', 'Cómo funciona · Downstreet Pro',
+             'Buscamos dueños de casa, les devolvemos la llamada y agendamos la visita en su calendario. Usted hace el trabajo y nos dice cómo le fue.'),
+            ('pricing', 'precios/', 'Precios · Downstreet Pro',
+             'Sin cuota de inscripción, sin mensualidad, sin cobro por cliente. 20% de los primeros $10,000 que cobra en un trabajo y 10% de lo que pase. Pruebe la calculadora.'),
+            ('trades', 'oficios/', 'Oficios · Downstreet Pro',
+             'Treinta oficios, un pro por zona. Vea si el suyo está disponible en Fort Worth y alrededores.'),
+            ('areas', 'zonas/', 'Zona de servicio · Downstreet Pro',
+             'Fort Worth y unas 50 millas a la redonda. Revise su código postal.'),
+            ('rules', 'reglas-del-camino/', 'Reglas del camino · Downstreet Pro',
+             'Las reglas claras con las que trabaja cada pro de Downstreet, y respuestas a preguntas comunes.'),
+            ('apply', 'recibir-clientes/', 'Recibir clientes · Downstreet Pro',
+             'Reserve su oficio en su zona. Cuatro pasos rápidos.'),
+            ('report', 'reportar-trabajo/', 'Reportar un trabajo · Downstreet Pro',
+             'Díganos cómo le fue con un cliente: agendado, cotizado, ganado, perdido o cliente malo.'),
+            ('portal', 'portal/', 'Portal de pros · Downstreet Pro',
+             'Sus clientes, cómo va cada uno y las comisiones de los trabajos que ya le pagaron.'),
+        ],
+        'noindex': {'report', 'portal'},
+    },
 ]
+SITE_BY_ID = {s['id']: s for s in SITES}
 
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr'}
 # Python's HTML parser lowercases names; SVG needs these spelled exactly.
@@ -169,17 +225,19 @@ def read_source(path, links):
 
 
 PAGE = '''<!doctype html>
-<html lang="en" data-site-base="{site_base}">
+<html lang="{lang}" data-site-base="{site_base}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 {robots}<link rel="canonical" href="{canonical}">
+{alternates}
 <link rel="icon" href="{base}{favicon}" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{base}{touch_icon}">
 <meta name="theme-color" content="{theme_color}">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="{og_locale}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{canonical}">
@@ -192,7 +250,7 @@ PAGE = '''<!doctype html>
 </head>
 <body>
 <div id="app">{prerendered}</div>
-<noscript><p style="font-family:system-ui,sans-serif;padding:16px">Turn on JavaScript to use the forms and calculators on this site.</p></noscript>
+<noscript><p style="font-family:system-ui,sans-serif;padding:16px">{noscript}</p></noscript>
 <script src="{base}assets/config.js"></script>
 <script src="{base}assets/morphdom.min.js"></script>
 <script src="{base}assets/runtime.js"></script>
@@ -240,7 +298,7 @@ a{{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-
 <img src="{base}assets/icon-home.svg" width="56" height="56" alt="Downstreet logo">
 <h1>Wrong turn.</h1>
 <p>That page isn’t here. It may have moved, or the link has a typo.</p>
-<nav><a class="a1" href="{base}">Downstreet home</a><a class="a2" href="{base}pro/">For contractors</a></nav>
+<nav><a class="a1" href="{base}">Downstreet home</a><a class="a2" href="{base}pro/">For contractors</a><a class="a2" href="{base}es/" lang="es">En español</a></nav>
 </main>
 </body>
 </html>
@@ -284,25 +342,33 @@ def main():
     open(os.path.join(OUT, '.nojekyll'), 'w').write('')
     open(os.path.join(OUT, '404.html'), 'w').write(NOT_FOUND.format(base=base))
 
-    links = {'DownstreetIsoWebsite.dc.html': base, 'DownstreetProSite.dc.html': base + 'pro/'}
     written = []   # (site, page_id, file path, url)
     for site in SITES:
+        lang_root = '' if site['lang'] == 'en' else site['lang'] + '/'
+        links = {'DownstreetIsoWebsite.dc.html': base + lang_root, 'DownstreetProSite.dc.html': base + lang_root + 'pro/'}
         helmet, template, code = read_source(os.path.join(SRC, site['source']), links)
         site_base = base + site['path']
         routes = {pid: route for pid, route, _, _ in site['pages']}
         titles = {pid: title for pid, _, title, _ in site['pages']}
+        pair = SITE_BY_ID[site['pair']]
+        alt = {'base': base + pair['path'], 'routes': {pid: route for pid, route, _, _ in pair['pages']}}
         bundle = ('/* Built by tools/build.py from src/%s. Edit the source, then rebuild. */\n'
                   '(function () {\n'
                   'var TEMPLATE = %s;\n'
                   'function factory(DCLogic) {\n%s\nreturn Component;\n}\n'
-                  'DC.mount({ template: TEMPLATE, factory: factory, routes: %s, titles: %s });\n'
+                  'DC.mount({ template: TEMPLATE, factory: factory, routes: %s, titles: %s, alt: %s });\n'
                   '})();\n') % (site['source'], json.dumps(template, ensure_ascii=False, separators=(',', ':')),
-                                code.strip(), json.dumps(routes), json.dumps(titles, ensure_ascii=False))
+                                code.strip(), json.dumps(routes), json.dumps(titles, ensure_ascii=False), json.dumps(alt))
         open(os.path.join(OUT, 'assets', site['id'] + '.js'), 'w', encoding='utf-8').write(bundle)
         for pid, route, title, desc in site['pages']:
             url = site_url + site['path'] + route
             robots = '<meta name="robots" content="noindex">\n' if pid in site.get('noindex', ()) else ''
-            page = PAGE.format(site_base=site_base, base=base, title=html.escape(title), desc=html.escape(desc),
+            alt_url = site_url + pair['path'] + alt['routes'].get(pid, '')
+            en_url, es_url = (url, alt_url) if site['lang'] == 'en' else (alt_url, url)
+            alternates = (f'<link rel="alternate" hreflang="en" href="{en_url}">\n'
+                          f'<link rel="alternate" hreflang="es" href="{es_url}">\n'
+                          f'<link rel="alternate" hreflang="x-default" href="{en_url}">')
+            page = PAGE.format(noscript=('Active JavaScript para usar los formularios y las calculadoras de este sitio.' if site['lang'] == 'es' else 'Turn on JavaScript to use the forms and calculators on this site.'), lang=site['lang'], alternates=alternates, og_locale='es_US' if site['lang'] == 'es' else 'en_US', site_base=site_base, base=base, title=html.escape(title), desc=html.escape(desc),
                                robots=robots, canonical=url, favicon=site['favicon'], touch_icon='assets/touch-' + site['id'] + '.png',
                                theme_color=site['theme_color'], site_url=site_url, og_image=site['og_image'],
                                helmet=helmet, prerendered='', site_id=site['id'])
