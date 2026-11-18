@@ -12,6 +12,7 @@ then the runtime takes over for the interactive parts.
 Needs Python 3 and Playwright (pip install playwright && playwright install chromium).
 """
 import argparse
+import hashlib
 import html
 import http.server
 import json
@@ -251,10 +252,10 @@ PAGE = '''<!doctype html>
 <body>
 <div id="app">{prerendered}</div>
 <noscript><p style="font-family:system-ui,sans-serif;padding:16px">{noscript}</p></noscript>
-<script src="{base}assets/config.js"></script>
-<script src="{base}assets/morphdom.min.js"></script>
-<script src="{base}assets/runtime.js"></script>
-<script src="{base}assets/{site_id}.js"></script>
+<script src="{base}assets/config.js?v={v_config}"></script>
+<script src="{base}assets/morphdom.min.js?v={v_morph}"></script>
+<script src="{base}assets/runtime.js?v={v_runtime}"></script>
+<script src="{base}assets/{site_id}.js?v={v_site}"></script>
 </body>
 </html>
 '''
@@ -303,6 +304,10 @@ a{{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-
 </body>
 </html>
 '''
+
+
+def vhash(path):
+    return hashlib.sha1(open(path, 'rb').read()).hexdigest()[:10]
 
 
 def serve(directory):
@@ -368,7 +373,8 @@ def main():
             alternates = (f'<link rel="alternate" hreflang="en" href="{en_url}">\n'
                           f'<link rel="alternate" hreflang="es" href="{es_url}">\n'
                           f'<link rel="alternate" hreflang="x-default" href="{en_url}">')
-            page = PAGE.format(noscript=('Active JavaScript para usar los formularios y las calculadoras de este sitio.' if site['lang'] == 'es' else 'Turn on JavaScript to use the forms and calculators on this site.'), lang=site['lang'], alternates=alternates, og_locale='es_US' if site['lang'] == 'es' else 'en_US', site_base=site_base, base=base, title=html.escape(title), desc=html.escape(desc),
+            asset = lambda n: vhash(os.path.join(OUT, 'assets', n))
+            page = PAGE.format(v_config=asset('config.js'), v_morph=asset('morphdom.min.js'), v_runtime=asset('runtime.js'), v_site=asset(site['id'] + '.js'), noscript=('Active JavaScript para usar los formularios y las calculadoras de este sitio.' if site['lang'] == 'es' else 'Turn on JavaScript to use the forms and calculators on this site.'), lang=site['lang'], alternates=alternates, og_locale='es_US' if site['lang'] == 'es' else 'en_US', site_base=site_base, base=base, title=html.escape(title), desc=html.escape(desc),
                                robots=robots, canonical=url, favicon=site['favicon'], touch_icon='assets/touch-' + site['id'] + '.png',
                                theme_color=site['theme_color'], site_url=site_url, og_image=site['og_image'],
                                helmet=helmet, prerendered='', site_id=site['id'])
