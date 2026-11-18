@@ -156,23 +156,68 @@
   };
 
   // ---- form submissions: posted to the URL in assets/config.js
+  var dsLoadedAt = Date.now();
+  // Sends one form to the Google Sheet. Returns a promise that resolves once the sheet confirms
+  // the row was saved, and rejects if it could not be saved (after one automatic retry).
   window.DS_SUBMIT = function (kind, data) {
     var config = window.DS_CONFIG || {};
-    var payload = { kind: kind, data: data || {}, page: location.href, sentAt: new Date().toISOString() };
+    var each = function (sel, fn) { return Array.prototype.map.call(document.querySelectorAll(sel), fn); };
+    var meta = {
+      lang: (document.documentElement.getAttribute('lang') || 'en').slice(0, 2),
+      msOnPage: Date.now() - dsLoadedAt,
+      ua: (navigator.userAgent || '').slice(0, 200),
+      referrer: (document.referrer || '').slice(0, 300)
+    };
+    var hp = each('input[name="ds_hp"]', function (i) { return i.value; }).join('');
+    if (hp) { meta.hp = hp.slice(0, 200); }
+    var consent = each('[data-consent]', function (el) { return (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim(); })
+      .filter(function (t) { return t; }).join(' | ');
+    if (consent) { meta.consentText = consent; }
+    var payload = {
+      kind: kind, data: data || {}, meta: meta, page: location.href, sentAt: new Date().toISOString(),
+      id: Date.now().toString(36) + Math.random().toString(36).slice(2, 10)
+    };
     if (!config.submitUrl) {
       if (window.console) { console.info('[Downstreet] Form received, but no submitUrl is set in assets/config.js yet.', payload); }
-      return;
+      return Promise.resolve({ok: true, saved: false});
     }
-    try {
-      fetch(config.submitUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        keepalive: true,
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload)
-      }).catch(function () {});
-    } catch (err) {}
+    function attempt() {
+      var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 20000) : null;
+      // No custom headers: a plain-text POST needs no CORS preflight, which Apps Script can't answer.
+      return fetch(config.submitUrl, {method: 'POST', body: JSON.stringify(payload), redirect: 'follow', signal: ctrl ? ctrl.signal : undefined})
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (timer) { clearTimeout(timer); }
+          if (!j || !j.ok) { throw new Error((j && j.error) || 'not saved'); }
+          return j;
+        }, function (err) { if (timer) { clearTimeout(timer); } throw err; });
+    }
+    return attempt().catch(function () {
+      return new Promise(function (res) { setTimeout(res, 1500); }).then(attempt);
+    });
   };
+
+
+  // A redraw must not wipe what someone typed. Fields the template doesn't control (no value bound)
+  // keep their current value; a dropdown keeps its pick unless the redraw changed its option list.
+  function keepTyping(from, to) {
+    var tag = from.nodeName;
+    if (tag === 'INPUT') {
+      if (/^(checkbox|radio|button|submit|reset|hidden|file)$/i.test(from.type || '')) { return; }
+      if (!to.hasAttribute('value')) { to.value = from.value; }
+    } else if (tag === 'TEXTAREA') {
+      if (!to.textContent) { to.value = from.value; }
+    } else if (tag === 'SELECT') {
+      var picked = false, i;
+      for (i = 0; i < to.options.length; i++) { if (to.options[i].hasAttribute('selected')) { picked = true; break; } }
+      if (picked || to.options.length !== from.options.length) { return; }
+      for (i = 0; i < to.options.length; i++) { if (to.options[i].value !== from.options[i].value) { return; } }
+      for (i = 0; i < to.options.length; i++) {
+        if (to.options[i].value === from.value) { to.options[i].setAttribute('selected', ''); } else { to.options[i].removeAttribute('selected'); }
+      }
+    }
+  }
 
   function mount(site) {
     var root = document.getElementById('app');
@@ -208,6 +253,7 @@
       morphdom(root, next, {
         childrenOnly: true,
         onBeforeElUpdated: function (from, to) {
+          keepTyping(from, to);
           from.__dc = to.__dc || null;
           bind(from);
           return true;

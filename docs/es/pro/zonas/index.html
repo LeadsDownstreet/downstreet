@@ -137,7 +137,8 @@ body{margin:0}
 <div id="request" style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px">
 
 
-<form style="display: flex; flex-direction: column; gap: 14px">
+<form style="position: relative; display: flex; flex-direction: column; gap: 14px">
+<input type="text" name="ds_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0">
 <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Pedir un oficio o una zona</h2>
 <label style="display: flex; flex-direction: column; gap: 7px; font-size: 15px; font-weight: 600; color: var(--text)">Su oficio
 <input type="text" name="trade" required="" value="" style="min-height: 50px; width: 100%; box-sizing: border-box; border: 1px solid var(--field-line); border-radius: 12px; padding: 10px 14px; font: inherit; font-size: 16px; font-weight: 400; background: var(--input-bg); color: var(--text)">
@@ -150,6 +151,7 @@ body{margin:0}
 <input type="text" name="contact" required="" value="" style="min-height: 50px; width: 100%; box-sizing: border-box; border: 1px solid var(--field-line); border-radius: 12px; padding: 10px 14px; font: inherit; font-size: 16px; font-weight: 400; background: var(--input-bg); color: var(--text)">
 </label>
 </div>
+
 <button type="submit" class="btn-y" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 8px; border: none; background: #3B8CFF; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap; align-self: flex-start">Enviar solicitud</button>
 </form>
 
@@ -223,7 +225,7 @@ body{margin:0}
 <noscript><p style="font-family:system-ui,sans-serif;padding:16px">Active JavaScript para usar los formularios y las calculadoras de este sitio.</p></noscript>
 <script src="/downstreet/assets/config.js?v=f0c7a7b430"></script>
 <script src="/downstreet/assets/morphdom.min.js?v=d5851599ae"></script>
-<script src="/downstreet/assets/runtime.js?v=db14af2d62"></script>
-<script src="/downstreet/assets/pro-es.js?v=50fa5f0eeb"></script>
+<script src="/downstreet/assets/runtime.js?v=3a29f61d65"></script>
+<script src="/downstreet/assets/pro-es.js?v=ea6a3eddbc"></script>
 </body>
 </html>

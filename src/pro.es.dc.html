@@ -748,7 +748,8 @@ body{margin:0}
 <div style="display: flex; flex-direction: column; gap: 10px"><h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Recibido.</h2><p style="margin: 0; color: var(--body)">Le avisamos cuando haya lugar para {{req.what}}.</p><button type="button" onClick="{{req.again}}" style="min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 8px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; white-space: nowrap; align-self: flex-start">Enviar otra</button></div>
 </sc-if>
 <sc-if value="{{req.notSent}}" hint-placeholder-val="{{ true }}">
-<form onSubmit="{{req.submit}}" style="display: flex; flex-direction: column; gap: 14px">
+<form onSubmit="{{req.submit}}" style="position: relative; display: flex; flex-direction: column; gap: 14px">
+<input type="text" name="ds_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0">
 <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em">Pedir un oficio o una zona</h2>
 <label style="display: flex; flex-direction: column; gap: 7px; font-size: 15px; font-weight: 600; color: var(--text)">Su oficio
 <input type="text" name="trade" required="required" value="{{req.trade}}" onChange="{{req.setTrade}}" style="min-height: 50px; width: 100%; box-sizing: border-box; border: 1px solid var(--field-line); border-radius: 12px; padding: 10px 14px; font: inherit; font-size: 16px; font-weight: 400; background: var(--input-bg); color: var(--text)">
@@ -761,7 +762,8 @@ body{margin:0}
 <input type="text" name="contact" required="required" value="{{req.contact}}" onChange="{{req.setContact}}" style="min-height: 50px; width: 100%; box-sizing: border-box; border: 1px solid var(--field-line); border-radius: 12px; padding: 10px 14px; font: inherit; font-size: 16px; font-weight: 400; background: var(--input-bg); color: var(--text)">
 </label>
 </div>
-<button type="submit" class="btn-y" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 8px; border: none; background: #3B8CFF; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap; align-self: flex-start">Enviar solicitud</button>
+<sc-if value="{{req.hasErr}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #3B8CFF; font-weight: 600">{{req.err}}</p></sc-if>
+<button type="submit" class="btn-y" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 8px; border: none; background: #3B8CFF; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap; align-self: flex-start">{{req.btn}}</button>
 </form>
 </sc-if>
 </div>
@@ -919,7 +921,7 @@ body{margin:0}
 <div style="padding: 16px 18px; border-radius: 16px; background: var(--surface-2); display: flex; gap: 14px; align-items: center; flex-wrap: wrap">
 <span style="font-size: 13px; color: var(--muted)">En un trabajo de {{ap.exJob}} pagaría</span><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 26px; color: var(--accent-text)">{{ap.exFee}}</span><span style="font-size: 13px; color: var(--muted)">y solo después de que el cliente le pague.</span>
 </div>
-<button type="button" onClick="{{ap.toggleAgree}}" aria-pressed="{{ap.agreePressed}}" style="{{ap.agreeStyle}}"><span style="{{ap.agreeBox}}" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12.5 l4.5 4.5 L19 7.5"/></svg></span><span>Leí las reglas del camino y estoy de acuerdo con que me cobren el 20% de los primeros $10,000 y el 10% de lo que pase de eso en los trabajos que cierre.</span></button>
+<button type="button" data-consent onClick="{{ap.toggleAgree}}" aria-pressed="{{ap.agreePressed}}" style="{{ap.agreeStyle}}"><span style="{{ap.agreeBox}}" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12.5 l4.5 4.5 L19 7.5"/></svg></span><span>Leí las reglas del camino y estoy de acuerdo con que me cobren el 20% de los primeros $10,000 y el 10% de lo que pase de eso en los trabajos que cierre.</span></button>
 </div>
 </sc-if>
 <sc-if value="{{ap.hasErr}}" hint-placeholder-val="{{ false }}">
@@ -929,7 +931,7 @@ body{margin:0}
 <sc-if value="{{ap.canBack}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ap.back}}" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 22px; border-radius: 8px; border: 1.5px solid var(--line-strong); background: transparent; color: var(--text); font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap">Atrás</button></sc-if>
 <sc-if value="{{ap.s0}}" hint-placeholder-val="{{ true }}"><span></span></sc-if>
 <sc-if value="{{ap.notLast}}" hint-placeholder-val="{{ true }}"><button type="button" class="btn-y" onClick="{{ap.next}}" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 8px; border: none; background: #3B8CFF; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap">Siguiente <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"/></svg></button></sc-if>
-<sc-if value="{{ap.isLast}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn-y" onClick="{{ap.submit}}" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 8px; border: none; background: #3B8CFF; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap">Enviar solicitud <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"/></svg></button></sc-if>
+<sc-if value="{{ap.isLast}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn-y" onClick="{{ap.submit}}" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 8px; border: none; background: #3B8CFF; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap">{{ap.btn}} <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"/></svg></button></sc-if>
 </div>
 </div>
 </sc-if>
@@ -999,7 +1001,7 @@ body{margin:0}
 </div>
 </sc-if>
 <sc-if value="{{rp.hasErr}}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #3B8CFF; font-weight: 600">{{rp.err}}</p></sc-if>
-<button type="button" class="btn-y" onClick="{{rp.submit}}" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 8px; border: none; background: #3B8CFF; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap; align-self: flex-start">Enviar reporte <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"/></svg></button>
+<button type="button" class="btn-y" onClick="{{rp.submit}}" style="min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 8px; border: none; background: #3B8CFF; color: #1E2226; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; white-space: nowrap; align-self: flex-start">{{rp.btn}} <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: block; flex: none"><path d="M5 12 H18 M13 7 L18 12 L13 17"/></svg></button>
 </div>
 </sc-if>
 </div>
@@ -1221,7 +1223,8 @@ var LEADS = [
 var CHIP = 'min-height: 44px; display: inline-flex; align-items: center; padding: 9px 16px; border-radius: 8px; font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; ';
 function chipStyle(on) { return CHIP + (on ? 'background: #3B8CFF; color: #1E2226; border: 1.5px solid #3B8CFF' : 'background: var(--surface); color: var(--text); border: 1.5px solid var(--line-strong)'); }
 
-function dsSubmit(kind, data) { try { if (typeof window !== 'undefined' && window.DS_SUBMIT) { window.DS_SUBMIT(kind, data); } } catch (err) {} }
+var SEND_FAIL = 'No se pudo enviar. Revise su conexión e intente de nuevo.', SENDING = 'Enviando…';
+function dsSubmit(kind, data) { try { if (typeof window !== 'undefined' && window.DS_SUBMIT) { return window.DS_SUBMIT(kind, data); } } catch (err) { return Promise.reject(err); } return Promise.resolve({ok: true, saved: false}); }
 function inSeason() { try { var m = new Date().getMonth(); return m >= 9; } catch (err) { return true; } }
 class Component extends DCLogic {
   constructor(props) {
@@ -1345,11 +1348,11 @@ class Component extends DCLogic {
       agreeStyle: 'display: flex; gap: 14px; align-items: flex-start; text-align: left; padding: 16px; border-radius: 16px; font: inherit; font-size: 15.5px; line-height: 1.45; color: var(--text); cursor: pointer; background: transparent; border: 1.5px solid ' + (ap.agree ? '#3B8CFF' : 'var(--line-strong)'),
       agreeBox: 'width: 26px; height: 26px; flex: none; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; ' + (ap.agree ? 'background: #3B8CFF; color: #1E2226; border: 1.5px solid #3B8CFF' : 'background: transparent; color: transparent; border: 1.5px solid var(--line-strong)'),
       toggleAgree: function () { self.patch('ap', {agree: !self.state.ap.agree, err: ''}); },
-      hasErr: !!ap.err, err: ap.err,
+      hasErr: !!ap.err, err: ap.err, btn: ap.sending ? SENDING : 'Enviar solicitud',
       canBack: step > 0, notLast: step < 3, isLast: step === 3,
       back: function () { self.patch('ap', {step: Math.max(0, self.state.ap.step - 1), err: ''}); },
       next: function () { var m = validate(self.state.ap.step); if (m) { self.patch('ap', {err: m}); return; } self.patch('ap', {step: self.state.ap.step + 1, err: ''}); },
-      submit: function () { var m = validate(3); if (m) { self.patch('ap', {err: m}); return; } var a = self.state.ap; dsSubmit('pro-application', {business: a.biz, name: a.name, phone: a.phone, email: a.email, website: a.web, trade: a.trade, tradeOther: a.other, shopZip: a.zip, driveUpTo: a.drive, visitWindows: a.windows.join(', '), smallestJob: a.min, licensedInsured: a.lic, agreedToTerms: a.agree ? 'yes' : 'no'}); self.patch('ap', {done: true, err: ''}); try { window.scrollTo(0, 0); } catch (err) {} },
+      submit: function () { var m = validate(3); if (m) { self.patch('ap', {err: m}); return; } var a = self.state.ap; if (a.sending) { return; } self.patch('ap', {sending: true, err: ''}); dsSubmit('pro-application', {business: a.biz, name: a.name, phone: a.phone, email: a.email, website: a.web, trade: a.trade, tradeOther: a.other, shopZip: a.zip, driveUpTo: a.drive, visitWindows: a.windows.join(', '), smallestJob: a.min, licensedInsured: a.lic, agreedToTerms: a.agree ? 'yes' : 'no'}).then(function () { self.patch('ap', {sending: false, done: true, err: ''}); try { window.scrollTo(0, 0); } catch (err) {} }, function () { self.patch('ap', {sending: false, err: SEND_FAIL}); }); },
       firstComma: ap.name ? ', ' + ap.name.split(' ')[0] : '',
       phoneOrYou: ap.phone ? ' al ' + ap.phone : '',
       tradeLower: ap.trade ? lower(ap.trade) : 'su oficio',
@@ -1370,7 +1373,7 @@ class Component extends DCLogic {
       fee: money(rFee),
       feeLine: rAmt > 10000 ? '$10,000 × 20% + ' + money(rAmt - 10000) + ' × 10%' : money(rAmt) + ' × 20%',
       due: due ? 'Vence el ' + due : 'Se paga dentro de 7 días después de cobrar',
-      hasErr: !!rp.err, err: rp.err,
+      hasErr: !!rp.err, err: rp.err, btn: rp.sending ? SENDING : 'Enviar reporte',
       again: function () { self.setState({rp: {id: '', outcome: '', amount: '', date: '', reason: '', done: false, err: '', doneText: ''}}); },
       submit: function () {
         var r = self.state.rp, id = (r.id || '').trim() || 'Este cliente', a = Number(digits(r.amount)) || 0, d = dueDate(r.date, 7);
@@ -1380,9 +1383,12 @@ class Component extends DCLogic {
         var text = r.outcome === 'Ganado' ? id + ' quedó como ganado. La comisión es de ' + money(fee(a)) + (d ? ' y vence el ' + d + '.' : ' y se paga dentro de 7 días después de cobrar.')
           : r.outcome === 'Cliente malo' ? id + ' quedó acreditado (' + lower(r.reason) + '). No cuenta en su contra.'
           : id + ' quedó como ' + lower(r.outcome) + '. Gracias por mantenernos al tanto.';
-        dsSubmit('job-report', {lead: id, outcome: r.outcome, amountCollected: a ? a : '', collectedOn: r.date || '', badLeadReason: r.outcome === 'Cliente malo' ? r.reason : '', fee: r.outcome === 'Ganado' ? fee(a) : 0});
-        self.patch('rp', {done: true, err: '', doneText: text});
-        try { window.scrollTo(0, 0); } catch (err) {}
+        if (r.sending) { return; }
+        self.patch('rp', {sending: true, err: ''});
+        dsSubmit('job-report', {lead: id, outcome: r.outcome, amountCollected: a ? a : '', collectedOn: r.date || '', badLeadReason: r.outcome === 'Cliente malo' ? r.reason : '', fee: r.outcome === 'Ganado' ? fee(a) : 0}).then(function () {
+          self.patch('rp', {sending: false, done: true, err: '', doneText: text});
+          try { window.scrollTo(0, 0); } catch (err) {}
+        }, function () { self.patch('rp', {sending: false, err: SEND_FAIL}); });
       }
     };
 
@@ -1459,13 +1465,13 @@ class Component extends DCLogic {
       zip: {value: z, isIn: inArea, isOut: full && !inArea, set: function (e) { self.setState({zip: digits(e && e.target ? e.target.value : '').slice(0, 5)}); }},
       weDo: WE_DO, youDo: YOU_DO,
       req: {
-        sent: st.req.sent, notSent: !st.req.sent, trade: st.req.trade, zip: st.req.zip, contact: st.req.contact,
+        sent: st.req.sent, notSent: !st.req.sent, hasErr: !!st.req.err, err: st.req.err || '', btn: st.req.sending ? SENDING : 'Enviar solicitud', trade: st.req.trade, zip: st.req.zip, contact: st.req.contact,
         what: (st.req.trade ? lower(st.req.trade) : 'su oficio') + (st.req.zip ? ' cerca de ' + st.req.zip : ''),
         setTrade: function (e) { self.patch('req', {trade: e && e.target ? e.target.value : ''}); },
         setZip: function (e) { self.patch('req', {zip: digits(e && e.target ? e.target.value : '').slice(0, 5)}); },
         setContact: function (e) { self.patch('req', {contact: e && e.target ? e.target.value : ''}); },
-        submit: function (e) { if (e && e.preventDefault) { e.preventDefault(); } var q = self.state.req; dsSubmit('area-request', {trade: q.trade, zip: q.zip, contact: q.contact}); self.patch('req', {sent: true}); },
-        again: function () { self.setState({req: {trade: '', zip: '', contact: '', sent: false}}); }
+        submit: function (e) { if (e && e.preventDefault) { e.preventDefault(); } var q = self.state.req; if (q.sending) { return; } self.patch('req', {sending: true, err: ''}); dsSubmit('area-request', {trade: q.trade, zip: q.zip, contact: q.contact}).then(function () { self.patch('req', {sending: false, sent: true}); }, function () { self.patch('req', {sending: false, err: SEND_FAIL}); }); },
+        again: function () { self.setState({req: {trade: '', zip: '', contact: '', sent: false, sending: false, err: ''}}); }
       },
       faqs: FAQS.map(function (q, i) {
         var open = st.open === i;

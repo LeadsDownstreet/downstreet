@@ -1,40 +1,35 @@
-# Saving form submissions to Google Sheets
+# Form receiver (Google Apps Script)
 
-The website's four forms (homeowner requests, pro applications, area requests, job reports)
-send what people type to one Google Apps Script, which writes each one as a row in a Google Sheet.
-Until this is set up, the forms still work on the page, but nothing is saved.
+Every form on both sites, in English and Spanish, posts to this script. It files each one into
+the **Downstreet website forms** Google Sheet (owned by leadsbydelta@gmail.com):
 
-## Setup (about 10 minutes, once)
+| Tab | From | Notes |
+|---|---|---|
+| Homeowner requests | "Get my pro" form | Lead ID (DS-1001…), Status dropdown, exact consent wording shown |
+| Pro applications | 4-step "Get leads" application | Status dropdown, terms wording shown |
+| Area requests | "Request a trade or area" | |
+| Job reports | "Report a job" | Fee is already calculated |
+| Spam | Anything that filled the hidden field or was sent within 2.5 s of opening the page | |
 
-1. Make a new Google Sheet, for example "Downstreet website submissions".
-   A fresh sheet is safest; the script adds its own tabs and columns.
-2. In the sheet: **Extensions › Apps Script**.
-3. Delete what's in the editor, paste in all of `Code.gs` from this folder, and click **Save**.
-4. Optional: put your email between the quotes in `NOTIFY_EMAIL` to get an email for every homeowner request.
-5. Click **Deploy › New deployment**. Next to "Select type" click the gear and pick **Web app**.
+Spanish answers are stored in English (the Language column says which site it came from).
+New homeowner requests and pro applications email the script owner.
+
+## Deploy (once)
+
+1. Open the sheet → **Extensions → Apps Script**. Paste `Code.gs` over everything and save.
+2. **Deploy → New deployment** → gear icon → **Web app**.
    - Execute as: **Me**
    - Who has access: **Anyone**
-6. Click **Deploy**, approve the permissions Google asks for, and copy the **Web app URL**
-   (it ends in `/exec`).
-7. Open `docs/assets/config.js` in this repository and paste that URL between the quotes:
+3. **Deploy**, then **Authorize access** and allow it (Google shows an "unverified app" warning for
+   your own scripts: **Advanced → Go to Downstreet form receiver**).
+4. Copy the **Web app URL** (ends in `/exec`) into `docs/assets/config.js`, commit and push.
 
-   ```js
-   window.DS_CONFIG = { submitUrl: 'https://script.google.com/macros/s/.../exec' };
-   ```
+## Changing the script later
 
-   Commit the change. The site picks it up within a minute or two.
-
-## Test it
-
-Fill in the homeowner form on the live site. A row should appear in the "Homeowner requests" tab.
-
-## If you change the script later
-
-Use **Deploy › Manage deployments › Edit › Version: New version**. That keeps the same URL.
+**Deploy → Manage deployments → pencil → Version: New version → Deploy.** That keeps the same URL.
 A brand-new deployment gets a new URL, which you would have to paste into `config.js` again.
 
-## Good to know
+## Testing without Google
 
-- Anyone who finds the URL could post junk rows to the sheet. That is normal for a lead form;
-  if it becomes a problem, add a spam check before going big on ads.
-- The homeowner form collects names and phone numbers. Keep the sheet's sharing tight.
+`tools/forms-test/` has a stand-in for Apps Script (`mock.js` runs 23 checks on `Code.gs`;
+`server.js` serves it locally so the real site forms can be tested in a browser).
