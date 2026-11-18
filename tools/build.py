@@ -268,10 +268,10 @@ ICON_HOME = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
 </svg>
 '''
 ICON_PRO = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-<style>.m{stroke:#1E2226}@media (prefers-color-scheme: dark){.m{stroke:#F5F3EE}}</style>
-<path class="m" d="M26 98 V62 A36 36 0 0 1 62 26 H98" fill="none" stroke-width="26"/>
-<path d="M26 98 V62 A36 36 0 0 1 62 26 H98" fill="none" stroke="#F5C400" stroke-width="3.6" stroke-dasharray="7 6"/>
-<path d="M69 56 L84 68 V84 H54 V68 Z" fill="#F5C400" stroke="#F5C400" stroke-width="3" stroke-linejoin="round"/>
+<style>.m{fill:#1E2226;stroke:#1E2226}@media (prefers-color-scheme: dark){.m{fill:#F5F3EE;stroke:#F5F3EE}}</style>
+<path class="m" d="M50 6 L89 36 V72 H11 V36 Z" stroke-width="6" stroke-linejoin="round"/>
+<path d="M40 42 H60 V72 H40 Z" fill="#3B8CFF"/>
+<path d="M42 79 H58 L68 98 H32 Z" fill="#3B8CFF"/>
 </svg>
 '''
 
@@ -429,7 +429,7 @@ def main():
             icon.set_viewport_size({'width': 180, 'height': 180})
             svg = open(os.path.join(OUT, site['favicon'])).read().replace('@media (prefers-color-scheme: dark)', '@media not all')
             icon.set_content('<body style="margin:0;background:%s;display:flex;align-items:center;justify-content:center;height:180px">'
-                             '<div style="width:124px;height:124px">%s</div></body>' % ('#F5C400', svg.replace('<svg ', '<svg width="124" height="124" ')))
+                             '<div style="width:124px;height:124px">%s</div></body>' % ('#3B8CFF' if site['id'].startswith('pro') else '#F5C400', svg.replace('<svg ', '<svg width="124" height="124" ')))
             icon.screenshot(path=os.path.join(OUT, 'assets', 'touch-' + site['id'] + '.png'))
         browser.close()
     srv.shutdown()
