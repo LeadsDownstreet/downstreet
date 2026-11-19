@@ -36,6 +36,13 @@ def main():
         def new(width, height=900, **kw):
             ctx = browser.new_context(viewport={'width': width, 'height': height}, **kw)
             p = ctx.new_page()
+            sent = p.sent = []
+            # Never send test submissions to the real Google Sheet: answer them here instead.
+            def fake_sheet(route, *_):
+                sent.append(route.request.post_data or '')
+                route.fulfill(status=200, headers={'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
+                              body='{"ok":true,"leadId":"DS-TEST"}')
+            ctx.route('https://script.google.com/**', fake_sheet)
             p.errors = []
             p.on('pageerror', lambda e: p.errors.append(str(e)[:300]))
             p.on('console', lambda m: m.type == 'error' and p.errors.append(m.text[:300]))
@@ -113,8 +120,8 @@ def main():
         logs = []
         p.on('console', lambda m: logs.append(m.text))
         p.get_by_role('button', name='Send application').click()
-        p.wait_for_timeout(300)
-        if 'pro-application' not in ' '.join(logs) and 'Form received' not in ' '.join(logs):
+        p.wait_for_timeout(1200)
+        if not any('pro-application' in x for x in p.sent) and 'Form received' not in ' '.join(logs):
             notes.append('Application: no submission was logged')
         if 'Cowtown' not in p.inner_text('body') and 'fencing' not in p.inner_text('body').lower():
             problems.append('Application: the done screen did not show')
@@ -147,11 +154,11 @@ def main():
         p.locator('input[name="name"]').fill('Dana Lopez')
         p.locator('input[name="phone"]').fill('8175550199')
         p.locator('form button[type="submit"]').click()
-        p.wait_for_timeout(300)
+        p.wait_for_timeout(1200)
         text = p.inner_text('body')
         if 'Dana' not in text:
             problems.append('Homeowner form: the thank-you message did not show')
-        if not any('homeowner-request' in l or 'Form received' in l for l in logs):
+        if not any('homeowner-request' in x for x in p.sent) and not any('Form received' in l for l in logs):
             notes.append('Homeowner form: no submission was logged')
         p.get_by_role('button', name='FAQ').first.click()
         p.wait_for_timeout(200)
