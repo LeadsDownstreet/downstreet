@@ -66,6 +66,12 @@ expect(r.leadId === 'DS-1002' && row2[hdr.indexOf('Service')] === 'Fencing' && r
 expect(/phone looks wrong/.test(row2[hdr.indexOf('Check')]) && /zip is not 5 digits/.test(row2[hdr.indexOf('Check')]) && /no consent/.test(row2[hdr.indexOf('Check')]), 'problems flagged: ' + row2[hdr.indexOf('Check')]);
 expect(/\(Spanish\)/.test(mails[1].subject), 'Spanish noted in email subject');
 
+r = post({kind: 'homeowner-request', id: 'd5', data: {name: 'Ann L', phone: '(817) 555-0123', service: 'Roofing', zip: '76116'}, meta: meta({consentText: 'By tapping…'})});
+const row3 = H.rows[3];
+expect(r.leadId === 'DS-1003' && /repeat: same phone as DS-1001/.test(row3[hdr.indexOf('Check')]), 'repeat phone flagged: ' + row3[hdr.indexOf('Check')]);
+expect(/^Repeat request DS-1003/.test(mails[mails.length - 1].subject), 'repeat noted in email subject: ' + mails[mails.length - 1].subject);
+H.rows.pop(); mails.pop(); props.lastLead = '1002';
+
 r = post({kind: 'homeowner-request', id: 'c3', data: {name: 'bot'}, meta: meta({hp: 'http://spam'})});
 expect(r.ok && !r.leadId && H.rows.length === 3 && sheets.Spam.rows.length === 2, 'honeypot goes to Spam');
 r = post({kind: 'homeowner-request', id: 'c4', data: {name: 'bot'}, meta: meta({msOnPage: 400})});

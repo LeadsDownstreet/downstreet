@@ -350,6 +350,23 @@ var GROUPS = [
   {name:'PROYECTOS GRANDES', desc:'Proyectos grandes. Cuadrillas más grandes, más tiempo y muchas veces permisos.', items:['Remodelación de cocina', 'Remodelación de baño', 'Sótanos', 'Ampliaciones y remodelaciones', 'Techos', 'Revestimiento exterior (siding)', 'Cimientos e impermeabilización', 'Concreto y entradas de auto', 'Albañilería y estuco', 'Paneles solares', 'Sépticos y drenaje']}
 ];
 var ALL = ['Luces de Navidad'].concat(GROUPS.reduce(function (all, g) { return all.concat(g.items); }, []).filter(function (t) { return t !== 'Luces de Navidad'; }).sort());
+// Ad links can open the form with the job already chosen: add ?job=fence (or roofing, lights, kitchen...)
+// to the page address. The same words work on the Spanish site. Order matches GROUPS above.
+var JOB_SLUGS = ['lights|christmas-lights', 'handyman', 'painting', 'drywall', 'gutters|gutter-cleaning', 'pressure-washing', 'appliance-repair', 'flooring', 'epoxy|epoxy-floor-coatings', 'cabinets|countertops', 'windows|doors', 'fence|fencing', 'decks|deck', 'insulation', 'landscaping', 'chimney|fireplace', 'generators|generator', 'water-treatment|water-softeners', 'smart-home|security', 'kitchen|kitchen-remodeling', 'bath|bathroom|bath-remodeling', 'basements|basement', 'additions|remodels', 'roofing|roof|roof-repair', 'siding', 'foundation|waterproofing', 'concrete|driveways', 'masonry|stucco', 'solar', 'septic|sewer'];
+function jobFromUrl() {
+  try {
+    var p = (new URLSearchParams(window.location.search).get('job') || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    if (!p) { return ''; }
+    var items = GROUPS.reduce(function (all, g) { return all.concat(g.items); }, []);
+    for (var i = 0; i < JOB_SLUGS.length; i++) {
+      var names = JOB_SLUGS[i].split('|');
+      for (var j = 0; j < names.length; j++) {
+        if (names[j] === p || (p.length >= 4 && names[j].indexOf(p) === 0)) { return items[i] || ''; }
+      }
+    }
+  } catch (err) {}
+  return '';
+}
 var COMMON = ['Luces de Navidad', 'Techos', 'Cercas', 'Remodelación de cocina', 'Remodelación de baño', 'Pintura', 'Pisos', 'Canaletas y limpieza de canaletas', 'Reparaciones generales'];
 var POINTS = ['Gratis para dueños de casa', 'Profesionales que trabajan cerca', 'Sin obligación de contratar'];
 var STEPS = [
@@ -393,7 +410,7 @@ class Component extends DCLogic {
     var prefersDark = false;
     try { prefersDark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches); } catch (err) {}
     try { var saved = window.localStorage.getItem('downstreet-theme'); if (saved) { prefersDark = saved === 'dark'; } } catch (err) {}
-    this.state = { page: 'home', trade: '', open: 0, sent: false, sentName: '', sentTrade: '', sentZip: '', sentPhone: '', dark: prefersDark };
+    this.state = { page: 'home', trade: jobFromUrl(), open: 0, sent: false, sentName: '', sentTrade: '', sentZip: '', sentPhone: '', dark: prefersDark };
   }
   go(page, e) {
     if (e && e.preventDefault) { e.preventDefault(); }

@@ -37,6 +37,23 @@ var GROUPS = [
   {name:'HEAVY DUTY', desc:'Big projects. Bigger crews, longer timelines, often permits.', items:['Kitchen remodeling', 'Bath remodeling', 'Basements', 'Home additions & remodels', 'Roofing', 'Siding', 'Foundation & waterproofing', 'Concrete & driveways', 'Masonry & stucco', 'Solar', 'Septic & sewer']}
 ];
 var ALL = ['Christmas lights'].concat(GROUPS.reduce(function (all, g) { return all.concat(g.items); }, []).filter(function (t) { return t !== 'Christmas lights'; }).sort());
+// Ad links can open the form with the job already chosen: add ?job=fence (or roofing, lights, kitchen...)
+// to the page address. The same words work on the Spanish site. Order matches GROUPS above.
+var JOB_SLUGS = ['lights|christmas-lights', 'handyman', 'painting', 'drywall', 'gutters|gutter-cleaning', 'pressure-washing', 'appliance-repair', 'flooring', 'epoxy|epoxy-floor-coatings', 'cabinets|countertops', 'windows|doors', 'fence|fencing', 'decks|deck', 'insulation', 'landscaping', 'chimney|fireplace', 'generators|generator', 'water-treatment|water-softeners', 'smart-home|security', 'kitchen|kitchen-remodeling', 'bath|bathroom|bath-remodeling', 'basements|basement', 'additions|remodels', 'roofing|roof|roof-repair', 'siding', 'foundation|waterproofing', 'concrete|driveways', 'masonry|stucco', 'solar', 'septic|sewer'];
+function jobFromUrl() {
+  try {
+    var p = (new URLSearchParams(window.location.search).get('job') || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    if (!p) { return ''; }
+    var items = GROUPS.reduce(function (all, g) { return all.concat(g.items); }, []);
+    for (var i = 0; i < JOB_SLUGS.length; i++) {
+      var names = JOB_SLUGS[i].split('|');
+      for (var j = 0; j < names.length; j++) {
+        if (names[j] === p || (p.length >= 4 && names[j].indexOf(p) === 0)) { return items[i] || ''; }
+      }
+    }
+  } catch (err) {}
+  return '';
+}
 var COMMON = ['Christmas lights', 'Roofing', 'Fencing', 'Kitchen remodeling', 'Bath remodeling', 'Painting', 'Flooring', 'Gutters & gutter cleaning', 'Handyman'];
 var POINTS = ['Free for homeowners', 'Pros who work near you', 'No obligation to hire'];
 var STEPS = [
@@ -80,7 +97,7 @@ class Component extends DCLogic {
     var prefersDark = false;
     try { prefersDark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches); } catch (err) {}
     try { var saved = window.localStorage.getItem('downstreet-theme'); if (saved) { prefersDark = saved === 'dark'; } } catch (err) {}
-    this.state = { page: 'home', trade: '', open: 0, sent: false, sentName: '', sentTrade: '', sentZip: '', sentPhone: '', dark: prefersDark };
+    this.state = { page: 'home', trade: jobFromUrl(), open: 0, sent: false, sentName: '', sentTrade: '', sentZip: '', sentPhone: '', dark: prefersDark };
   }
   go(page, e) {
     if (e && e.preventDefault) { e.preventDefault(); }

@@ -215,6 +215,10 @@ function handle(body) {
     if (k in row && row[k] && !/^\d{5}$/.test(String(row[k]).trim())) { problems.push(k + ' is not 5 digits'); }
   });
   if (kind === 'homeowner-request' && !row.consentText) { problems.push('no consent text recorded'); }
+  if (kind === 'homeowner-request' && row.phone) {
+    const prev = findRepeat(ss, tab, row.phone);
+    if (prev) { problems.push('repeat: same phone as ' + prev + ' in the last 30 days'); }
+  }
   if (kind === 'pro-application' && row.agreedToTerms !== 'yes') { problems.push('did not agree to terms'); }
   row.check = problems.join('; ');
 
@@ -228,6 +232,28 @@ function handle(body) {
   const result = {ok: true};
   if (row.leadId) { result.leadId = row.leadId; }
   return remember(cache, submissionId, result);
+}
+
+// Has this phone number asked before in the last 30 days? Returns the earlier lead ID, or ''.
+// Only the newest 500 rows are read, so this stays fast as the sheet grows.
+function findRepeat(ss, tab, phone) {
+  const digits = String(phone).replace(/\D/g, '').slice(-10);
+  const sheet = ss.getSheetByName(tab.name);
+  if (digits.length < 10 || !sheet || sheet.getLastRow() < 2) { return ''; }
+  const width = sheet.getLastColumn(), last = sheet.getLastRow(), first = Math.max(2, last - 499);
+  const header = sheet.getRange(1, 1, 1, width).getValues()[0];
+  const pCol = header.indexOf('Phone'), idCol = header.indexOf('Lead ID'), rCol = header.indexOf('Received');
+  if (pCol === -1) { return ''; }
+  const rows = sheet.getRange(first, 1, last - first + 1, width).getValues();
+  const cutoff = Date.now() - 30 * 864e5;
+  for (let i = rows.length - 1; i >= 0; i--) {
+    if (String(rows[i][pCol]).replace(/\D/g, '').slice(-10) !== digits) { continue; }
+    const got = rCol === -1 ? null : rows[i][rCol];
+    const when = got instanceof Date ? got.getTime() : Date.parse(got);
+    if (when && when < cutoff) { continue; }
+    return idCol === -1 ? 'an earlier request' : String(rows[i][idCol] || 'an earlier request');
+  }
+  return '';
 }
 
 function remember(cache, id, result) {
@@ -322,7 +348,7 @@ function notify(kind, tab, row, ss, sheet) {
     .filter(Boolean);
   const link = ss.getUrl() + '#gid=' + sheet.getSheetId();
   const subject = kind === 'homeowner-request'
-    ? 'New request ' + row.leadId + ': ' + (row.service || 'a job') + ' in ' + (row.zip || '?') + (row.lang === 'Spanish' ? ' (Spanish)' : '')
+    ? (/^repeat:|; repeat:/.test(row.check) ? 'Repeat request ' : 'New request ') + row.leadId + ': ' + (row.service || 'a job') + ' in ' + (row.zip || '?') + (row.lang === 'Spanish' ? ' (Spanish)' : '')
     : 'New pro application: ' + (row.business || row.name || '?') + ', ' + (row.trade || '?') + (row.lang === 'Spanish' ? ' (Spanish)' : '');
   MailApp.sendEmail({
     to: to,
