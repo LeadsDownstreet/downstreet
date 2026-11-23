@@ -209,8 +209,23 @@ def squeeze(nodes, pre=False):
     return out
 
 
+def load_contact():
+    try:
+        c = json.load(open(os.path.join(ROOT, 'site.json'), encoding='utf-8'))
+    except FileNotFoundError:
+        c = {}
+    return {'[PHONE]': (c.get('phone') or '').strip(), '[EMAIL]': (c.get('email') or '').strip()}
+
+
+def fill_contact(text):
+    for token, value in load_contact().items():
+        if value:
+            text = text.replace(token, html.escape(value))
+    return text
+
+
 def read_source(path, links):
-    src = open(path, encoding='utf-8').read()
+    src = fill_contact(open(path, encoding='utf-8').read())
     for old, new in links.items():
         src = src.replace(f'href="{old}"', f'href="{new}"')
     m = re.search(r'<x-dc>(.*)</x-dc>', src, re.S)
@@ -306,6 +321,94 @@ a{{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-
 '''
 
 
+LEGAL_PAGE = '''<!doctype html>
+<html lang="{lang}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<link rel="canonical" href="{canonical}">
+<link rel="alternate" hreflang="en" href="{en_url}">
+<link rel="alternate" hreflang="es" href="{es_url}">
+<link rel="alternate" hreflang="x-default" href="{en_url}">
+<link rel="icon" href="{base}assets/icon-home.svg" type="image/svg+xml">
+<meta name="theme-color" content="#F5F3EE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&amp;family=Inter:wght@400;600;700&amp;display=swap">
+<style>
+:root{{--ink:#1E2226;--ground:#F5F3EE;--body:#3B3F44;--muted:#6A6E73;--line:#DDD9D0;--y:#F5C400}}
+@media (prefers-color-scheme: dark){{:root{{--ink:#F5F3EE;--ground:#15191C;--body:#D3D0C8;--muted:#9A9C9F;--line:#2C3237}}}}
+*{{box-sizing:border-box}}
+body{{margin:0;background:var(--ground);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%}}
+.skip{{position:absolute;left:-9999px}}.skip:focus{{left:16px;top:12px;background:var(--y);color:#1E2226;padding:8px 12px;border-radius:8px;z-index:9}}
+header{{position:sticky;top:0;z-index:5;background:var(--ground);border-bottom:1px solid var(--line)}}
+.bar{{max-width:760px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:14px}}
+.brand{{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.025em}}
+.lang{{margin-left:auto;display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600;font-size:14px}}
+main{{max-width:760px;margin:0 auto;padding:40px 22px 64px}}
+.eyebrow{{font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}}
+h1{{margin:6px 0 10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(36px,6vw,52px);line-height:1.05;letter-spacing:-0.03em}}
+h2{{margin:36px 0 8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;line-height:1.2;letter-spacing:-0.015em}}
+h3{{margin:18px 0 4px;font-size:17px}}
+p,li{{color:var(--body)}}p{{margin:0 0 12px}}ul{{margin:0 0 12px;padding-left:22px}}li{{margin:4px 0}}
+.lede{{font-size:19px;color:var(--ink)}}
+a{{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:3px}}
+strong{{color:var(--ink)}}
+footer{{border-top:1px solid var(--line)}}
+.foot{{max-width:760px;margin:0 auto;padding:22px;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}}
+.foot a{{color:var(--muted)}}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">{skip}</a>
+<header><div class="bar">
+<a class="brand" href="{home}"><img src="{base}assets/icon-home.svg" width="32" height="32" alt="">Downstreet</a>
+<a class="lang" href="{other_url}" hreflang="{other_code}" lang="{other_code}">{other_lang}</a>
+</div></header>
+<main id="content">
+<div class="eyebrow">{updated_label}: {updated}</div>
+<h1>{heading}</h1>
+{body}
+</main>
+<footer><div class="foot">
+<span>© 2026 {operator} · Fort Worth, TX</span>
+<a href="{home}">{home_label}</a>
+<a href="{pro}">{pro_label}</a>
+<a href="{privacy}">{privacy_label}</a>
+<a href="{terms}">{terms_label}</a>
+</div></footer>
+</body>
+</html>
+'''
+
+
+def write_legal_pages(base, site_url):
+    """Privacy policy and terms of use, English and Spanish. Returns their URLs for the sitemap."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import legal
+    urls = []
+    for (lang, kind), (path, title, desc, heading, body) in legal.PAGES.items():
+        other = 'es' if lang == 'en' else 'en'
+        lab = legal.LABELS[lang]
+        root = '' if lang == 'en' else 'es/'
+        href = lambda k, l=lang: base + legal.PAGES[(l, k)][0]
+        page = LEGAL_PAGE.format(
+            lang=lang, title=html.escape(title), desc=html.escape(desc), base=base,
+            canonical=site_url + path, en_url=site_url + legal.PAGES[('en', kind)][0], es_url=site_url + legal.PAGES[('es', kind)][0],
+            skip=lab['skip'], home=base + root, pro=base + root + 'pro/', other_url=base + legal.PAGES[(other, kind)][0],
+            other_code=other, other_lang=lab['other_lang'], updated_label=lab['updated'], updated=legal.UPDATED[lang],
+            heading=html.escape(heading), body=fill_contact(body.format(op=legal.OPERATOR, privacy=href('privacy'))),
+            operator=legal.OPERATOR, home_label=lab['home'], pro_label=lab['pro'],
+            privacy=href('privacy'), terms=href('terms'), privacy_label=lab['privacy'], terms_label=lab['terms'])
+        folder = os.path.join(OUT, path)
+        os.makedirs(folder, exist_ok=True)
+        open(os.path.join(folder, 'index.html'), 'w', encoding='utf-8').write(page)
+        urls.append(site_url + path)
+    return urls
+
+
 def vhash(path):
     return hashlib.sha1(open(path, 'rb').read()).hexdigest()[:10]
 
@@ -341,7 +444,7 @@ def main():
         open(config_path, 'w').write(
             '// Paste the web app URL of the Google Apps Script (see apps-script/README.md) between the quotes.\n'
             '// Until then, the forms work on the page but submissions are not saved anywhere.\n'
-            "window.DS_CONFIG = { submitUrl: '' };\n")
+            "window.DS_CONFIG = { submitUrl: '', metaPixelId: '', ga4Id: '' };\n")
     open(os.path.join(OUT, 'assets', 'icon-home.svg'), 'w').write(ICON_HOME)
     open(os.path.join(OUT, 'assets', 'icon-pro.svg'), 'w').write(ICON_PRO)
     open(os.path.join(OUT, '.nojekyll'), 'w').write('')
@@ -350,7 +453,9 @@ def main():
     written = []   # (site, page_id, file path, url)
     for site in SITES:
         lang_root = '' if site['lang'] == 'en' else site['lang'] + '/'
-        links = {'DownstreetIsoWebsite.dc.html': base + lang_root, 'DownstreetProSite.dc.html': base + lang_root + 'pro/'}
+        links = {'DownstreetIsoWebsite.dc.html': base + lang_root, 'DownstreetProSite.dc.html': base + lang_root + 'pro/',
+                 'privacy.html': base + ('privacy/' if site['lang'] == 'en' else 'es/privacidad/'),
+                 'terms.html': base + ('terms/' if site['lang'] == 'en' else 'es/terminos/')}
         helmet, template, code = read_source(os.path.join(SRC, site['source']), links)
         site_base = base + site['path']
         routes = {pid: route for pid, route, _, _ in site['pages']}
@@ -386,6 +491,7 @@ def main():
 
     today = date.today().isoformat()
     urls = [u for s, pid, fp, u in written if pid not in s.get('noindex', ())]
+    urls += write_legal_pages(base, site_url)
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + ''.join(f'<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls) + '</urlset>\n')

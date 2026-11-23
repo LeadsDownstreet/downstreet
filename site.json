@@ -1,0 +1,5 @@
+{
+  "_note": "Contact details shown on every page of both sites, in both languages. Fill these in, then run python3 tools/build.py. Leave a value empty to keep its [PHONE] / [EMAIL] placeholder.",
+  "phone": "",
+  "email": ""
+}

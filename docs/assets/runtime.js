@@ -157,6 +157,68 @@
 
   // ---- form submissions: posted to the URL in assets/config.js
   var dsLoadedAt = Date.now();
+
+  // Which ad or tagged link brought this visitor? Saved for 30 days (see the privacy policy) and
+  // sent with every form, so the Google Sheet shows where each lead came from.
+  var dsAttrib = (function () {
+    var KEY = 'ds-attrib', found = {}, any = false;
+    var tags = {utm_source: 'Ad source', utm_medium: 'Ad medium', utm_campaign: 'Ad campaign', utm_content: 'Ad content', utm_term: 'Ad term'};
+    try {
+      var q = new URLSearchParams(location.search);
+      for (var k in tags) { var v = q.get(k); if (v) { found[tags[k]] = v.slice(0, 200); any = true; } }
+      var ids = ['gclid', 'fbclid', 'msclkid', 'wbraid', 'gbraid'];
+      for (var i = 0; i < ids.length; i++) { var c = q.get(ids[i]); if (c) { found['Ad click ID'] = ids[i] + ':' + c.slice(0, 300); any = true; break; } }
+    } catch (err) {}
+    if (any) {
+      found['Landing page'] = location.pathname;
+      found._t = Date.now();
+      try { localStorage.setItem(KEY, JSON.stringify(found)); } catch (err) {}
+      return found;
+    }
+    try {
+      var saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (saved && Date.now() - saved._t < 30 * 864e5) { return saved; }
+      localStorage.removeItem(KEY);
+    } catch (err) {}
+    return {};
+  })();
+
+  // Optional ad measurement. Off until an ID is pasted into assets/config.js.
+  (function () {
+    var cfg = window.DS_CONFIG || {};
+    if (cfg.metaPixelId) {
+      /* eslint-disable */
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+      s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      /* eslint-enable */
+      window.fbq('init', String(cfg.metaPixelId));
+      window.fbq('track', 'PageView');
+    }
+    if (cfg.ga4Id) {
+      var g = document.createElement('script');
+      g.async = true;
+      g.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(cfg.ga4Id);
+      document.head.appendChild(g);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', String(cfg.ga4Id));
+    }
+  })();
+
+  function dsTrackSaved(kind, lang) {
+    try {
+      if (window.fbq) {
+        if (kind === 'homeowner-request') { window.fbq('track', 'Lead'); }
+        else if (kind === 'pro-application') { window.fbq('track', 'SubmitApplication'); }
+      }
+      if (window.gtag) {
+        var name = kind === 'homeowner-request' ? 'generate_lead' : kind === 'pro-application' ? 'sign_up' : kind.replace(/-/g, '_');
+        window.gtag('event', name, {form: kind, site_language: lang});
+      }
+    } catch (err) {}
+  }
   // Sends one form to the Google Sheet. Returns a promise that resolves once the sheet confirms
   // the row was saved, and rejects if it could not be saved (after one automatic retry).
   window.DS_SUBMIT = function (kind, data) {
@@ -173,8 +235,12 @@
     var consent = each('[data-consent]', function (el) { return (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim(); })
       .filter(function (t) { return t; }).join(' | ');
     if (consent) { meta.consentText = consent; }
+    var sendData = {};
+    var src = data || {};
+    for (var dk in src) { if (Object.prototype.hasOwnProperty.call(src, dk)) { sendData[dk] = src[dk]; } }
+    for (var ak in dsAttrib) { if (ak !== '_t' && !(ak in sendData)) { sendData[ak] = dsAttrib[ak]; } }
     var payload = {
-      kind: kind, data: data || {}, meta: meta, page: location.href, sentAt: new Date().toISOString(),
+      kind: kind, data: sendData, meta: meta, page: location.href, sentAt: new Date().toISOString(),
       id: Date.now().toString(36) + Math.random().toString(36).slice(2, 10)
     };
     if (!config.submitUrl) {
@@ -195,7 +261,7 @@
     }
     return attempt().catch(function () {
       return new Promise(function (res) { setTimeout(res, 1500); }).then(attempt);
-    });
+    }).then(function (j) { dsTrackSaved(kind, meta.lang); return j; });
   };
 
 
